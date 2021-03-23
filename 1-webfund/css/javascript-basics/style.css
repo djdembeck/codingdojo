@@ -1,5 +1,5 @@
-* {
-    outline: 2px dotted red;
+a {
+    color: rgb(85, 223, 223);
 }
 
 body {
@@ -9,6 +9,7 @@ body {
 #bodycontent {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0px 20px 0px;
 }
 
 #header {
@@ -16,37 +17,41 @@ body {
     color: white;
     padding: 15px;
     border-radius: 7px;
-    margin: 1x;
-    height: 70px;
+    margin: 4px;
+    height: 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
 #sidebar {
-    background-color: green;
-    height: 800px;
+    background-color: teal;
+    border-radius: 20px;
+    max-height: 250px;
+    max-width: 250px;
+    text-align: left;
 }
 
 #feed {
     color: white;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 20px;
-    height: 800px;
+    margin-left: 29px;
 }
 
 #notification {
+    color: rgb(218, 218, 218);
     display: flex;
-    background-color: gray;
-    border-radius: 5px;
-    padding: 20px;
+    background-color: rgb(94, 94, 94);
+    border-radius: 20px;
+    padding: 5px 20px;
 }
 
 .col1 {
     flex: 1;
+    color: white;
 }
 
 .col2 {
-    flex: 2;
+    flex: 5;
 }
