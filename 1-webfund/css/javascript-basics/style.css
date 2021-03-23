@@ -23,12 +23,17 @@ body {
     align-items: center;
 }
 
+#homelink {
+    margin-left: 22px;
+}
+
 #sidebar {
     background-color: teal;
     border-radius: 20px;
-    max-height: 250px;
-    max-width: 250px;
+    max-height: 235px;
+    max-width: 200px;
     text-align: left;
+    padding: 12px;
 }
 
 #feed {
@@ -54,4 +59,8 @@ body {
 
 .col2 {
     flex: 5;
+}
+
+ul {
+    margin-top: 0px
 }
