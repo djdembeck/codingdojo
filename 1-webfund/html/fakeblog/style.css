@@ -1,0 +1,41 @@
+body {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+h1 {
+    color: rgb(72, 50, 50);
+}
+
+#comment {
+    color:coral
+}
+
+[type="checkbox"] {
+    text-align: right;
+    padding: 100px
+}
+
+#linksection {
+    text-align: left;
+}
+
+table {
+    #background-color: cornsilk;
+    width: 700px;
+    height: 350px;
+    margin-left: 9%;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.638);
+    text-align: center;
+    padding: 4%;
+}
+
+td {
+    background-color: rgba(58, 58, 58, 0.275);
+    text-align: center;
+    padding: 5%;
+    color: white;
+}
