@@ -2,15 +2,16 @@
 *{ 
     margin: 0px;
     padding: 0px;
+    background-color: silver;
    }
    #wrapper{
     width: 950px;
-    background-color: silver;
     margin: 0px auto;
    }
    #header{
     min-height: 150px;
     background-color: green;
+    margin: 2%;
    }
    #navigation{
     min-height: 300px;
@@ -19,8 +20,10 @@
    }
    #main_content{
     min-height: 400px;
-    width: 700px;
+    width: 100%;
     background-color: red;
+    display: inline-block;
+    margin-left: 200px;
    }
    .subcontents{
     min-height: 200px;
