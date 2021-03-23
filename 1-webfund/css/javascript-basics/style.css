@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(49, 49, 136);
+}
+
+#bodycontent {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header {
+    background-color: rgb(255, 60, 60);
+    color: white;
+    padding: 15px;
+    border-radius: 7px;
+    margin: 1x;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sidebar {
+    background-color: green;
+    height: 800px;
+}
+
+#feed {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 20px;
+    height: 800px;
+}
+
+#notification {
+    display: flex;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.col1 {
+    flex: 1;
+}
+
+.col2 {
+    flex: 2;
+}
