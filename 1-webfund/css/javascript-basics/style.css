@@ -13,7 +13,7 @@ body {
     margin: 20px 0px 20px 0px;
 }
 
-#code {
+.code {
     color: rgb(113, 113, 238);
 }
 
@@ -73,4 +73,8 @@ ul {
     margin-top: 0px;
     margin-left: -10px;
     margin-right: 5px;
+}
+
+#feed li {
+    padding-top: 8px;
 }
