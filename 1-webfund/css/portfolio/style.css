@@ -45,6 +45,7 @@ body {
     flex-direction: column;
     margin: 1% 0% 1% 0%;
     flex: 1;
+    border-radius: 7px;
 }
 
 #headshot img {
@@ -62,8 +63,18 @@ body {
     border-radius: 10px;
 }
 
+.abouthead {
+    background-color: rgb(191 190 185 / 66%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.638);
+    border-radius: 10px;
+}
+
 #about p {
-    padding: 2%;
+    margin: 3% 2% 3% 2%;
+    font-size: 130%;
 }
 
 #about a {
@@ -73,7 +84,7 @@ body {
 #cards {
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: flex-start;
 }
 
 .card {
@@ -85,16 +96,17 @@ body {
     flex-direction: column;
     margin: 1% 0% 2% 0%;
     border-radius: 10px;
+    position: relative;
 }
 
 .card p {
-    padding: 1%;
-    margin: 1% 1% 1% 1%;
+    margin: 3% 2% 3% 2%;
+    font-size: 110%;
 }
 
 .articlehead {
     background-color: rgba(255, 255, 255, 0.638);
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
@@ -175,7 +187,6 @@ body {
 #footer .table ul {
 	min-width: 696px;
 	list-style: none;
-	padding-top: 20px;
 }
 
 #footer .table ul li {
@@ -187,6 +198,7 @@ body {
     margin-top: -3%;
     width: 2%;
     height: auto;
+    vertical-align:bottom
 }
 #footer .table a {
     margin-right: 0.5%;
