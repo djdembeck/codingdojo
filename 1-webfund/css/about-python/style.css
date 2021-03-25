@@ -1,0 +1,51 @@
+body {
+    background-color: #245076;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header img {
+    max-width: 50%;
+}
+
+#header-right {
+    align-items: center;
+}
+
+#header-right span {
+    color: white;
+}
+
+.textbutton {
+    color: yellow;
+}
+
+#search {
+    background-color: #444;
+    padding: 3%;
+    border-radius: 10px;;
+    display: inline-block;
+}
+
+#nav {
+	display: table;
+    text-align: center;
+	margin: 0 auto;
+    background-color: #487ead;
+    border-radius: 10px;
+}
+
+#nav ul {
+	min-width: 696px;
+	list-style: none;
+}
+
+#nav ul li {
+	display: inline;
+    color: white;
+    margin-right: 7%;
+}
