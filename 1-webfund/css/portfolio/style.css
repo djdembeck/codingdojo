@@ -1,7 +1,3 @@
-/* * {
-    outline: red dotted;
-} */
-
 body {
     background: rgb(63,94,251);
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
@@ -89,19 +85,19 @@ body {
 
 .card {
     background-color: rgb(191 190 185 / 66%);
-    min-height: 10%;
     max-width: 30%;
     min-width: 20%;
     display: flex;
     flex-direction: column;
     margin: 1% 0% 2% 0%;
     border-radius: 10px;
-    position: relative;
 }
 
+/* Need to figure out dynamic fix for min-height/height to keep p stable */
 .card p {
     margin: 3% 2% 5% 3%;
     font-size: 110%;
+    min-height: 147px;
 }
 
 .articlehead {
@@ -116,23 +112,12 @@ body {
 }
 
 .card .table {
-	display: table;
     text-align: left;
-	margin: 0 auto;
-}
-
-.card .table ul {
-	list-style: none;
-	padding-top: 20px;
-}
-
-.card .table ul li {
-	display: inline;
-    margin: 2% 5% 5% 2%;
+    margin: 4% 18% 5% 10%;
 }
 
 .card .table img {
-    margin: 0% -1% 3% 0%;
+    margin: 1% 1% 0% 1%;
     width: 45px;
 }
 
@@ -155,18 +140,6 @@ body {
     padding: 1%;
     font-weight: bold;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
-}
-
-#la-mode {
-    flex: 1
-}
-
-#family-contacts {
-    flex: 1
-}
-
-#fiveeleven {
-    flex: 1
 }
 
 #footer {
@@ -198,7 +171,7 @@ body {
     margin-top: -3%;
     width: 2%;
     height: auto;
-    vertical-align:bottom
+    vertical-align:bottom;
 }
 #footer .table a {
     margin-right: 0.5%;

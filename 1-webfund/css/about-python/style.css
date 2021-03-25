@@ -1,5 +1,6 @@
 body {
     background-color: #245076;
+    margin: 0;
 }
 
 #header {
@@ -48,4 +49,21 @@ body {
 	display: inline;
     color: white;
     margin-right: 7%;
+}
+
+#mainlinks ul {
+    list-style-type: none
+}
+
+#mainkinks ul li {
+    display: grid;
+    grid-template-columns: 20px auto;
+    justify-content: start;
+    align-items: center;
+}
+
+#mainkinks ul li::before {
+    content: ">";
+    font-size: 10px;
+    color: #999;
 }
