@@ -36,7 +36,29 @@ var somearray = [-1,3,5,-5];
 console.log(loglowreturnhigh(somearray));
 
 // Print One, Return Another - Build a function that takes in an array of numbers.  The function should print the second-to-last value in the array, and return the first odd value in the array.
+function printreturn(arr) {
+    highestnum = 0;
+    lowestnum = 0;
+    var oddnum;
+    for (let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+        // make sure we stop after first run
+        if (oddnum == undefined) {
+            // find odd number
+            if (arr[i] % 2 === 1) {
+                oddnum = arr[i];
+            }
+        }
+    }
+    secondtolast = arr[arr.length - 2];
 
+    console.log(secondtolast);
+    return oddnum;
+}
+
+var somearray = [-1,3,5,-5];
+
+console.log(printreturn(somearray));
 
 // Double Vision - Given an array (similar to saying 'takes in an array'), create a function that returns a new array where each value in the original array has been doubled.  Calling double([1,2,3]) should return [2,4,6] without changing the original array.
 
