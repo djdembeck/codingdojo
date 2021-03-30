@@ -161,7 +161,17 @@ console.log(prevlengths(somearray));
 
 
 // Add Seven - Build a function that accepts an array. Return a new array with all the values of the original, but add 7 to each. Do not alter the original array.  Example, addSeven([1,2,3]) should return [8,9,10] in a new array.
+function addseven(arr) {
+    newarr = [];
+    for (let i = 0; i < arr.length; i++) {
+        newarr[i] = arr[i] + 7;
+    }
+    return newarr;
+}
 
+var somearray = [1,2,3];
+
+console.log(addseven(somearray));
 
 // Reverse Array - Given an array, write a function that reverses its values, in-place.  Example: reverse([3,1,6,4,2]) returns the same array, but now contains values reversed like so... [2,4,6,1,3].  Do this without creating an empty temporary array.  (Hint: you'll need to swap values).
 
