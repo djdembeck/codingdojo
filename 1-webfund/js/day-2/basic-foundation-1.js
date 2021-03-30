@@ -146,6 +146,36 @@ console.log(replaceneg(somearray));
 
 // Max/Min/Avg - Given an array with multiple values, write a function that returns a new array that only contains the maximum, minimum, and average values of the original array. (e.g. [1,5,10,-2] will return [10,-2,3.5])
 
+function arrinfo(arr) {
+    highestnum = 0;
+    lowestnum = 0;
+    total = 0;
+    newarr = [];
+    for (let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+        // find average
+        total = total + arr[i];
+        // find max
+        if (num > highestnum) {
+            highestnum = num;
+        }
+        if (num < lowestnum) {
+            lowestnum = num;
+        }
+    }
+    // calcs
+    average = total / arr.length;
+
+    // make newarr
+    newarr.push(highestnum);
+    newarr.push(lowestnum);
+    newarr.push(average);
+    return newarr;
+}
+
+var somearray = [1,5,10,-2];
+
+console.log(arrinfo(somearray));
 
 // Swap Values - Write a function that will swap the first and last values of any given array. The default minimum length of the array is 2. (e.g. [1,5,10,-2] will become [-2,5,10,1]).
 
