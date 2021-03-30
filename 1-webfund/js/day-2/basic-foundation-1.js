@@ -99,6 +99,21 @@ console.log(oddarr());
 
 // Greater than Y - Given value of Y, write a function that takes an array and returns the number of values that are greater than Y. For example if arr = [1, 3, 5, 7] and Y = 3, your function will return 2. (There are two values in the array greater than 3, which are 5, 7).
 
+function greaterthany(arr, y) {
+    var highernum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+        if (num > y) {
+            highernum++;
+        }
+    }
+    return highernum;
+}
+
+var somearray = [1, 3, 5, 7];
+var y = 3;
+
+console.log(greaterthany(somearray, y));
 
 // Squares - Given an array with multiple values, write a function that replaces each value in the array with the value squared by itself. (e.g. [1,5,10,-2] will become [1,25,100,4])
 
