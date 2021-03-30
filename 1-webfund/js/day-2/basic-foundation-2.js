@@ -13,7 +13,27 @@ var somearray = [-1,3,5,-5];
 console.log(numtostring(somearray));
 
 // Print Low, Return High - Create a function that takes in an array of numbers.  The function should print the lowest value in the array, and return the highest value in the array.
+function loglowreturnhigh(arr) {
+    highestnum = 0;
+    lowestnum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+        // find max
+        if (num > highestnum) {
+            highestnum = num;
+        }
+        // find min
+        if (num < lowestnum) {
+            lowestnum = num;
+        }
+    }
+    console.log(lowestnum);
+    return highestnum;
+}
 
+var somearray = [-1,3,5,-5];
+
+console.log(loglowreturnhigh(somearray));
 
 // Print One, Return Another - Build a function that takes in an array of numbers.  The function should print the second-to-last value in the array, and return the first odd value in the array.
 

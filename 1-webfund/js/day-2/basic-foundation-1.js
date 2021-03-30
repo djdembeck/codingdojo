@@ -159,6 +159,7 @@ function arrinfo(arr) {
         if (num > highestnum) {
             highestnum = num;
         }
+        // find min
         if (num < lowestnum) {
             lowestnum = num;
         }
