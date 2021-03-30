@@ -85,6 +85,17 @@ console.log(findaverage(somearray));
 
 // Array odd - Write a function that would return an array of all the odd numbers between 1 to 50. (ex. [1,3,5, .... , 47,49]). Hint: Use 'push' method.
 
+function oddarr() {
+    arr = [];
+    for (let i = 1; i <= 50; i++) {
+        if (i % 2 === 1) {
+            arr.push(i);
+        }
+    }
+    return arr;
+}
+
+console.log(oddarr());
 
 // Greater than Y - Given value of Y, write a function that takes an array and returns the number of values that are greater than Y. For example if arr = [1, 3, 5, 7] and Y = 3, your function will return 2. (There are two values in the array greater than 3, which are 5, 7).
 
