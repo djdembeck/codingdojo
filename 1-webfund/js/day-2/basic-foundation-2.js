@@ -75,7 +75,23 @@ var somearray = [1,2,3];
 console.log(double(somearray));
 
 // Count Positives - Given an array of numbers, create a function to replace the last value with the number of positive values found in the array.  Example, countPositives([-1,1,1,1]) changes the original array to [-1,1,1,3] and returns it.
+function cntpos(arr) {
+    var numpos = 0;
+    for (let i = 0; i < arr.length; i++) {
+        // First, let's count how many positives exist
+        if (arr[i] > 0) {
+            numpos++;
+        }
+    }
+    
+    // use counted positives and edit array
+    arr[arr.length - 1] = numpos;
+    return arr;
+}
 
+var somearray = [-1,1,1,1];
+
+console.log(cntpos(somearray));
 
 // Evens and Odds - Create a function that accepts an array.  Every time that array has three odd values in a row, print "That's odd!".  Every time the array has three evens in a row, print "Even more so!".
 
