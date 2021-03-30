@@ -38,6 +38,18 @@ console.log(odd5000());
 
 // Iterate an array - Write a function that returns the sum of all the values within an array. (e.g. [1,2,5] returns 8. [-5,2,5,12] returns 14).
 
+function iteratearr(arr) {
+    var sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        var sum = sum + arr[i];
+    }
+    return sum;
+}
+
+// edit below array for desired effects
+var somearray = [1, 2, 5];
+
+console.log(iteratearr(somearray));
 
 // Find max - Given an array with multiple values, write a function that returns the maximum number in the array. (e.g. for [-3,3,5,7] max is 7)
 
