@@ -83,7 +83,7 @@ function cntpos(arr) {
             numpos++;
         }
     }
-    
+
     // use counted positives and edit array
     arr[arr.length - 1] = numpos;
     return arr;
@@ -94,7 +94,36 @@ var somearray = [-1,1,1,1];
 console.log(cntpos(somearray));
 
 // Evens and Odds - Create a function that accepts an array.  Every time that array has three odd values in a row, print "That's odd!".  Every time the array has three evens in a row, print "Even more so!".
+function evenandodd(arr) {
+    let evennum = 0;
+    let oddnum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        // find an even number
+        if (arr[i] % 2 === 0) {
+            evennum++;
+        }
+        // find odd number
+        if (arr[i] % 2 === 1) {
+            oddnum++;
+        }
+        
+        // log 3 in a row
+        if (oddnum === 3) {
+            console.log("That's odd!")
+            oddnum = 0;
+        }
 
+        if (evennum === 3) {
+            console.log("Even more so!")
+            evennum = 0;
+        }
+    }
+    return "Finished";
+}
+
+var somearray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+console.log(evenandodd(somearray));
 
 // Increment the Seconds - Given an array of numbers arr, add 1 to every other element, specifically those whose index is odd (arr[1], arr[3], arr[5], etc).  Afterward, console.log each array value and return arr.
 
