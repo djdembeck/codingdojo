@@ -224,7 +224,20 @@ var somearray = ["food", "not food", "not food", "food"];
 console.log(hangry(somearray));
 
 // Swap Toward the Center - Given an array, swap the first and last values, third and third-to-last values, etc.  Example: swapTowardCenter([true,42,"Ada",2,"pizza"]) turns the array into ["pizza", 42, "Ada", 2, true].  swapTowardCenter([1,2,3,4,5,6]) turns the array into [6,2,4,3,5,1].  No need to return the array this time.
+function swapTowardCenter(arr) {
+    var replace = arr.length - 1;
+    for (let i = 0; i < arr.length / 2; i++){
+        if (i != 1) {
+            [arr[i], arr[replace]] = [arr[replace], arr[i]];
+        }
+        replace--;
+    }
+    return arr;
+}
 
+var somearray = [true,42,"Ada",2,"pizza"];
+
+console.log(swapTowardCenter(somearray));
 
 // Scale the Array - Given an array arr and a number num, multiply all values in the array arr by the number num, and return the changed array arr.  For example, scaleArray([1,2,3], 3) should return [3,6,9].
 
