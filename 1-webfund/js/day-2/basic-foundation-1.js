@@ -117,6 +117,16 @@ console.log(greaterthany(somearray, y));
 
 // Squares - Given an array with multiple values, write a function that replaces each value in the array with the value squared by itself. (e.g. [1,5,10,-2] will become [1,25,100,4])
 
+function square(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        sqnum = arr[i] * arr[i]
+        arr[i] = sqnum
+    }
+    return arr;
+}
+
+var somearray = [1,5,10,-2];
+console.log(square(somearray));
 
 // Negatives - Given an array with multiple values, write a function that replaces any negative numbers within the array with the value of 0. When the program is done the array should contain no negative values. (e.g. [1,5,10,-2] will become [1,5,10,0])
 
