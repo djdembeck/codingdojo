@@ -174,7 +174,18 @@ var somearray = [1,2,3];
 console.log(addseven(somearray));
 
 // Reverse Array - Given an array, write a function that reverses its values, in-place.  Example: reverse([3,1,6,4,2]) returns the same array, but now contains values reversed like so... [2,4,6,1,3].  Do this without creating an empty temporary array.  (Hint: you'll need to swap values).
+function reverse(arr) {
+    var replace = arr.length - 1;
+    for (let i = 0; i < arr.length / 2; i++){
+        [arr[i], arr[replace]] = [arr[replace], arr[i]];
+        replace--;
+    }
+    return arr;
+}
 
+var somearray = [3,1,6,4,2];
+
+console.log(reverse(somearray));
 
 // Outlook: Negative - Given an array, create and return a new one containing all the values of the original array, but make them all negative (not simply multiplied by -1). Given [1,-3,5], return [-1,-3,-5].
 
