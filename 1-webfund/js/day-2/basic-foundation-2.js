@@ -205,7 +205,23 @@ var somearray = [1,-3,5];
 console.log(makenegative(somearray));
 
 // Always Hungry - Create a function that accepts an array, and prints "yummy" each time one of the values is equal to "food".  If no array values are "food", then print "I'm hungry" once.
+function hangry(arr) {
+    var foodcnt = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "food") {
+            console.log("yummy");
+            foodcnt++;
+        }
+    }
+    if (foodcnt === 0) {
+        console.log("I'm hungry");
+    }
+    return "stomach closed";
+}
 
+var somearray = ["food", "not food", "not food", "food"];
+
+console.log(hangry(somearray));
 
 // Swap Toward the Center - Given an array, swap the first and last values, third and third-to-last values, etc.  Example: swapTowardCenter([true,42,"Ada",2,"pizza"]) turns the array into ["pizza", 42, "Ada", 2, true].  swapTowardCenter([1,2,3,4,5,6]) turns the array into [6,2,4,3,5,1].  No need to return the array this time.
 
