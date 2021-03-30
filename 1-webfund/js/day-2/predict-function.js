@@ -6,6 +6,9 @@ function greeting(){
 var word = greeting();
 console.log(word);
 
+// Return is before log, so only Hello is logged
+// Answer: Hello
+
 // 2
 function add(num1, num2){
     console.log("Summing Numbers!");
@@ -19,6 +22,18 @@ var result2 = add(4,7);
 console.log(result1);
 console.log(result2);
 
+// Summing Numbers!
+// num1 is: 3
+// num2 is: 5
+// sum=8
+// 8
+
+// Summing Numbers!
+// num1 is: 4
+// num2 is: 7
+// sum=11
+// 11
+
 // 3
 function highFive(num){
     for(var i=0; i<num; i++){
@@ -30,3 +45,5 @@ function highFive(num){
         }
     }
 }
+
+// Nothing, because the function is never called
