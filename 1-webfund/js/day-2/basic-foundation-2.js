@@ -126,7 +126,23 @@ var somearray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 console.log(evenandodd(somearray));
 
 // Increment the Seconds - Given an array of numbers arr, add 1 to every other element, specifically those whose index is odd (arr[1], arr[3], arr[5], etc).  Afterward, console.log each array value and return arr.
+function incrseconds(arr) {
+    let oddnum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        // find odd number
+        if (arr[i] % 2 === 1) {
+            arr[i] = arr[i] + 1;
+        }
+    }
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i])
+    }
+    return arr;
+}
 
+var somearray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+console.log(incrseconds(somearray));
 
 // Previous Lengths - You are passed an array (similar to saying 'takes in an array' or 'given an array') containing strings.  Working within that same array, replace each string with a number - the length of the string at the previous array index - and return the array.  For example, previousLengths(["hello", "dojo", "awesome"]) should return ["hello", 5, 4]. Hint: Can for loops only go forward?
 
