@@ -188,7 +188,21 @@ var somearray = [3,1,6,4,2];
 console.log(reverse(somearray));
 
 // Outlook: Negative - Given an array, create and return a new one containing all the values of the original array, but make them all negative (not simply multiplied by -1). Given [1,-3,5], return [-1,-3,-5].
+function makenegative(arr) {
+    newarr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) {
+            newarr[i] = arr[i] * -1;
+        } else {
+            newarr[i] = arr[i];
+        }
+    }
+    return newarr;
+}
 
+var somearray = [1,-3,5];
+
+console.log(makenegative(somearray));
 
 // Always Hungry - Create a function that accepts an array, and prints "yummy" each time one of the values is equal to "food".  If no array values are "food", then print "I'm hungry" once.
 
