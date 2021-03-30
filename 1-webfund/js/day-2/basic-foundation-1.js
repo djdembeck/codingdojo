@@ -53,6 +53,20 @@ console.log(iteratearr(somearray));
 
 // Find max - Given an array with multiple values, write a function that returns the maximum number in the array. (e.g. for [-3,3,5,7] max is 7)
 
+function findmax(arr) {
+    var highestnum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let num = arr[i];
+        if (num > highestnum) {
+            highestnum = num;
+        }
+    }
+    return highestnum;
+}
+
+var somearray = [-3,3,5,7];
+
+console.log(findmax(somearray));
 
 // Find average - Given an array with multiple values, write a function that returns the average of the values in the array. (e.g. for [1,3,5,7,20] average is 7.2)
 
