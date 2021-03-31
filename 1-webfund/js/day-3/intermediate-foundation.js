@@ -69,7 +69,30 @@ selector = 3;
 console.log(nthtolast(somearray, selector));
 
 // Array: Second-Largest: Return the second-largest element of an array. Given [42,1,4,3.14,7], return 7.  If the array is too short, return null.
+function seondlargest(arr) {
+    var highestnum = 0;
+    var secondhighest = 0;
+    if (arr.length < 2) {
+        return null;
+    }else {
+        for (let i = 0; i < arr.length; i++) {
+            let num = arr[i];
+            // find max
+            if (num > highestnum) {
+                highestnum = num;
+            }
+            if (num != highestnum && secondhighest < highestnum) {
+                if (num > secondhighest) {
+                    secondhighest = num
+                }
+            }
+        }
+    }
+    return secondhighest;
+}
 
+var somearray = [42,1,4,3.14,7];
+console.log(seondlargest(somearray))
 
 // Double Trouble: Create a function that changes a given array to list each existing element twice, retaining original order.  Convert [4, "Ulysses", 42, false] to [4,4, "Ulysses", "Ulysses", 42, 42, false, false].
 
