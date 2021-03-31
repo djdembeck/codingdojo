@@ -41,6 +41,18 @@ console.log(fibo(y));
 
 // Array: Second-to-Last: Return the second-to-last element of an array. Given [42, true, 4, "Liam", 7], return "Liam".  If array is too short, return null.
 
+function secondtolast(arr) {
+        if (arr.length < 2) {
+            return null;
+        }else {
+            result = arr.length - 2;
+            return arr[result];
+        }
+        
+}
+
+somearray = [42, true, 4, "Liam", 7];
+console.log(secondtolast(somearray));
 
 // Array: Nth-to-Last: Return the element that is N-from-array's-end.  Given ([5,2,3,6,4,9,7],3), return 4.  If the array is too short, return null.
 
