@@ -1,6 +1,8 @@
 // Predict the output of the following code snippets.
 // NOTE: run each code snippet on it's own
 
+// Correct predictions 15/15; these were mostly trick questions
+
 function a(){
     return 35;
 }
