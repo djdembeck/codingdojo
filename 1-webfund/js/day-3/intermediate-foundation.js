@@ -55,7 +55,18 @@ somearray = [42, true, 4, "Liam", 7];
 console.log(secondtolast(somearray));
 
 // Array: Nth-to-Last: Return the element that is N-from-array's-end.  Given ([5,2,3,6,4,9,7],3), return 4.  If the array is too short, return null.
+function nthtolast(arr, selector) {
+    if (arr.length < selector) {
+        return null;
+    }else {
+        result = arr.length - selector;
+        return arr[result];
+    }
+}
 
+somearray = [5,2,3,6,4,9,7];
+selector = 3;
+console.log(nthtolast(somearray, selector));
 
 // Array: Second-Largest: Return the second-largest element of an array. Given [42,1,4,3.14,7], return 7.  If the array is too short, return null.
 
