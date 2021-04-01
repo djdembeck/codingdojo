@@ -96,17 +96,11 @@ console.log(seondlargest(somearray))
 
 // Double Trouble: Create a function that changes a given array to list each existing element twice, retaining original order.  Convert [4, "Ulysses", 42, false] to [4,4, "Ulysses", "Ulysses", 42, 42, false, false].
 
-
-// not finished
 function duplicate(arr) {
-    var newarr = [];
-    for (let i = 0; i < arr.length; i+=2) {
-        var shift = i;
-        var shift2 = i + 1;
-        newarr[shift] = arr[i];
-        newarr[shift2] = arr[i];
+    for (let i = arr.length -1; i >= 0; i--) {
+        arr.splice(i, 0, arr[i]);
     }
-    return newarr;
+    return arr;
 }
 
 var somearray = [4, "Ulysses", 42, false];
