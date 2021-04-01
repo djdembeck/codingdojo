@@ -1,4 +1,4 @@
-// Part 1
+//Part 1
 var monster = {
     id: 1,
     name: "Bulbasaur",
@@ -7,7 +7,11 @@ var monster = {
 
 // How would we access the name from our monster variable?
 
+console.log(monster.name);
+
 // How would we access the second type? (grass)
+
+console.log(monster.types[1]);
 
 var pokémon = [
     { "id": 1,   "name": "Bulbasaur",  "types": ["poison", "grass"] },
@@ -42,16 +46,49 @@ for(var i=0; i<pokémon.length; i++) {
     if(pokémon[i].id > 99) {
         console.log(pokémon[i].name);
     }
-}
+};
 
 // CHALLENGES
 
 // console.log the pokemon objects whose id is evenly divisible by 3
 
+for (let i = 0; i < pokémon.length; i++) {
+    if (pokémon[i].id % 3 === 0) {
+        console.log(pokémon[i]);
+    }
+};
+
 // console.log the pokemon objects that have more than one type
+
+for (let i = 0; i < pokémon.length; i++) {
+    if (pokémon[i].types.length > 1) {
+        console.log(pokémon[i]);
+    }
+};
 
 // console.log the names of the pokemon whose only type is poison
 
+for (let i = 0; i < pokémon.length; i++) {
+    if (pokémon[i].types.length === 1 && pokémon[i].types[0] === "poison") {
+        console.log(pokémon[i].name);
+    }
+};
+
 // console.log the first type of all the pokemon whose second type is "flying"
 
+for (let i = 0; i < pokémon.length; i++) {
+    if (pokémon[i].types.length > 1 && pokémon[i].types[1] === "flying") {
+        console.log(pokémon[i].types[0]);
+    }
+};
+
 // Bonus: console.log the reverse of the names of the pokemon whose only type is poison
+
+for (let i = 0; i < pokémon.length; i++) {
+    if (pokémon[i].types.length === 1 && pokémon[i].types[0] === "poison") {
+        var splitstring = pokémon[i].name.split("");
+        var reversestring = splitstring.reverse();
+        var joinstring = reversestring.join("")
+        console.log(joinstring);
+    }
+};
