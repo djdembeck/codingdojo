@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Functions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="rows">
+                <div class="row">
+                    <figure class="image is-3by1 image1">
+                        <img src="assets/images/cat0.png" data-alt-src="assets/images/ninja0.png" alt="image slice">
+                      </figure>
+                </div>
+                <div class="row">
+                    <figure class="image is-3by1">
+                        <img src="assets/images/cat1.png" data-alt-src="assets/images/ninja1.png" alt="image slice">
+                      </figure>
+                </div>
+                <div class="row">
+                    <figure class="image is-3by1">
+                        <img src="assets/images/cat2.png" data-alt-src="assets/images/ninja2.png" alt="image slice">
+                      </figure>
+                </div>
+                <div class="row">
+                    <figure class="image is-3by1">
+                        <img src="assets/images/cat3.png" data-alt-src="assets/images/ninja3.png" alt="image slice">
+                      </figure>
+                </div>
+              </div>
+              <div class="rows">
+                <div class="row">
+                    <figure class="image is-3by1">
+                        <img src="assets/images/cat4.png" data-alt-src="assets/images/ninja4.png" alt="image slice">
+                      </figure>
+                </div>
+              </div>
+        </div>
+    </section>
+    <!-- jQuery section -->
+    <script>
+        // slide p's
+        $( "img" ).click(function() {
+            var newImg = $( this ).attr('data-alt-src');
+            var oldImg = $( this ).attr('src');
+            $( this ).attr("src", newImg);
+            $( this ).attr("data-alt-src", oldImg);
+        });
+        </script>
+</body>
+</html>
