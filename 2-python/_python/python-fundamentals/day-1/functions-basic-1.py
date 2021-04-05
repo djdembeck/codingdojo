@@ -3,7 +3,8 @@ def a():
 	return 5
 print(a())
 
-# returns 5, so print 5
+# returns 5, so
+# 5
 
 #2
 def a():
@@ -39,16 +40,17 @@ print(x)
 
 # print, not return, so prints 5 2x
 # 5
-# 5
+# EDIT: python is telling me the calling of x is invalid, so only one 5 gets printed
 
 #6
-def a(b,c):
-	print(b+c)
-print(a(1,2) + a(2,3))
+# def a(b,c):
+# 	print(b+c)
+# print(a(1,2) + a(2,3))
 
 # hmm, no return, so it's just printing inside the function?
 # 3
 # 5
+# EDIT: this actually causes unsupported operand type
 
 #7
 def a(b,c):
@@ -125,8 +127,8 @@ print(b)
 # 500
 # 500 
 # 300
-# 300
 # 500
+# EDIT: had one too many 300's
 
 #13
 b = 500
@@ -143,7 +145,7 @@ print(b)
 # 500
 # 300
 # 300
-# 300
+# EDIT: again, one too many, not sure what I was thinking
 
 #14
 def a():
