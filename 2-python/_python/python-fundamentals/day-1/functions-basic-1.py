@@ -3,10 +3,15 @@ def a():
 	return 5
 print(a())
 
+# returns 5, so print 5
+
 #2
 def a():
 	return 5
 print(a()+a())
+
+# function called 2x, 5+5
+# 10
 
 #3
 def a():
@@ -14,11 +19,17 @@ def a():
 	return 10
 print(a())
 
+# If this is anything like JS, only first return is called
+# 5
+
 #4
 def a():
 	return 5
 	print(10)
 print(a())
+
+# same as above, return terminates before print
+# 5
 
 #5
 def a():
@@ -26,15 +37,25 @@ def a():
 x = a()
 print(x)
 
+# print, not return, so prints 5 2x
+# 5
+# 5
+
 #6
 def a(b,c):
 	print(b+c)
 print(a(1,2) + a(2,3))
 
+# hmm, no return, so it's just printing inside the function?
+# 3
+# 5
+
 #7
 def a(b,c):
 	return str(b)+str(c)
 print(a(2,5))
+
+# 2 5
 
 #8
 def a():
@@ -46,6 +67,8 @@ def a():
 		return 10
 	return 7
 print(a())
+
+# 
 
 #9
 def a(b,c):
