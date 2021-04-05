@@ -55,6 +55,7 @@ def a(b,c):
 	return str(b)+str(c)
 print(a(2,5))
 
+# This is converting the values to strings, and seemingly will print them together, not math function
 # 2 5
 
 #8
@@ -68,7 +69,8 @@ def a():
 	return 7
 print(a())
 
-# 
+# 100
+# 10
 
 #9
 def a(b,c):
@@ -81,11 +83,18 @@ print(a(2,3))
 print(a(5,3))
 print(a(2,3) + a(5,3))
 
+# 7
+# 14
+# 21
+
 #10
 def a(b,c):
 	return b+c
 	return 10
 print(a(3,5))
+
+# Again, only first return counted
+# 8
 
 #11
 b = 500
@@ -96,6 +105,11 @@ def a():
 print(b)
 a()
 print(b)
+
+# 500
+# 500
+# 300
+# 500
 
 #12
 b = 500
@@ -108,6 +122,12 @@ print(b)
 a()
 print(b)
 
+# 500
+# 500 
+# 300
+# 300
+# 500
+
 #13
 b = 500
 print(b)
@@ -119,6 +139,12 @@ print(b)
 b=a()
 print(b)
 
+# 500
+# 500
+# 300
+# 300
+# 300
+
 #14
 def a():
 	print(1)
@@ -127,6 +153,10 @@ def a():
 def b():
 	print(3)
 a()
+
+# 1
+# 3
+# 2
 
 #15
 def a():
@@ -139,3 +169,8 @@ def b():
 	return 5
 y = a()
 print(y)
+
+# 1
+# 3
+# 5
+# 10
