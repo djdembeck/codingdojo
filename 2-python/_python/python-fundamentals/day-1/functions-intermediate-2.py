@@ -43,7 +43,7 @@ students = [
 
 def iterateDictionary(some_list):
 	for main_list in range(len(some_list)):
-			print("first_name -", some_list[main_list]["first_name"], ",", "last_name -", some_list[main_list]["last_name"])
+			print(f"first_name - {some_list[main_list]['first_name']}, last_name - {some_list[main_list]['last_name']}")
 
 iterateDictionary(students)
 
