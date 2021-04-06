@@ -18,7 +18,24 @@
 // or: a37()) followed by one billion characters
 
 function parensValid(str) {
-
+	var num_open = 0
+	var num_close = 0
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] == ")" && num_open == 0) {
+			return false
+		} else {
+			if (str[i] == "(") {
+				num_open++
+			} else if (str[i] == ")") {
+				num_close++
+			}
+		}
+	}
+	if (num_open - num_close != 0) {
+		return false
+	} else {
+		return true
+	}
 }
 
 console.log(parensValid(")("));
@@ -34,7 +51,60 @@ console.log(parensValid(")("));
 // ()[ -> false
 
 function bracesValid(str) {
-
+	var parens_num_open = 0
+	var parens_num_close = 0
+	var bracket_num_open = 0
+	var bracket_num_close = 0
+	var curly_num_open = 0
+	var curly_num_close = 0
+	for (let i = 0; i < str.length; i++) {
+		// check parens 
+		if (str[i] == ")" && parens_num_open == 0) {
+			return false
+		} else {
+			if (str[i] == "(") {
+				parens_num_open++
+			} else if (str[i] == ")") {
+				parens_num_close++
+			}
+		}
+		// check brackets
+		if (str[i] == "]" && bracket_num_open == 0) {
+			return false
+		} else {
+			if (str[i] == "[") {
+				bracket_num_open++
+			} else if (str[i] == "]") {
+				bracket_num_close++
+			}
+		}
+		// check curly
+		if (str[i] == "}" && curly_num_open == 0) {
+			return false
+		} else {
+			if (str[i] == "{") {
+				curly_num_open++
+			} else if (str[i] == "}") {
+				curly_num_close++
+			}
+		}
+	}
+	// compare paren counts
+	if (parens_num_open - parens_num_close != 0) {
+		console.log(parens_num_open)
+		return false
+	// compare bracket counts
+	} else if (bracket_num_open - bracket_num_close != 0) {
+		console.log(bracket_num_open)
+		return false
+	// compare curly counts
+	} else if (curly_num_open - curly_num_close != 0) {
+		console.log(curly_num_open)
+		return false
+	// if everything matches, return true
+	} else {
+		return true
+	}
 }
 
 console.log(bracesValid("()["));
