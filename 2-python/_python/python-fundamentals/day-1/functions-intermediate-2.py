@@ -34,7 +34,18 @@ print(fix_data())
 
 # Create a function iterateDictionary(some_list) that, given a list of dictionaries, the function loops through each dictionary in the list and prints each key and the associated value.
 
+students = [
+        {'first_name':  'Michael', 'last_name' : 'Jordan'},
+        {'first_name' : 'John', 'last_name' : 'Rosales'},
+        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
 
+def iterateDictionary(some_list):
+	for main_list in range(len(some_list)):
+			print("first_name -", some_list[main_list]["first_name"], ",", "last_name -", some_list[main_list]["last_name"])
+
+iterateDictionary(students)
 
 # 3 - Get Values From a List of Dictionaries
 
