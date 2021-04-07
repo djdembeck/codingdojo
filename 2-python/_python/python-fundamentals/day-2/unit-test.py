@@ -2,7 +2,7 @@
 import unittest
 # our "unit"
 # this is what we are running our test on
-def reverse_list(arr):
+def reverseList(arr):
 	replace = len(arr) - 1
 	for i in range(0, len(arr) - 2, 1):
 		arr[i], arr[replace] = arr[replace], arr[i]
@@ -10,13 +10,16 @@ def reverse_list(arr):
 
 	return arr
 
-print(reverse_list([37,2,1,-9]))
 # our "unit tests"
 # initialized by creating a class that inherits from unittest.TestCase
-class IsEvenTests(unittest.TestCase):
+class reverseListTests(unittest.TestCase):
 	# each method in this class is a test to be run
+	def testOne(self):
+		self.assertNotEqual(reverseList([37,2,1,-9]), ([37,2,1,-9]))
+		self.assertEqual(reverseList([37,2,1,-9]), ([-9, 1, 2, 37]))
 	def testTwo(self):
-		self.assertNotEqual(reverse_list([37,2,1,-9]), ([37,2,1,-9]))
+		self.assertIsNot(reverseList([37,2,1,-9]), "")
+		self.assertIsNotNone(reverseList([37,2,1,-9]))
 	def setUp(self):
 		# add the setUp tasks
 		print("running setUp")
