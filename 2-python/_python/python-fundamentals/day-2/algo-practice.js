@@ -8,16 +8,38 @@
 // if the input is 109 cents, the output would be:
 // {quarters: 4, dimes: 0, nickels: 1, pennies: 4}
 
-function generateCoinChange(input) {
-    var output = {
-        'quarters':0,
-        'dimes': 0,
-        'nickels': 0,
-        'pennies': 0
-    }
-
-    return output
+function generateCoinChange(num){
+	var penny = 0.01;
+	var nickel = 0.05;
+	var dime = 0.10;
+	var quarter = 0.25;
+	var normalizedInput = num / 100;
+	coinOutput = {
+		quarter: 0,
+		dime: 0,
+		nickel: 0,
+		penny: 0
+	};
+	var sum = 0;
+	while (sum < normalizedInput) {
+		if (quarter + sum <= normalizedInput){
+			coinOutput['quarter'] += 1
+			sum += quarter
+		} else if (dime + sum <= normalizedInput){
+			coinOutput['dime'] += 1
+			sum += dime
+		} else if (nickel + sum <= normalizedInput){
+			coinOutput['nickel'] += 1
+			sum += nickel
+		} else if (penny + sum <= normalizedInput){
+			coinOutput['penny'] += 1
+			sum += penny
+		}
+	}
+	return coinOutput
 }
+
+console.log(generateCoinChange(87))
 
 // generateCoinChangeWithGivenValues(input, values)
 // input is an integer representing an amount of money
