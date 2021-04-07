@@ -1,10 +1,3 @@
-# For this assignment, we'll add some functionality to the User class:
-
-# make_withdrawal(self, amount) - have this method decrease the user's balance by the amount specified
-# display_user_balance(self) - have this method print the user's name and account balance to the terminal
-# eg. "User: Guido van Rossum, Balance: $150
-# BONUS: transfer_money(self, other_user, amount) - have this method decrease the user's balance by the amount and add that amount to other other_user's balance
-
 class User:
 	def __init__(self, username, email):
 		self.username = username
@@ -26,8 +19,6 @@ class User:
 		print(f"{self.username}'s new balance: ${self.account_balance}")
 		print(f"{other_user.username}'s new balance: ${other_user.account_balance}")
 		return self
-
-# The BankAccount class should have a balance. When a new BankAccount instance is created, if an amount is given, the balance of the account should initially be set to that amount; otherwise, the balance should start at $0. The account should also have an interest rate, saved as a decimal (i.e. 1% would be saved as 0.01), which should be provided upon instantiation. (Hint: when using default values in parameters, the order of parameters matters!)
 
 class BankAccount:
 	def __init__(self, int_rate = 5, balance = 0):
