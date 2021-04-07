@@ -1,23 +1,25 @@
+# TODO: SENSEI BONUS: Allow a user to have multiple accounts; update methods so the user has to specify which account they are withdrawing or depositing to
+
 class User:
 	def __init__(self, username, email):
 		self.username = username
 		self.email = email
-		self.account_balance = 0
+		self.account = BankAccount(int_rate=5, balance=0)
 	def make_deposit(self, amount):
-		self.account_balance += amount
+		self.account.deposit(amount)
 		return self
 	def make_withdrawal(self, amount):
-		self.account_balance -= amount
+		self.account.withdraw(amount)
 		return self
 	def display_user_balance(self):
-		print(f"User: {self.username}, Balance ${self.account_balance}")
+		print(f"User: {self.username}, Balance ${self.account.account_balance}")
 		return self
 	def transfer_money(self, other_user, amount):
 		print(f"Transfer from {self.username} -> {other_user.username} for the amount of ${amount}")
 		self.make_withdrawal(amount)
 		other_user.make_deposit(amount)
-		print(f"{self.username}'s new balance: ${self.account_balance}")
-		print(f"{other_user.username}'s new balance: ${other_user.account_balance}")
+		print(f"{self.username}'s new balance: ${self.account.account_balance}")
+		print(f"{other_user.username}'s new balance: ${other_user.account.account_balance}")
 		return self
 
 class BankAccount:
