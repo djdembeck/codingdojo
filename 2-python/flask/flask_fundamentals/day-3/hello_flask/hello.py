@@ -16,9 +16,9 @@ def say(expr):
 	print(expr)
 	return f"Hi, {expr}!"
 
-@app.route('/repeat/<num>/<word>')
+@app.route('/repeat/<int:num>/<string:word>')
 def repeat(num, word):
-	return (word * int(num))
+	return (word * num)
 
 ### End routes
 
