@@ -2,24 +2,21 @@
 import unittest
 # our "unit"
 # this is what we are running our test on
-def isEven(n):
-    if n % 2 == 0:
-    	return True
-    else:
-    	return False
+def reverse_list(arr):
+	replace = len(arr) - 1
+	for i in range(0, len(arr) - 2, 1):
+		arr[i], arr[replace] = arr[replace], arr[i]
+		replace -= 1
+
+	return arr
+
+print(reverse_list([37,2,1,-9]))
 # our "unit tests"
 # initialized by creating a class that inherits from unittest.TestCase
 class IsEvenTests(unittest.TestCase):
 	# each method in this class is a test to be run
 	def testTwo(self):
-		self.assertEqual(isEven(2), True)
-		# another way to write above is
-		self.assertTrue(isEven(2))
-	def testThree(self):
-		self.assertEqual(isEven(3), False)
-		# another way to write above is
-		self.assertFalse(isEven(3))
-	# any task you want run before any method above is executed, put them in the setUp method
+		self.assertNotEqual(reverse_list([37,2,1,-9]), ([37,2,1,-9]))
 	def setUp(self):
 		# add the setUp tasks
 		print("running setUp")
