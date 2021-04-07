@@ -40,6 +40,44 @@ class isPalindromeTests(unittest.TestCase):
 
 ### coins - Write a function that determines how many quarters, dimes, nickels, and pennies to give to a customer for a change where you minimize the number of coins you give out.
 
+def coinChange(num):
+	penny = 0.01
+	nickel = 0.05
+	dime = 0.10
+	quarter = 0.25
+	normalizedInput = num / 100
+	coinArray = [0, 0, 0, 0]
+	sum = 0
+	while sum < normalizedInput:
+		if (quarter + sum <= normalizedInput):
+			coinArray[0] += 1
+			sum += quarter
+		elif (dime + sum <= normalizedInput):
+			coinArray[1] += 1
+			sum += dime
+		elif (nickel + sum <= normalizedInput):
+			coinArray[2] += 1
+			sum += nickel
+		elif (penny + sum <= normalizedInput):
+			coinArray[3] += 1
+			sum += penny
+	return coinArray
+
+class isCoinChangeTests(unittest.TestCase):
+	def testOne(self):
+		self.assertEqual(coinChange(87), [3,1,0,2])
+		self.assertIsNotNone(coinChange(87))
+		self.assertNotEqual(coinChange(87), 87)
+	def testTwo(self):
+		self.assertEqual(coinChange(25), [1,0,0,0])
+		self.assertIsNotNone(coinChange(25))
+		self.assertNotEqual(coinChange(25), 25)
+	def testThree(self):
+		self.assertEqual(coinChange(41), [1,1,1,1])
+		self.assertIsNotNone(coinChange(41))
+		self.assertNotEqual(coinChange(41), 41)
+		print(f"Finished tests for {self.__class__.__name__}")
+
 ### BONUS - factorial - Write a recursive function that returns the factorial of a given number. Remember that the factorial of a number is the product of all the numbers between 1 and the given number (eg. 4! = 4*3*2*1).
 
 ### BONUS - fibonacci - Write a recursive function that accepts a number, n, and returns the nth Fibonacci number from the sequence. The first two Fibonacci numbers are 0 and 1. Every number after that is calculated by adding the previous 2 numbers from the sequence. (i.e. 0, 1, 1, 2, 3, 5, 8, 13, 21 ...)
