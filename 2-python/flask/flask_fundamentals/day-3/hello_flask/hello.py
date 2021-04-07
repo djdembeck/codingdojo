@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -19,6 +20,10 @@ def say(expr):
 @app.route('/repeat/<int:num>/<string:word>')
 def repeat(num, word):
 	return (word * num)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return "Sorry! No response. Try again."
 
 ### End routes
 
