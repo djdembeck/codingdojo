@@ -32,7 +32,7 @@ function bookIndex(arr) {
 			newarr.push(String(arr[i]));
 		}
 	}
-	return newarr
+	return newarr.toString()
 }
 
 console.log(bookIndex([58, 104, 105, 106, 192, 194, 195, 196]))
