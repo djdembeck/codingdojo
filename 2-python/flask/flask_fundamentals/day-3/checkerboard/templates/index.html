@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Checkerboard</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<table>
+		{% for i in range(y//2): %}
+			<tr>
+				{% for j in range(x//2): %}
+				<td style="background-color: {{ color0 }}"></td>
+				<td style="background-color: {{ color1 }}"></td>
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for j in range(x//2): %}
+				<td style="background-color: {{ color1 }}"></td>
+				<td style="background-color: {{ color0 }}"></td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
