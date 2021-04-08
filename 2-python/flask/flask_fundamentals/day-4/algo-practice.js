@@ -17,13 +17,6 @@
 // also a suggestion: remember that you can modify your for loop iterator
 // during your loop! you can add to or subtract from i at any point
 
-function convertString(arr) {
-	for (let i = 0; i < arr.length; i++) {
-		arr[i] = String(arr[i])
-		console.log(arr[i])
-	}
-}
-
 function bookIndex(arr) {
 	newarr = []
 	for (let i = 0; i < arr.length; i++) {
