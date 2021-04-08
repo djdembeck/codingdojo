@@ -7,24 +7,28 @@
 	<title>HTML Table</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
-<body>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Full Name</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for user in users %}
-				<tr>
-					<td>{{ user['first_name'] }}</td>
-					<td>{{ user['last_name'] }}</td>
-					<td>{{ user['first_name'] }} {{ user['last_name'] }}</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+<body class="has-background-dark">
+	<section class="section hero is-fullheight is-primary">
+		<div class="hero-body">
+				<table class="table is-bordered is-hoverable is-fullwidth" style="text-align: center;;">
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Full Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<td>{{ user['first_name'] }}</td>
+								<td>{{ user['last_name'] }}</td>
+								<td>{{ user['first_name'] }} {{ user['last_name'] }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+		</div>
+	</section>
 </body>
 </html>
