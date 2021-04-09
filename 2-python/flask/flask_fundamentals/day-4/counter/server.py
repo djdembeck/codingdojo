@@ -4,15 +4,18 @@ app.secret_key = 'keep it secret, keep it safe'
 
 @app.route('/')
 def index():
+	# init count if not exist
+	if not session.get('count_total'):
+		session['count_total'] = 0
+	# If we are redirected from /add, don't count as new visit
 	if 'add' in session:
 		session.pop('add')
 	elif 'num_requests' in session:
-		print(session['num_requests'])
 		session['num_requests'] += 1
 	else:
 		session['num_requests'] = 1
 
-	return render_template("index.html", num_requests=session['num_requests'])
+	return render_template("index.html", num_requests=session['num_requests'], num_counts=session['count_total'])
 
 @app.route('/reset', methods=['POST'])
 @app.route('/destroy_session')
@@ -22,22 +25,20 @@ def reset():
 
 @app.route('/add', methods=['POST'])
 def add():
+	# init increment to default if not exist
+	if not session.get('increment_by'):
+		session['increment_by'] = 2
+
 	# First, check if new input from request.form and isn't blank
 	if request.form['increment'] != '':
-		print("Using form data")
-		session['increments'] = int(request.form['increment'])
-	# If nothing, check if we have existing data in session
-	# elif 'increments' in session:
-	elif isinstance(session['increments'],int):
-		print("Using existing session data")
-	# If nothing, use default value
+		print("Using form data for increment")
+		session['increment_by'] = int(request.form['increment'])
 	else:
-		print("Using default value")
-		session['increments'] = 2
+		print(f"Using existing increment number: {session['increment_by']}")
 
-	session['num_requests'] += session['increments']
+	session['count_total'] += session['increment_by']
 	session['add'] = True
 	return redirect ("/")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
