@@ -15,6 +15,7 @@ def index():
 	return render_template("index.html", num_requests=session['num_requests'])
 
 @app.route('/reset', methods=['POST'])
+@app.route('/destroy_session')
 def reset():
 	session.clear()
 	return redirect ("/")
