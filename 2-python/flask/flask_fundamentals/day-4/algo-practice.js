@@ -51,28 +51,40 @@ console.log(isPalindrome(word))
 // suggestion: don't use your previous isPalindrome function
 // suggestion: .substring() ... ?
 
-// function longestPalindrome(input) {
-// 	newarr = []
-// 	for (let i = 0; i < input.length; i++) {
-// 		var left = 0;
-// 		var right = 0; 
-// 		while (input[i - 1 - left] == input[i]) {
-// 			console.log("Looking at left")
-// 			console.log(input[i - 1 - left])
-// 			console.log(input[left])
-// 			left++;
-// 		} 
-// 		while (input[i + 1 + right] == input[i]) {
-// 			console.log("Looking at right")
-// 			console.log(input[i + 1 + right])
-// 			console.log(input[right])
-// 			right++;
-// 		}
-// 		while (input[i - 1 - left] == input[i + 1 + right]) {
-// 			console.log(input[i - 1 - left], input[i + 1 + right])
-// 		}
-// 	}
-// }
+function longestPalindrome(input) {
+	if (input.length == 0 || input.length == 1) {
+		return true
+	}
 
-// word = "qwertttreqwerewy"
-// console.log(longestPalindrome(word))
+	var result = input[0]; //just in case we find nothing,like an input of "abc"
+
+	for (let i = 0; i < input.length; i++) {
+		var left = 0;
+		var right = 0;
+		// determine if we have a string of identical characters
+		// i.e. a trivial palindrome
+		while (input[i - 1 - left] == input[i]) {
+			left++;
+		} 
+		while (input[i + 1 + right] == input[i]) {
+			right++;
+		}
+		// now check for non-trivial palindromes
+		while (input[i - 1 - left] == input[i + 1 + right]) {
+			if (input[i - 1 - left] === undefined && input[i + 1 + right] === undefined) {
+				console.log("Entire string is a palindrome")
+				return input;
+			}
+			left++;
+			right++;
+		}
+		potential = input.slice(i - left, i + right + 1);
+		if (potential.length > result.length) {
+			result = potential;			
+		}
+	}
+	return result;
+}
+
+word = "qwertttreqwerewy"
+console.log(longestPalindrome(word))
