@@ -17,11 +17,15 @@
 							<p class="card-header-title title is-centered">Counter</p>
 						</header>
 						<div class="card-content has-text-centered">
-							<h2>1 time</h2>
+							<h2>{{ num_requests }}</h2>
 						</div>
 						<div class="card-footer">
-							<button class="button card-footer-item is-danger">+2</button>
-							<button class="button card-footer-item is-primary">Reset</button>
+							<form action='/add' method='post'>
+								<button class="button card-footer-item is-danger">+2</button>
+							</form>
+							<form action='/reset' method='post'>
+								<button class="button card-footer-item is-primary">Reset</button>
+							</form>
 						</div>				
 					</div>
 				</div>
