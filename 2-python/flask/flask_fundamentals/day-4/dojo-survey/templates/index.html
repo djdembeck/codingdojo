@@ -4,59 +4,61 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Optional Survey</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
-	<section class="hero is-primary">
-		<div class="hero-body">
-			<p class="title">
-				Index Page
-			</p>
-		</div>
-	</section>
-	<div class="block"></div>
-	<section>
-		<div class="container">
-			<div class="columns">
-				<div class="column is-one-third">
-					<form action='/users' method='post' class="box">
-						<div class="content">
-							<h2>Create a User</h2>
-						</div>
-							<div class="field">
-								<label class="label">Name</label>
-								<div class="control">
-									<input class="input" type="text" name="name" placeholder="eg John Smith">
-								</div>
-							</div>
-							<div class="field">
-								<label class="label">Email</label>
-								<div class="control">
-									<input class="input" type="text" name="email" placeholder="eg johnsmith@example.com">
-								</div>
-							</div>
-						<button class="button is-primary">Submit</button>
-					</form>
+	<div class="modal is-active">
+		<div class="modal-background has-background-dark"></div>
+		<div class="modal-content">
+			<form action='/result' method='post' class="box">
+				<div class="content">
+					<h2>Optional Survey</h2>
 				</div>
-				<div class="column is-two-thirds">
-					<div class="card">
-						<div class="card-content">
-							<p class="title is-4">Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.</p>
-							<p class="subtitle">Samuel L. Jackson</p>
+					<div class="field">
+						<label class="label">Your Name:</label>
+						<div class="control">
+							<input class="input" type="text" name="name" placeholder="eg John Smith">
 						</div>
 					</div>
-				</div>
-			</div>
+					<div class="field">
+						<label class="label">Dojo Location:</label>
+						<div class="select">
+							<select name="location" id="dojo_location">
+								<option value="Dallas">Dallas</option>
+								<option value="Nowhere Important">No where else matters</option>
+							</select>
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Favourite Languages:</label>
+							<label class="checkbox">
+								<input type="checkbox" name="python"> - Python
+								<input type="checkbox" name="mern"> - MERN
+								<input type="checkbox" name="java"> - Java
+								<input type="checkbox" name="csharp"> - C#
+							</label>
+					</div>
+					<div class="field">
+						<div class="control">
+							<label class="label">Did you enjoy the time?</label>
+							<label class="radio">
+								<input type="radio" name="answer" value="Yes">
+								Yes
+							</label>
+							<label class="radio">
+								<input type="radio" name="answer" value="No">
+								No
+							</label>
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Comment (optional):</label>
+						<textarea class="textarea" placeholder="e.g. Hello world" name="comments"></textarea>
+					</div>
+				<button class="button is-primary">Submit</button>
+			</form>
 		</div>
-	</section>
-	<div class="block"></div>
-	<footer class="footer py-6">
-		<div class="content has-text-centered">
-			<p>
-				<strong>POST test, by <a href="https://github.com/djdembeck">David Dembeck</a></strong>
-			</p>
-		</div>
-	</footer>
+	</div>
 </body>
 </html>
