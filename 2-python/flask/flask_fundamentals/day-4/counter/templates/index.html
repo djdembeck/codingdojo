@@ -19,12 +19,19 @@
 						<div class="card-content has-text-centered">
 							<h2>{{ num_requests }}</h2>
 						</div>
+						<form action='/add' method='post'>
+							<div class="field has-addons has-addons-centered">
+								<div class="control has-icons-left">
+									<input class="input is-rounded" type="number" placeholder="Increment by (default: 2)" name="increment">
+								</div>
+								<div class="control">
+									<button class="button is-danger is-grouped">Increment</button>
+								</div>
+							</div>
+						</form>
 						<div class="card-footer">
-							<form action='/add' method='post'>
-								<button class="button card-footer-item is-danger">+2</button>
-							</form>
 							<form action='/reset' method='post'>
-								<button class="button card-footer-item is-primary">Reset</button>
+								<button class="button is-primary">Reset</button>
 							</form>
 						</div>				
 					</div>

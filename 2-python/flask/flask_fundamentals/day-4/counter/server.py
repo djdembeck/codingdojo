@@ -22,7 +22,20 @@ def reset():
 
 @app.route('/add', methods=['POST'])
 def add():
-	session['num_requests'] += 2
+	# First, check if new input from request.form and isn't blank
+	if request.form['increment'] != '':
+		print("Using form data")
+		session['increments'] = int(request.form['increment'])
+	# If nothing, check if we have existing data in session
+	# elif 'increments' in session:
+	elif isinstance(session['increments'],int):
+		print("Using existing session data")
+	# If nothing, use default value
+	else:
+		print("Using default value")
+		session['increments'] = 2
+
+	session['num_requests'] += session['increments']
 	session['add'] = True
 	return redirect ("/")
 
