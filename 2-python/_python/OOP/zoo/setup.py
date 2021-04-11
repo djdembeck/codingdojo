@@ -18,10 +18,6 @@ class Animal:
 	def set_happiness(self, max):
 		happiness = self.rand_range(max)
 		return happiness
-	def feed(self, type):
-		
-		return self
-		# increases health and happiness by 10.
 
 class Lion(Animal):
 	def __init__(self, name):
@@ -29,7 +25,11 @@ class Lion(Animal):
 	def display_info(self):
 		print(f"Name: {self.account.name}; Age: {self.account.age}; Health: {self.account.health}; Happiness: {self.account.happiness}")
 		return self
-
+	def feed_me(self):
+		print(f"{self.account.name} says: Oh yum!")
+		self.account.health += 10
+		self.account.happiness += 10
+		return self
 		
 class Tiger(Animal):
 	def __init__(self, name):
@@ -37,10 +37,20 @@ class Tiger(Animal):
 	def display_info(self):
 		print(f"Name: {self.account.name}; Age: {self.account.age}; Health: {self.account.health}; Happiness: {self.account.happiness}")
 		return self
+	def feed_me(self):
+		print(f"{self.account.name} says: Oh yum!")
+		self.account.health += 10
+		self.account.happiness += 10
+		return self
 
 class Bear(Animal):
 	def __init__(self, name):
 		self.account = Animal(name, 10, 10, 10)
 	def display_info(self):
 		print(f"Name: {self.account.name}; Age: {self.account.age}; Health: {self.account.health}; Happiness: {self.account.happiness}")
+		return self
+	def feed_me(self):
+		print(f"{self.account.name} says: Oh yum!")
+		self.account.health += 10
+		self.account.happiness += 10
 		return self
