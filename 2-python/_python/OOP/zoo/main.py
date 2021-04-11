@@ -1,17 +1,18 @@
-import setup
+from setup import Lion, Tiger, Bear
 
 class Zoo:
-    def __init__(self, zoo_name):
-        self.animals = [Lion()]
-        self.name = zoo_name
-    def add_lion(self, name):
-        self.animals.append( Lion(name) )
-    def add_tiger(self, name):
-        self.animals.append( Tiger(name) )
-    def print_all_info(self):
-        print("-"*30, self.name, "-"*30)
-        for animal in self.animals:
-            animal.display_info()
+	def __init__(self, zoo_name):
+		self.animals = []
+		self.name = zoo_name
+	def add_lion(self, name):
+		self.animals.append( Lion(name) )
+	def add_tiger(self, name):
+		self.animals.append( Tiger(name) )
+	def print_all_info(self):
+		print("-"*30, self.name, "-"*30)
+		for animal in self.animals:
+			animal.display_info()
+
 zoo1 = Zoo("David's Zoo")
 zoo1.add_lion("Nala")
 zoo1.add_lion("Simba")
