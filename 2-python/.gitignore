@@ -1,2 +1,3 @@
 # ignore environments
 my_environments/
+__pycache__/
