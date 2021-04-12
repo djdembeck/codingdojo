@@ -24,19 +24,18 @@ def reset(request):
 	del request.session['count_total']
 	return redirect("/")
 
-# @app.route('/add', methods=['POST'])
-# def add():
-# 	# init increment to default if not exist
-# 	if not 'increment_by' in request.session:
-# 		request.session['increment_by'] = 2
+def add(request):
+	# init increment to default if not exist
+	if not 'increment_by' in request.session:
+		request.session['increment_by'] = 2
 
-# 	# First, check if new input from request.form and isn't blank
-# 	if request.form['increment'] != '':
-# 		print("Using form data for increment")
-# 		request.session['increment_by'] = int(request.form['increment'])
-# 	else:
-# 		print(f"Using existing increment number: {request.session['increment_by']}")
+	# First, check if new input from request.form and isn't blank
+	if request.POST['increment'] != '':
+		print("Using form data for increment")
+		request.session['increment_by'] = int(request.POST['increment'])
+	else:
+		print(f"Using existing increment number: {request.session['increment_by']}")
 
-# 	request.session['count_total'] += request.session['increment_by']
-# 	request.session['add'] = True
-# 	return redirect ("/")
+	request.session['count_total'] += request.session['increment_by']
+	request.session['add'] = True
+	return redirect ("/")

@@ -4,5 +4,5 @@ urlpatterns = [
     path('', views.index),
 	path('destroy_session', views.reset),
 	path('reset', views.reset),
-	# path('/add', views.add)
+	path('add', views.add)
 ]
