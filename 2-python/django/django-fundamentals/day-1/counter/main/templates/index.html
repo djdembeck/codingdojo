@@ -21,6 +21,7 @@
 							<h2>Visits: {{ num_requests }}</h2>
 						</div>
 						<form action='/add' method='post'>
+							{% csrf_token %}
 							<div class="field has-addons has-addons-centered">
 								<div class="control has-icons-left">
 									<input class="input is-rounded" type="number" placeholder="Increment by (default: 2)" name="increment">
@@ -32,6 +33,7 @@
 						</form>
 						<div class="card-footer">
 							<form action='/reset' method='post'>
+								{% csrf_token %}
 								<button class="button is-primary">Reset</button>
 							</form>
 						</div>				
