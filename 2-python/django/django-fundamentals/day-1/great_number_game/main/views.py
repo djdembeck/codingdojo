@@ -24,10 +24,5 @@ def take_a_guess(request):
 	return redirect ("/")
 
 def reset(request):
-	if 'rand_result' in request.session:
-		del request.session['rand_result']
-	if 'guess' in request.session:
-		del request.session['guess']
-	if 'num_guesses' in request.session:
-		del request.session['num_guesses']
+	request.session.flush()
 	return redirect("/")
