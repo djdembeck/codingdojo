@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Counter</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<div class="section has-background-dark">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-half is-offset-one-quarter">
+					<div class="card">
+						<header class="card-header">
+							<p class="card-header-title title is-centered">Welcome to the Great Number Game!</p>
+						</header>
+						<div class="card-content has-text-centered has-text-weight-bold is-uppercase is-size-3">
+							{% if request.session.guess == "high" %}
+								<div class="box has-background-danger">
+									<p class="has-text-weight-bold">Too high!</p>
+									<p>Try again!</p>
+							{% elif request.session.guess == "low" %}
+								<div class="box has-background-warning">
+									<p>Too low!</p>
+									<p>Try again!</p>
+							{% elif request.session.guess == "right" %}
+								<div class="box has-background-success">
+									<p>Nice guess ya fucking wanker</p>
+									<p>{{ request.session.rand_result }}</p>
+							{% else %}
+								<p class="subtitle">I am thinking of a number between 1 and 100</p>
+								<p class="subtitle">Take a guess!</p>
+							{% endif %}
+							</div>
+						</div>
+						<form action='/guess' method='post'>
+							{% csrf_token %}
+							<div class="field has-addons has-addons-centered">
+								<div class="control has-icons-left">
+									<input class="input is-rounded" type="number" placeholder="Your guess, 1-100" name="guess" required>
+								</div>
+								<div class="control">
+									<button class="button is-info is-grouped">Guess!</button>
+								</div>
+							</div>
+							<div class="card-footer"></div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
