@@ -20,3 +20,10 @@ def take_a_guess(request):
 		print(f"Nice guess ya fucking wanker: {request.session['rand_result']}")
 		request.session['guess'] = "right"
 	return redirect ("/")
+
+def reset(request):
+	if 'rand_result' in request.session:
+		del request.session['rand_result']
+	if 'guess' in request.session:
+		del request.session['guess']
+	return redirect("/")

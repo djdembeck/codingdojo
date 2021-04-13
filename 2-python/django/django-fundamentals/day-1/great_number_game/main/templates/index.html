@@ -21,20 +21,23 @@
 								<div class="box has-background-danger">
 									<p class="has-text-weight-bold">Too high!</p>
 									<p>Try again!</p>
+								</div>
 							{% elif request.session.guess == "low" %}
 								<div class="box has-background-warning">
 									<p>Too low!</p>
 									<p>Try again!</p>
+								</div>
 							{% elif request.session.guess == "right" %}
 								<div class="box has-background-success">
 									<p>Nice guess ya fucking wanker</p>
 									<p>{{ request.session.rand_result }}</p>
+								</div>
 							{% else %}
-								<p class="subtitle">I am thinking of a number between 1 and 100</p>
-								<p class="subtitle">Take a guess!</p>
+								<div class="box">
+									<p class="subtitle">I am thinking of a number between 1 and 100</p>
+									<p class="subtitle">Take a guess!</p>
+								</div>
 							{% endif %}
-							</div>
-						</div>
 						<form action='/guess' method='post'>
 							{% csrf_token %}
 							<div class="field has-addons has-addons-centered">
@@ -45,8 +48,13 @@
 									<button class="button is-info is-grouped">Guess!</button>
 								</div>
 							</div>
-							<div class="card-footer"></div>
 						</form>
+						</div>
+						<div class="card-footer">
+							<form action='/reset' method='post'>
+								{% csrf_token %}
+								<button class="button is-danger" formnovalidate>Reset</button>
+							</form>
 						</div>
 					</div>
 				</div>
