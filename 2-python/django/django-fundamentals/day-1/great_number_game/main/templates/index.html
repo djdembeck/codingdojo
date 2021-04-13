@@ -19,18 +19,21 @@
 						<div class="card-content has-text-centered has-text-weight-bold is-uppercase is-size-3">
 							{% if request.session.guess == "high" %}
 								<div class="box has-background-danger">
-									<p class="has-text-weight-bold">Too high!</p>
+									<p>Too high!</p>
 									<p>Try again!</p>
+									<p class="subtitle">Current # of guesses: {{ request.session.num_guesses }}</p>
 								</div>
 							{% elif request.session.guess == "low" %}
 								<div class="box has-background-warning">
 									<p>Too low!</p>
 									<p>Try again!</p>
+									<p class="subtitle">Current # of guesses: {{ request.session.num_guesses }}</p>
 								</div>
 							{% elif request.session.guess == "right" %}
 								<div class="box has-background-success">
 									<p>Nice guess ya fucking wanker</p>
-									<p>{{ request.session.rand_result }}</p>
+									<p>Answer: {{ request.session.rand_result }}</p>
+									<p class="subtitle"># of guesses it took: {{ request.session.num_guesses }}</p>
 								</div>
 							{% else %}
 								<div class="box">

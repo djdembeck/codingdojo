@@ -8,8 +8,8 @@ def index(request):
 	return render(request, "index.html")
 
 def take_a_guess(request):
-	if not 'rand_result' in request.session:
-		request.session['guess'] = ""
+	if not 'num_guesses' in request.session:
+		request.session['num_guesses'] = 0
 	if int(request.POST['guess']) > request.session['rand_result']:
 		request.session['guess'] = "high"
 		print("Booo, too high")
@@ -19,6 +19,8 @@ def take_a_guess(request):
 	elif int(request.POST['guess']) == request.session['rand_result']:
 		print(f"Nice guess ya fucking wanker: {request.session['rand_result']}")
 		request.session['guess'] = "right"
+	# Track user guesses
+	request.session['num_guesses'] += 1
 	return redirect ("/")
 
 def reset(request):
@@ -26,4 +28,6 @@ def reset(request):
 		del request.session['rand_result']
 	if 'guess' in request.session:
 		del request.session['guess']
+	if 'num_guesses' in request.session:
+		del request.session['num_guesses']
 	return redirect("/")
