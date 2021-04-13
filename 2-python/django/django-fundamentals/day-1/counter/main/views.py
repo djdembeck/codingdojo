@@ -20,8 +20,10 @@ def index(request):
 	return render(request, "index.html", context)
 
 def reset(request):
-	del request.session['num_requests']
-	del request.session['count_total']
+	if 'num_requests' in request.session:
+		del request.session['num_requests']
+	if 'count_total' in request.session:
+		del request.session['count_total']
 	return redirect("/")
 
 def add(request):
