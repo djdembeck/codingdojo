@@ -43,51 +43,56 @@
 					</form>
 				</div>
 			</div>
-		</div>
-		<div class="block"></div>
-			<form action='/add_user' method='post' class="box">
-				{% csrf_token %}
-				<div class="content">
-					<h2>Add a user</h2>
-				</div>
-				<div class="columns">
-					<div class="column is-half">
-						<div class="field">
-							<label class="label">First Name:</label>
-							<div class="control">
-								<input class="input" type="text" name="first_name" placeholder="eg John" required>
+			<div class="block"></div>
+			<div class="card">
+				<form action='/add_user' method='post'">
+					{% csrf_token %}
+					<header class="card-header has-background-info-light">
+						<p class="card-header-title is-centered is-size-3">Add a user</p>
+					</header>
+					<div class="card-content">
+						<div class="columns">
+							<div class="column is-half">
+								<div class="field">
+									<label class="label">First Name:</label>
+									<div class="control">
+										<input class="input" type="text" name="first_name" placeholder="eg John" required>
+									</div>
+								</div>
+							</div>
+							<div class="column is-half">
+								<div class="field">
+									<label class="label">Last Name:</label>
+									<div class="control">
+										<input class="input" type="text" name="last_name" placeholder="eg Smith" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-half">
+								<div class="field">
+									<label class="label">Email:</label>
+									<div class="control">
+										<input class="input" type="email" name="email_address" placeholder="eg jsmith@example.com" required>
+									</div>
+								</div>
+							</div>
+							<div class="column is-half">
+								<div class="field">
+									<label class="label">Age:</label>
+									<div class="control">
+										<input class="input" type="number" name="age" placeholder="eg 26" required>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="column is-half">
-						<div class="field">
-							<label class="label">Last Name:</label>
-							<div class="control">
-								<input class="input" type="text" name="last_name" placeholder="eg Smith" required>
-							</div>
-						</div>
+					<div class="card-footer">
+						<button class="button is-primary" type="submit">Add user</button>
 					</div>
-				</div>
-				<div class="columns">
-					<div class="column is-half">
-						<div class="field">
-							<label class="label">Email:</label>
-							<div class="control">
-								<input class="input" type="email" name="email_address" placeholder="eg jsmith@example.com" required>
-							</div>
-						</div>
-					</div>
-					<div class="column is-half">
-						<div class="field">
-							<label class="label">Age:</label>
-							<div class="control">
-								<input class="input" type="number" name="age" placeholder="eg 26" required>
-							</div>
-						</div>
-					</div>
-				</div>
-				<button class="button is-primary" type="submit">Add</button>
-			</form>
+				</form>
+			</div>
 		</div>
 	</section>
 </body>
