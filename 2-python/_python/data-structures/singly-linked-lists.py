@@ -28,6 +28,10 @@ class SList:
 			print(runner.value)
 			runner = runner.next
 		return self
+	def remove_from_front(self):
+		new_head = self.head.next
+		self.head = new_head
+		return self
 
 x = SList()
-x.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
+x.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").remove_from_front().print_values()
