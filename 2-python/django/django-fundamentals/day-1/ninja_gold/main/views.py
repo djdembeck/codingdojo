@@ -2,9 +2,6 @@ from django.shortcuts import render, HttpResponse, redirect
 import random
 
 def index(request):
-	if not 'rand_result' in request.session:
-		request.session['rand_result'] = random.randrange(1, 100)
-		print(request.session['rand_result'])
 	return render(request, "index.html")
 
 def find_gold(request):
@@ -20,10 +17,7 @@ def find_gold(request):
 		request.session['total_gold'] = 0
 
 	key = request.POST['find_gold']
-	print(key)
 	for i in range(len(val_dict)):
-		# print(val_dict[i]['area'])
-		# print(val_dict[i][key])
 		if key == val_dict[i]['area']:
 			area = val_dict[i]['area']
 			min_value = val_dict[i]['min_value']
