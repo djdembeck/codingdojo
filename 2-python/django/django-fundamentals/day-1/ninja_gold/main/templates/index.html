@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Great ninja game</title>
+	<title>Ninja Gold</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
@@ -17,7 +17,11 @@
 							<button class="button is-danger is-grouped">Your Gold</button>
 						</div>
 						<div class="control has-icons-left">
-							<input class="input is-rounded" type="number" value="{{ request.session.total_gold }}" name="increment" readonly>
+							<input class="input is-rounded" id="score" type="number" value="0" readonly>
+							<script>
+								var test = {{request.session.total_gold}};
+								document.getElementById("score").value = test;
+							</script>
 						</div>
 					</div>
 				</div>
@@ -99,6 +103,10 @@
 				<div class="message-body">
 					<div class="control">
 						<textarea class="textarea" id="chatlog" readonly>{{request.session.activity_text}}</textarea>
+						<script>
+							var chatlog = document.querySelector('#chatlog');
+							chatlog.scrollTop = chatlog.scrollHeight - chatlog.clientHeight;
+						</script>
 					</div>
 				</div>
 			</article>
