@@ -12,8 +12,6 @@ class SinglyLinkedList {
 		this.tail = null;
 	}
 
-	// all our methods go here:
-	// addToFront(value)
 	// create a new node with the given value and make it
 	// the head of the list
 	addToFront(value) {
@@ -30,7 +28,6 @@ class SinglyLinkedList {
 		}
 	}
 
-	// addToBack(value)
 	// create a new node with the given value and make it
 	// the new tail of the list
 	addToBack(value) {
@@ -47,7 +44,6 @@ class SinglyLinkedList {
 		}
 	}
 
-	// display()
 	// return a string with the value of every node from the
 	// linked list - like "3 - 7 - 13 - 4 - 8"
 	display() {
@@ -67,7 +63,6 @@ class SinglyLinkedList {
 		return output;
 	}
 
-	// contains(target)
 	// return true if the linked list contains a node with the
 	// given value and false otherwise
 	contains(target) {
@@ -82,6 +77,8 @@ class SinglyLinkedList {
 		return false;
 	}
 
+	// find the node with the smallest value in the list
+    // then make it the head of the list by rearranging the nodes
 	moveMinToFront() {
 		var runner = this.head;
 		var min = this.head.value;
@@ -110,6 +107,7 @@ class SinglyLinkedList {
 		this.head = min_node;
 	}
 
+	// find the node with the largest value and make it the tail
 	moveMaxToBack() {
 		var runner = this.head;
 		var max = this.head.value;
@@ -134,13 +132,6 @@ class SinglyLinkedList {
 		this.tail.next = max_node;
 		}
 }
-
-// moveMaxToBack()
-// as above, but find the node with the largest value and make it the tail
-// if your linked list has nodes of values 3 - 7 - 21 - 2 - 11 - 9
-// after calling this method, it should be in this order:
-// 3 - 7 - 2 - 11 - 9 - 21
-
 
 var new_SLL = new SinglyLinkedList();
 new_SLL.addToBack(3);
