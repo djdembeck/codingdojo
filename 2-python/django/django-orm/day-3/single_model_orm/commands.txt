@@ -1,0 +1,21 @@
+from users_app.models import *
+>>> new_user = Users.objects.create(first_name="Leonardo",last_name="Turtle",email_address="leo@tmnt.com",age=16)
+>>> new_user.save()
+>>> new_user = Users.objects.create(first_name="Raphael",last_name="Turtle",email_address="raph@tmnt.com",age=15)
+>>> new_user.save()
+>>> new_user = Users.objects.create(first_name="Donatello",last_name="Turtle",email_address="donnie@tmnt.com",age=15)
+>>> new_user.save()
+>>> new_user = Users.objects.create(first_name="Michelangelo",last_name="Turtle",email_address="mikey@tmnt.com",age=15)
+>>> new_user.save()
+>>> Users.objects.all()
+>>> Users.objects.last()
+>>> Users.objects.first()
+>>> user_to_update = Users.objects.get(id=3)
+>>> user_to_update.last_name = "Pancakes"
+>>> user_to_update.save()
+>>> user_to_delete = Users.objects.get(id=2)
+>>> user_to_delete.delete()
+In [4]: Users.objects.all().order_by('first_name')
+Out[4]: <QuerySet [<Users: <User: Donatello)>>, <Users: <User: Leonardo)>>, <Users: <User: Michelangelo)>>]>
+In [5]: Users.objects.all().order_by('-first_name')
+Out[5]: <QuerySet [<Users: <User: Michelangelo)>>, <Users: <User: Leonardo)>>, <Users: <User: Donatello)>>]>
