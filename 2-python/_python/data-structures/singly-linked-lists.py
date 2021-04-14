@@ -32,6 +32,16 @@ class SList:
 		new_head = self.head.next
 		self.head = new_head
 		return self
+		# Technically assignment asks to return first nodes value, but we want chaining
+	def remove_from_back(self):
+		runner = self.head
+		while (runner != None):
+			if (runner.next != None):
+				store_prev = runner
+			runner = runner.next
+		self.tail = store_prev
+		store_prev.next = None
+		return self
 
 x = SList()
-x.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").remove_from_front().print_values()
+x.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values().remove_from_front().remove_from_back().print_values()
