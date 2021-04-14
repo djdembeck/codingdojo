@@ -78,7 +78,7 @@ class SinglyLinkedList {
 	}
 
 	// find the node with the smallest value in the list
-    // then make it the head of the list by rearranging the nodes
+	// then make it the head of the list by rearranging the nodes
 	moveMinToFront() {
 		var runner = this.head;
 		var min = this.head.value;
