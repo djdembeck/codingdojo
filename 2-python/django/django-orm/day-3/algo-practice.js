@@ -144,61 +144,36 @@ class SinglyLinkedList {
 		}
 		
 		else if (this.head == this.tail) {
-			if (this.head == target) {
+			if (this.head.value == target) {
 				this.addToFront(value);
 			}
-			else if (this.head != target) {
-				this.addToBack(value);
-			}
 			else {
-				return null;
+				this.addToFront(value);
 			}
+			return null;
 		}
 		else {
 			var runner = this.head;
-			while (runner.next.value != target) {
+			while (runner.next.value != target && runner.next.value != null) {
 				runner = runner.next;
 			}
 			var new_node = new ListNode(value)
-			new_node.next = runner.next
-			runner.next = new_node
+			new_node.next = runner.next;
+			runner.next = new_node;
 		}
     }
+}
 
     // appendValue(value, target)
     // as above, but insert the new node after the node with the target value
     // new node still goes at the end if no node with the target value is found
 
-    appendValue(value, target) {
-		if (this.head == null && this.tail == null) {
-			this.addToFront(value);
-		}
-		
-		else if (this.head == this.tail) {
-			if (this.head == target) {
-				this.addToFront(value);
-			}
-			else if (this.head != target) {
-				this.addToBack(value);
-			}
-			else {
-				return null;
-			}
-		}
-		else {
-			var runner = this.head;
-			while (runner.next.value != target) {
-				runner = runner.next;
-			}
-			var new_node = new ListNode(value)
-			new_node.next = runner.next
-			runner.next = new_node
-		}
-    }
-}
+//     appendValue(value, target) {
+
+// }
 
 var new_SLL = new SinglyLinkedList();
-// new_SLL.addToFront(3);
+new_SLL.addToFront(3);
 // new_SLL.addToFront(7);
 // new_SLL.addToFront(4);
 // new_SLL.addToFront(2);
