@@ -154,12 +154,18 @@ class SinglyLinkedList {
 		}
 		else {
 			var runner = this.head;
-			while (runner.next.value != target && runner.next.value != null) {
-				runner = runner.next;
+			
+			while(runner.next != null) {
+				if (runner.next.value == target) {
+					var new_node = new ListNode(value);
+					new_node.next = runner.next;
+					runner.next = new_node;
+					return null
+				}
+				runner = runner.next
 			}
-			var new_node = new ListNode(value)
-			new_node.next = runner.next;
-			runner.next = new_node;
+
+			this.addToBack(value);
 		}
     }
 }
@@ -174,7 +180,7 @@ class SinglyLinkedList {
 
 var new_SLL = new SinglyLinkedList();
 new_SLL.addToFront(3);
-// new_SLL.addToFront(7);
+new_SLL.addToFront(7);
 // new_SLL.addToFront(4);
 // new_SLL.addToFront(2);
 // new_SLL.addToFront(11);
