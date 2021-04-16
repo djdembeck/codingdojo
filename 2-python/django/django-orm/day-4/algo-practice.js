@@ -177,7 +177,7 @@ class SinglyLinkedList {
 		var runner = this.head;
 
 		if (this.head == null || this.tail == null) {
-			return null;
+			return undefined;
 		}
 		// 2nd to last's next will be tail
 		while (runner.next.next != null) {
@@ -215,7 +215,7 @@ class SinglyLinkedList {
 		var arr = [];
 
 		if (this.head == null || this.tail == null) {
-			return null;
+			return undefined;
 		}
 
 		while (runner.next != null) {
