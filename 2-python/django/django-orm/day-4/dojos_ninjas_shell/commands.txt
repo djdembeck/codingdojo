@@ -1,0 +1,77 @@
+In [1]: from dojo_ninjas_app .models import *
+
+In [4]: Dojo.objects.create(name="Best", city="Dallas", state="TX")
+Out[4]: <Dojo: Dojo object (2)>
+
+In [6]: Dojo.objects.create(name="OK", city="Silicone Valley", state="CA")
+Out[6]: <Dojo: Dojo object (3)>
+
+In [7]: Dojo.objects.create(name="Meh", city="Seattle", state="WA")
+Out[7]: <Dojo: Dojo object (4)>
+
+In [9]: Dojo.objects.get(id=2).delete()
+Out[9]: (2, {'dojo_ninjas_app.Ninja': 1, 'dojo_ninjas_app.Dojo': 1})
+
+In [10]: Dojo.objects.get(id=3).delete()
+Out[10]: (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+In [11]: Dojo.objects.get(id=4).delete()
+Out[11]: (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+In [12]: Dojo.objects.create(name="Best", city="Dallas", state="TX")
+Out[12]: <Dojo: Dojo object (5)>
+
+In [13]: Dojo.objects.create(name="OK", city="Silicone Valley", state="CA")
+Out[13]: <Dojo: Dojo object (6)>
+
+In [14]: Dojo.objects.create(name="Meh", city="Seattle", state="WA")
+Out[14]: <Dojo: Dojo object (7)>
+
+In [16]: new_ninja = Ninja.objects.create(first_name="Apollo", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=5))
+
+In [17]: new_ninja = Ninja.objects.create(first_name="Athena", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=5))
+
+In [18]: new_ninja = Ninja.objects.create(first_name="Hera", last_name="Zues", l
+    ...: ocation=Dojo.objects.get(id=5))
+    
+In [19]: new_ninja = Ninja.objects.create(first_name="Apollo", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=6))
+
+In [20]: new_ninja = Ninja.objects.create(first_name="Athena", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=6))
+
+In [21]: new_ninja = Ninja.objects.create(first_name="Hera", last_name="Zues", l
+    ...: ocation=Dojo.objects.get(id=6))
+
+In [22]: new_ninja = Ninja.objects.create(first_name="Apollo", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=7))
+
+In [23]: new_ninja = Ninja.objects.create(first_name="Athena", last_name="Zuesso
+    ...: n", location=Dojo.objects.get(id=7))
+
+In [24]: new_ninja = Ninja.objects.create(first_name="Hera", last_name="Zues", l
+    ...: ocation=Dojo.objects.get(id=7))
+
+In [26]: ninja = Ninja.objects.filter(location=Dojo.objects.get(id=5))
+
+In [28]: ninja
+Out[28]: <QuerySet [<Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>, <Ninja: Ninja object (4)>]>
+
+In [31]: ninja = Ninja.objects.filter(location=Dojo.objects.get(id=7))
+
+In [32]: ninja
+Out[32]: <QuerySet [<Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>, <Ninja: Ninja object (10)>]>
+
+In [40]: print("Last Ninja Dojo:", last_ninja.location.name)
+Last Ninja Dojo: Meh
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+In [1]: from dojo_ninjas_app .models import *
+
+In [2]: Dojo.objects.create(name="Worst", city="Miami", state="FL")
+Out[2]: <Dojo: Dojo object (8)>
