@@ -19,7 +19,7 @@
 						</header>
 						<div class="card-content has-text-centered">
 							<form action='/add_dojo' method='post'>
-								<!-- {% csrf_token %} -->
+								{% csrf_token %}
 								<div class="field is-horizontal">
 									<div class="field-label is-normal">
 										<label class="label">Name</label>
@@ -46,7 +46,7 @@
 								</div>
 								<div class="field is-horizontal">
 									<div class="field-label is-normal">
-										<label class="label">First Name:</label>
+										<label class="label">State</label>
 									</div>
 									<div class="field-body">
 										<div class="field">
@@ -68,7 +68,7 @@
 						</header>
 						<div class="card-content has-text-centered">
 							<form action='/add_ninja' method='post'>
-								<!-- {% csrf_token %} -->
+								{% csrf_token %}
 								<div class="field is-horizontal">
 									<div class="field-label is-normal">
 										<label class="label">First Name</label>
@@ -100,10 +100,10 @@
 									<div class="field-body">
 										<div class="field">
 											<div class="select is-fullwidth">
-												<select name="location" id="student_dojo">
-													<option value="dal">Dallas</option>
-													<option value="seat">Seattle</option>
-													<option value="usuk">No where else matters</option>
+												<select name="dojo_id">
+													{% for dojo in all_the_dojos %}
+													<option value="{{dojo.id}}">{{dojo.name}}</option>
+													{% endfor %}
 												</select>
 											</div>
 										</div>
@@ -122,7 +122,20 @@
 						<header class="card-header">
 							<p class="card-header-title title is-centered">All the Dojos</p>
 						</header>
-						<div class="card-content has-text-centered">
+						<div class="card-content">
+							<div class="content">
+								<ul>
+									{% for dojo in all_the_dojos %}
+										<li>{{dojo.name}}
+											<ul>
+												{% for ninja in dojo.dojos.all %}
+												<li><em>{{ninja.first_name}}</em></li>
+												{% endfor %}
+											</ul>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
