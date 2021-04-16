@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dojos & Ninjas</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.css">
+</head>
+<body>
+	<div class="section has-background-dark">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-half">
+					<div class="card">
+						<header class="card-header">
+							<p class="card-header-title title is-centered">Add a Dojo</p>
+						</header>
+						<div class="card-content has-text-centered">
+							<form action='/add_dojo' method='post'>
+								<!-- {% csrf_token %} -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">Name</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input class="input" type="text" name="dojo_name" placeholder="eg Awesomesauce">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">City</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input class="input" type="text" name="city" placeholder="eg Dallas">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">First Name:</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input class="input" type="text" name="state" placeholder="eg TX">
+											</div>
+										</div>
+									</div>
+								</div>
+								<button class="button is-rounded is-primary">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="column is-half">
+					<div class="card">
+						<header class="card-header">
+							<p class="card-header-title title is-centered">Add a Ninja</p>
+						</header>
+						<div class="card-content has-text-centered">
+							<form action='/add_ninja' method='post'>
+								<!-- {% csrf_token %} -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">First Name</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input class="input" type="text" name="first_name" placeholder="eg John">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">Last Name</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input class="input" type="text" name="last_name" placeholder="eg Smith">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label">Dojo</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="select is-fullwidth">
+												<select name="location" id="student_dojo">
+													<option value="dal">Dallas</option>
+													<option value="seat">Seattle</option>
+													<option value="usuk">No where else matters</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button class="button is-rounded is-primary">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block" style="border-top: 2px solid #b8b7b7;"></div>
+			<div class="columns">
+				<div class="column is-half is-offset-one-quarter">
+					<div class="card">
+						<header class="card-header">
+							<p class="card-header-title title is-centered">All the Dojos</p>
+						</header>
+						<div class="card-content has-text-centered">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
