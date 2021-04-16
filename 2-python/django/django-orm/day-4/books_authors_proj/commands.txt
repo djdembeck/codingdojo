@@ -1,0 +1,83 @@
+In [5]: from books_authors_app .models import *
+
+In [6]: Book.objects.create(title="C Sharp")
+Out[6]: <Book: Book object (1)>
+
+In [7]: Book.objects.create(title="Java")
+Out[7]: <Book: Book object (2)>
+
+In [8]: Book.objects.create(title="Python")
+Out[8]: <Book: Book object (3)>
+
+In [9]: Book.objects.create(title="PHP")
+Out[9]: <Book: Book object (4)>
+
+In [10]: Book.objects.create(title="Ruby")
+Out[10]: <Book: Book object (5)>
+
+In [11]: Author.objects.create(first_name="Jane", last_name="Austen")
+Out[11]: <Author: Author object (1)>
+
+In [12]: Author.objects.create(first_name="Emily", last_name="Dickinson")
+Out[12]: <Author: Author object (2)>
+
+In [13]: Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+Out[13]: <Author: Author object (3)>
+
+In [14]: Author.objects.create(first_name="William", last_name="Shakespeare")
+Out[14]: <Author: Author object (4)>
+
+In [15]: Author.objects.create(first_name="Lau", last_name="Tzu")
+Out[15]: <Author: Author object (5)>
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+In [1]: from books_authors_app .models import *
+
+In [3]: name_update = Book.objects.get(title="C Sharp")
+
+In [4]: name_update.title="C#"
+
+In [6]: name_update.save()
+
+In [5]: name_update = Author.objects.get(id=4)
+
+In [6]: name_update.first_name="Bill"
+
+In [7]: name_update.save()
+
+In [8]: this_book = Book.objects.get(id=1)
+
+In [9]: this_author = Author.objects.get(id=1)
+
+In [10]: this_author.books.add(this_book)
+
+In [11]: this_book = Book.objects.get(id=2)
+
+In [12]: this_author.books.add(this_book)
+
+In [14]: this_author.save()
+
+In [15]: this_book.save()
+
+In [17]: this_author = Author.objects.get(id=2)
+
+In [18]: this_book = Book.objects.get(id=1)
+
+In [19]: this_author.books.add(this_book)
+
+In [20]: this_book = Book.objects.get(id=2)
+
+In [21]: this_author.books.add(this_book)
+
+In [22]: this_book = Book.objects.get(id=3)
+
+In [23]: this_author.books.add(this_book)
+
+In [24]: this_book.save()
+
+In [25]: this_author.save()
+
+
