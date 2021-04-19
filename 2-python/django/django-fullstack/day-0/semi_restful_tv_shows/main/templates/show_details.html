@@ -19,6 +19,15 @@
 	</section>
 	<section class="section has-background-dark">
 		<div class="container">
+			{% if messages %}
+			<div class="notification is-success">
+				{% for message in messages %}
+					<p>
+						{{ message }}
+					</p>
+				{% endfor %}
+			</div>
+			{% endif %}
 			<div class="card">
 				<header class="card-header has-background-info-light">
 					<p class="card-header-title is-size-3">TV Show {{ this_show.id }}</p>

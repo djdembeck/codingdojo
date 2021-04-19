@@ -19,6 +19,16 @@
 	</section>
 	<section class="section has-background-dark">
 		<div class="container">
+			{% if messages %}
+			<div class="notification is-danger">
+				{% for message in messages %}
+					<p>
+						{{ message }}
+					</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div class="block"></div>
 			<div class="columns">
 				<div class="column">
 					<div class="card">
