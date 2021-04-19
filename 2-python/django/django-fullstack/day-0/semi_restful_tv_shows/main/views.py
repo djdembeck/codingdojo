@@ -14,4 +14,7 @@ def add_show(request):
 	return redirect(f'/shows/{new_show.id}')
 
 def show_details(request, id):
-	return redirect('/')
+	context = {
+		"this_show": Show.objects.get(id=id),
+	}
+	return render(request, "show_details.html", context)
