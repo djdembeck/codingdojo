@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit show</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-dark">
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<div class="card">
+						<form action='/shows/create' method='post'">
+							{% csrf_token %}
+							<header class="card-header has-background-info-light">
+								<p class="card-header-title is-centered is-size-3">Add a New Show</p>
+							</header>
+							<div class="card-content">
+								<div class="field">
+									<label class="label">Title</label>
+									<div class="control">
+										<input class="input" type="text" name="title" value="{{ this_show.title }}">
+									</div>
+								</div>
+								<div class="field">
+									<label class="label">Network</label>
+									<div class="control">
+										<input class="input" type="text" name="network" value="{{ this_show.network }}">
+									</div>
+								</div>
+								<div class="field">
+									<label class="label">Release Date</label>
+									<div class="control">
+										<input class="input" type="date" name="release_date" value={{ this_show.release_date|date:"Y-m-d" }}>
+									</div>
+								</div>
+								<div class="field">
+									<label class="label">Description</label>
+									<div class="control">
+										<textarea class="textarea" name="description">{{ this_show.desc }}</textarea>
+									</div>
+								</div>
+								<div class="field has-text-centered">
+									<div class="control">
+										<button class="button is-link">Update</button>
+									</div>
+									<a href="../{{ this_show.id }}">Go to Show</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
