@@ -21,11 +21,27 @@
 						<p>{{ this_book.desc }}</p>
 						<h2>Authors:</h2>
 						<ul>
-							{% for book_author in authors %}
-								<li>{{ book_author }}</li>
+							{% for book_author in this_book.authors.all %}
+								<li>{{ book_author.first_name }} {{ book_author.last_name }}</li>
 							{% endfor %}
+							<form action="/add_author_to_book/{{this_book.id}}" method="POST">
+								{% csrf_token %}
+								<div class="field is-horizontal">
+									<div class="field-body">
+										<div class="field">
+											<div class="select">
+												<select name="author_id">
+													{% for author in all_authors %}
+													<option value="{{author.id}}">{{ author.first_name }} {{ author.last_name }}</option>
+													{% endfor %}
+												</select>
+											</div>
+											<button class="button is-primary">Add</button>
+										</div>
+									</div>
+								</div>
+							</form>
 						</ul>
-
 					</div>
 				</div>
 			</div>
