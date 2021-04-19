@@ -7,33 +7,42 @@ class ArrayStack {
     }
     // push(value) - adds the given value to the stack
     push(value) {
-
+		this.contents.push(value);
     }
 
     // pop() - removes the top value from stack and returns it
     pop() {
-
+		return this.contents.pop();
     }
 
     // top() - returns the top value without removing it
     top() {
-
+		var i = this.contents[this.contents.length - 1];
+		return i;
     }
 
     // contains(target) - returns true if the target value is in the stack,
     // false if not
     contains(target) {
-
+		for (let i = 0; i < this.contents.length; i++) {
+			if (this.contents[i] == target) {
+				return true;
+			}
+		}
+		return false;
     }
 
     // isEmpty() - returns true if the stack is empty, false otherwise
     isEmpty() {
-
+		if (this.contents.length == 0) {
+			return true;
+		}
+		return false;
     }
 
     // size() - returns the size of the stack
     size() {
-
+		return this.contents.length;
     }
 }
 
