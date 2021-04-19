@@ -17,8 +17,7 @@ class ArrayStack {
 
     // top() - returns the top value without removing it
     top() {
-		var i = this.contents[this.contents.length - 1];
-		return i;
+		return this.contents[this.contents.length - 1];
     }
 
     // contains(target) - returns true if the target value is in the stack,
@@ -34,10 +33,7 @@ class ArrayStack {
 
     // isEmpty() - returns true if the stack is empty, false otherwise
     isEmpty() {
-		if (this.contents.length == 0) {
-			return true;
-		}
-		return false;
+		return (this.contents.length == 0)
     }
 
     // size() - returns the size of the stack
@@ -47,7 +43,7 @@ class ArrayStack {
 }
 
 var x = new ArrayStack();
-console.log(x.isEmpty()); // returns trueg
+console.log(x.isEmpty()); // returns true
 x.push(3);
 x.push(7);
 x.push(4);
