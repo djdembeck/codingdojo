@@ -18,3 +18,8 @@ def show_details(request, id):
 		"this_show": Show.objects.get(id=id),
 	}
 	return render(request, "show_details.html", context)
+
+def del_show(request, id):
+	show = Show.objects.get(id=id)
+	show.delete()
+	return redirect('/shows')
