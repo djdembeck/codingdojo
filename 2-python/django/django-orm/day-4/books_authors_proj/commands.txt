@@ -80,4 +80,82 @@ In [24]: this_book.save()
 
 In [25]: this_author.save()
 
+In [26]: this_author = Author.objects.get(id=3)
 
+In [27]: this_book = Book.objects.get(id=1)
+
+In [28]: this_author.books.add(this_book)
+
+In [29]: this_book = Book.objects.get(id=2)
+
+In [30]: this_author.books.add(this_book)
+
+In [31]: this_book = Book.objects.get(id=3)
+
+In [32]: this_author.books.add(this_book)
+
+In [33]: this_book = Book.objects.get(id=4)
+
+In [34]: this_book.save()
+
+In [35]: this_author.save()
+
+In [41]: this_author = Author.objects.get(id=4)
+
+In [42]: this_book = Book.objects.get(id=1)
+
+In [43]: this_author.books.add(this_book)
+
+In [44]: this_book = Book.objects.get(id=2)
+
+In [45]: this_author.books.add(this_book)
+
+In [46]: this_book = Book.objects.get(id=3)
+
+In [47]: this_author.books.add(this_book)
+
+In [48]: this_book = Book.objects.get(id=4)
+
+In [49]: this_author.books.add(this_book)
+
+In [50]: this_book = Book.objects.get(id=5)
+
+In [51]: this_author.books.add(this_book)
+
+In [52]: this_author.save()
+
+In [53]: this_book.save()
+
+In [54]: this_book = Book.objects.get(id=3)
+
+In [55]: this_book.authors.all()
+
+In [54]: this_book = Book.objects.get(id=3)
+
+In [56]: this_author = Author.objects.get(id=1)
+
+In [57]: this_book.authors.remove(this_author
+
+In [58]: this_author = Author.objects.get(id=5)
+
+In [59]: this_book = Book.objects.get(id=2)
+
+In [60]: this_book.authors.add(this_author)
+
+In [61]: this_author.save()
+
+In [62]: this_book.save()
+
+In [63]: this_book = Book.objects.get(id=3)
+
+In [64]: this_author = Author.objects.get(id=1)
+
+In [65]: this_author.save()
+
+In [66]: this_book.save()
+
+In [67]: this_author = Author.objects.get(id=3)
+
+In [69]: this_author.books.all()
+
+In [70]: this_book.authors.all()
