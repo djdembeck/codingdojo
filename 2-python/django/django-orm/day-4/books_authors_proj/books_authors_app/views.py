@@ -12,9 +12,8 @@ def index(request):
 
 def add_book(request):
 	# Book.objects.create(title="C Sharp")
-	form_title = request.POST['title']
-	form_description = request.POST['description']
-	Book.objects.create(title=form_title, description=form_description)
+	new_book = Book.objects.create(title=request.POST['title'], desc=request.POST['description'])
+	new_book.save()
 
 	return redirect('/')
 
