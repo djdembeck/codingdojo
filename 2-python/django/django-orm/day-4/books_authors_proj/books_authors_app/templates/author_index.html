@@ -74,6 +74,7 @@
 										<th>ID</th>
 										<th>Name</th>
 										<th>Notes</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -81,7 +82,8 @@
 										<tr>
 											<td>{{ author.id }}</td>
 											<td>{{ author.first_name }} {{ author.last_name }}</td>
-											<td><a href="#">View</a></td>
+											<td>{{ author.notes }}</td>
+											<td><a href="/authors/{{ author.id }}">View</a></td>
 										</tr>
 									{% endfor %}
 								</tbody>

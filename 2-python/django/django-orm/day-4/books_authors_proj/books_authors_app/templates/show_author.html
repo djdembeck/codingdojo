@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Books & Authors</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-danger-light">
+		<div class="container">
+			<div class="card">
+				<header class="card-header has-background-info-light">
+					<p class="card-header-title is-size-3">{{ this.author.first_name }} {{ this.author.last_name }}</p>
+				</header>
+				<div class="card-content">
+					<div class="content">
+						<h2>ID: {{ this_author.id }}</h2>
+						<h2>notes:</h2>
+						<p>{{ this_author.notes }}</p>
+						<h2>Books:</h2>
+						<ul>
+							{% for book in this_author.books.all %}
+								<li>{{ book.title }}</li>
+							{% endfor %}
+							<form action="/add_book_to_author/{{this_author.id}}" method="POST">
+								{% csrf_token %}
+								<div class="field is-horizontal">
+									<div class="field-body">
+										<div class="field">
+											<div class="select">
+												<select name="author_id">
+													{% for book in all_books %}
+													<option value="{{book.id}}">{{ book.title }}</option>
+													{% endfor %}
+												</select>
+											</div>
+											<button class="button is-primary">Add</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
