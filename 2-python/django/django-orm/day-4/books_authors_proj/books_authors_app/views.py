@@ -17,15 +17,18 @@ def add_book(request):
 
 	return redirect('/')
 
-	# def add_author(request):
-	# 	# uthor.objects.create(first_name="Jane", last_name="Austen")
+# def add_author(request):
+	# 	# Author.objects.create(first_name="Jane", last_name="Austen")
 
 	# return redirect('/authors')
 
-	# def books(request):
+def books(request, id):
+	context = {
+		"this_book": Book.objects.get(id=id),
+	}
 
-	# return render(request, "index.html", context)
+	return render(request, "show_book.html", context)
 
-	# def authors(request):
+# def authors(request):
 
 	# return render(request, "index.html", context)
