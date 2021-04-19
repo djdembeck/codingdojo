@@ -8,6 +8,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
+	<section class="section has-background-grey-lighter">
+		<nav class="breadcrumb is-right" aria-label="breadcrumbs">
+			<ul>
+				<li><a href="/shows">Shows</a></li>
+				<li class="is-active" aria-current="page"><a href="/shows/create">Create</a></li>
+			</ul>
+		</nav>
+	</section>
 	<section class="section has-background-dark">
 		<div class="container">
 			<div class="columns">
@@ -43,7 +51,7 @@
 										<textarea class="textarea" name="description" placeholder="Plot info"></textarea>
 									</div>
 								</div>
-								<div class="field">
+								<div class="field has-text-centered">
 									<div class="control">
 										<button class="button is-link">Submit</button>
 									</div>
