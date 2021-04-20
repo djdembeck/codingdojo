@@ -38,15 +38,6 @@ def login(request):
 	
 	return redirect('/')
 
-def success(request):
-	if 'userid' not in request.session:
-		return redirect('/')
-
-	context = {
-		"this_user": User.objects.get(id=request.session['userid'])
-	}
-	return render(request, "success.html", context)
-
 def logout(request):
 	if 'userid' not in request.session:
 		return redirect('/')
