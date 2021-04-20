@@ -35,8 +35,14 @@ class SLLStack {
 			return null;
 		}
 
+		if (this.head == this.tail) {
+			var temp = this.head;
+			this.head = null;
+			this.tail = null;
+			return temp.value
+		}
+
 		var old_head = this.head;
-		
 		this.head = this.head.next
 
 		return old_head.value
@@ -44,6 +50,10 @@ class SLLStack {
 
 	// top() - returns the top value without removing it
 	top() {
+		if (this.head == null) {
+			return null;
+		}
+
 		return this.head.value
 	}
 
