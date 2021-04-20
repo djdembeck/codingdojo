@@ -1,7 +1,6 @@
 from django.db import models
 import re
-from datetime import date
-import datetime
+from datetime import datetime
 
 class UserManager(models.Manager):
 	EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -22,13 +21,13 @@ class UserManager(models.Manager):
 			errors["last_name"] = "First name should NOT have more than 50 characters"
 
 		# birth date validation
-		if post_data['birth_date'] > str(date.today()):
+		if datetime.strptime(post_data['birth_date'], '%Y-%m-%d').date() > datetime.now().date():
 			errors["birth_date"] = "Date must be in the past"
 
 		# COPPA validation
-		today = date.today()
+		today = datetime.now().date()
 		# convert post string into datetime object
-		born = datetime.datetime.strptime(post_data['birth_date'], '%Y-%m-%d')
+		born = datetime.strptime(post_data['birth_date'], '%Y-%m-%d').date()
 		# Mafs
 		age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
