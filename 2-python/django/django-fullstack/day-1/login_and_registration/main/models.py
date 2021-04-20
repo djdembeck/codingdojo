@@ -1,5 +1,6 @@
 from django.db import models
 import re
+from datetime import date
 
 class UserManager(models.Manager):
 	EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -18,6 +19,12 @@ class UserManager(models.Manager):
 			errors["last__name"] = "Last name should have more ethan 3 characters"
 		if len(post_data['last_name']) > 50:
 			errors["last_name"] = "First name should NOT have more than 50 characters"
+
+		# birth date validation
+		if post_data['birth_date'] > str(date.today()):
+			errors["birth_date"] = "Date must be in the past"
+
+		# Email validations
 
 		if not self.EMAIL_REGEX.match(post_data['register_email']):
 			errors["register_email"] = "Invalid email address!"
@@ -51,6 +58,7 @@ class UserManager(models.Manager):
 class User(models.Model):
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
+	birth_date = models.DateField()
 	email = models.CharField(max_length=100)
 	password  = models.CharField(max_length=512)
 	created_at = models.DateTimeField(auto_now_add=True)

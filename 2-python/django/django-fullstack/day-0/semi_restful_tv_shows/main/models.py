@@ -11,7 +11,7 @@ class ShowManager(models.Manager):
 		if len(post_data['network']) < 2:
 			errors["network"] = "Network should be more than 2 characters"
 		if post_data['release_date'] > str(date.today()):
-			errors["network"] = "Date must be in the past"
+			errors["release_date"] = "Date must be in the past"
 		return errors
 
 class Show(models.Model):
