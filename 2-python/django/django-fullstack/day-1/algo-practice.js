@@ -36,9 +36,8 @@ class SLLStack {
 		}
 
 		var old_head = this.head;
-		var new_head = this.head.next;
 		
-		this.head = new_head
+		this.head = this.head.next
 
 		return old_head.value
 	}
@@ -68,7 +67,6 @@ class SLLStack {
 			return true;
 		}
 		return false;
-		// return (this.contents.length == 0)
 	}
 
 	// size() - returns the size of the stack
