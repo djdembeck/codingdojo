@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login & Registration</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-grey-lighter">
+		<div class="container">
+			{% if messages %}
+			<div class="notification is-danger">
+				{% for message in messages %}
+					<p>
+						{{ message }}
+					</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div class="block"></div>
+				<div class="columns">
+					<div class="column">
+						<div class="card has-background-info-light">
+							<form action='/register' method='post'">
+								{% csrf_token %}
+								<header class="card-header has-background-white">
+									<p class="card-header-title is-centered is-size-3">Register</p>
+								</header>
+								<div class="card-content">
+									<div class="field">
+										<label class="label">First Name</label>
+										<div class="control">
+											<input class="input" type="text" name="first_name" placeholder="eg John">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Last Name</label>
+										<div class="control">
+											<input class="input" type="text" name="last_name" placeholder="eg Smith">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Email</label>
+										<div class="control">
+											<input class="input" type="email" name="register_email" placeholder="johnsmith@example.com">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Birthdate</label>
+										<div class="control">
+											<input class="input" type="date" name="birth_date">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Password</label>
+										<div class="control">
+											<input class="input" type="password" name="register_password">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Confirm PW</label>
+										<div class="control">
+											<input class="input" type="password" name="register_confirm_password">
+										</div>
+									</div>
+									<div class="field has-text-centered">
+										<div class="control">
+											<button class="button is-link">Register</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="column">
+						<div class="card has-background-info-light">
+							<form action='/login' method='post'">
+								{% csrf_token %}
+								<header class="card-header has-background-white">
+									<p class="card-header-title is-centered is-size-3">Login</p>
+								</header>
+								<div class="card-content">
+									<div class="field">
+										<label class="label">Email</label>
+										<div class="control">
+											<input class="input" type="email" name="login_email" placeholder="johnsmith@example.com">
+										</div>
+									</div>
+									<div class="field">
+										<label class="label">Password</label>
+										<div class="control">
+											<input class="input" type="password" name="login_password">
+										</div>
+									</div>
+									<div class="field has-text-centered">
+										<div class="control">
+											<button class="button is-link">Log In</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
