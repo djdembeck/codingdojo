@@ -21,6 +21,7 @@ class UserManager(models.Manager):
 			errors["last_name"] = "First name should NOT have more than 50 characters"
 
 		# birth date validation
+		# ATM, this doesn't actually run, as the COPPA check below inherently does this
 		if datetime.strptime(post_data['birth_date'], '%Y-%m-%d').date() > datetime.now().date():
 			errors["birth_date"] = "Date must be in the past"
 
