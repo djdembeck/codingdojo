@@ -49,22 +49,23 @@
 			</div>
 			<div class="block"></div>
 			<div class="card">
-				<header class="card-header has-background-info-light">
-					<p class="card-header-title is-size-3">TV Show {{ this_show.id }}</p>
-				</header>
 				<div class="card-content">
-					<div class="content">
-						<p>Title: {{ this_show.title }}</p>
-						<p>Network: {{ this_show.network }}</p>
-						<p>Release Date: {{ this_show.release_date }}</p>
-						<p>Description: {{ this_show.desc }}</p>
+					{% for post in all_posts %}
+					<div class="label is-size-6">
+						{{ this_user.first_name }} {{ this_user.last_name }} - {{ this_post.created_at }}
 					</div>
 					<div class="content">
-						<p>Last Updated: {{ this_show.updated_at }}</p>
+						<p>{{ post.message }}</p>
+							{% for comment in this_post_comments %}
+							<div class="label is-size-6">
+								{{ comment.first_name }} {{ comment.last_name }} - {{ comment.created_at }}
+							</div>
+								<div class="content">
+									<p>{{ comment.comment }}</p>
+								</div>
+							{% endfor %}
 					</div>
-				<div class="card-footer">
-					<p><a href="{{ this_show.id }}/edit">Edit</a> | <a href="{{ this_show.id }}/delete">Delete</a></p>
-				</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
