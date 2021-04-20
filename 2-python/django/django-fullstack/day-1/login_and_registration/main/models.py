@@ -1,6 +1,7 @@
 from django.db import models
 import re
 from datetime import date
+import datetime
 
 class UserManager(models.Manager):
 	EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -24,6 +25,17 @@ class UserManager(models.Manager):
 		if post_data['birth_date'] > str(date.today()):
 			errors["birth_date"] = "Date must be in the past"
 
+		# COPPA validation
+		today = date.today()
+		# convert post string into datetime object
+		born = datetime.datetime.strptime(post_data['birth_date'], '%Y-%m-%d')
+		# Mafs
+		age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+		# If difference between today and birthdate is less than 13 (COPPA)
+		if age < 13:
+			errors["birth_date"] = "Must be 13 or older to register"
+		
 		# Email validations
 
 		if not self.EMAIL_REGEX.match(post_data['register_email']):
