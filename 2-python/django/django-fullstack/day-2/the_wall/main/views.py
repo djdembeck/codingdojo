@@ -20,7 +20,7 @@ def register(request):
 		new_user.save()
 		request.session['userid'] = new_user.id
 		
-	return redirect('/success')
+	return redirect('/wall')
 
 def login(request):
 	errors = User.objects.login_validator(request.POST)
@@ -34,7 +34,7 @@ def login(request):
 			logged_email = email[0]
 			if bcrypt.checkpw(request.POST['login_password'].encode(), logged_email.password.encode()):
 				request.session['userid'] = logged_email.id
-				return redirect('/success')
+				return redirect('/wall')
 	
 	return redirect('/')
 
