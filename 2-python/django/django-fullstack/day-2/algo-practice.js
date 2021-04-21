@@ -52,7 +52,7 @@ class SLLQueue {
 			runner = runner.next;
 		}
 		runner.next = null;
-		runner = this.tail;
+		this.tail = runner;
 
 		return temp.value;
 	}
