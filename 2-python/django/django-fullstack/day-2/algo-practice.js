@@ -109,7 +109,24 @@ class SLLQueue {
 	// x == y? false
 	// x.value == y.value? true
 	compare(other_queue) {
+		// If sizes of queue aren't the same size, don't bother
+		if (this.size() != other_queue.size()) {
+			return false;
+		}
 
+		var runner = this.head;
+		var runner2 = other_queue.head;
+		while (runner != null && runner2 != null) {
+			// Constantly compare values in order
+			// If this fails at any point, they are not equal, so we fail it
+			if (runner.value != runner2.value) {
+				return false;
+			}
+			runner = runner.next
+			runner2 = runner2.next
+		}
+		// Return true if above didn't fail
+		return true;
 	}
 }
 
@@ -123,7 +140,7 @@ a.enqueue(7);
 a.enqueue(3);
 a.enqueue(11);
 
-console.log(a.dequeue())
+// console.log(a.dequeue())
 
 var b = new SLLQueue();
 b.enqueue(7);
