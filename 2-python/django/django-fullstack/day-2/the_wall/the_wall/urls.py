@@ -17,5 +17,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('', include('main.urls')),
-	path('wall', include('wall_app.urls'))
+	path('wall/', include('wall_app.urls'))
 ]

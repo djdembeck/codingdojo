@@ -32,12 +32,12 @@
 	<section class="section has-background-link-dark">
 		<div class="container">
 			<div class="box">
-				<form action="/post_message" method="POST">
+				<form action="/wall/make_post" method="POST">
 					{% csrf_token %}
 					<div class="field">
 						<label class="label is-size-5">Post a message</label>
 						<div class="control">
-							<textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+							<textarea class="textarea" name="post_contents" placeholder="e.g. Hello world"></textarea>
 						</div>
 					</div>
 					<div class="field">
@@ -48,26 +48,54 @@
 				</form>
 			</div>
 			<div class="block"></div>
+			{% for post in all_posts %}
 			<div class="card">
 				<div class="card-content">
-					{% for post in all_posts %}
 					<div class="label is-size-6">
-						{{ this_user.first_name }} {{ this_user.last_name }} - {{ this_post.created_at }}
+						{{ post.user.first_name }} {{ post.user.last_name }} - {{ post.created_at.date }}
 					</div>
 					<div class="content">
 						<p>{{ post.message }}</p>
-							{% for comment in this_post_comments %}
-							<div class="label is-size-6">
-								{{ comment.first_name }} {{ comment.last_name }} - {{ comment.created_at }}
-							</div>
-								<div class="content">
-									<p>{{ comment.comment }}</p>
+						<ul style="list-style-type: none">
+							{% for comment in post.comments.all %}
+							<li>
+								<div class="label is-size-6">
+									{{ comment.user.first_name }} {{ comment.user.last_name }} - {{ comment.created_at.date }} {% if comment.user.id == this_user.id %}<a class="has-text-danger" href="/wall/delete/comment/{{comment.id}}">Delete</a>{% endif %}
 								</div>
-							{% endfor %}
+									<div class="content">
+										<p>{{ comment.comment }}</p>
+									</div>
+									<div class="block"></div>
+								{% endfor %}
+							</li>
+							<li>
+								<form action="/wall/make_comment/{{post.id}}" method="POST">
+									{% csrf_token %}
+									<div class="field">
+										<label class="label is-size-5">Comment</label>
+										<div class="control">
+											<textarea class="textarea" name="comment_contents" placeholder="e.g. Hello world"></textarea>
+											<input type="hidden" name="parent_id" value={{post.id}}>
+										</div>
+									</div>
+									<div class="field">
+										<div class="control">
+											<button class="button is-link">Comment</button>
+										</div>
+									</div>
+								</form>
+							</li>
+						</ul>
 					</div>
-					{% endfor %}
 				</div>
+				{% if post.user.id == this_user.id %}
+				<div class="card-footer">
+					<a href="/wall/delete/post/{{post.id}}"><button class="button is-danger">Delete post</button></a>
+				</div>
+				{% endif %}
 			</div>
+			<div class="block"></div>
+			{% endfor %}
 		</div>
 	</section>
 </body>
