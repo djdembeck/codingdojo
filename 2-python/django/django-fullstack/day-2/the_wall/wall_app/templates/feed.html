@@ -31,6 +31,17 @@
 	</nav>
 	<section class="section has-background-link-dark">
 		<div class="container">
+			{% if messages %}
+			<div class="notification is-danger">
+				{% for message in messages %}
+					<p>
+						{{ message }}
+					</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div class="block"></div>
+		<div class="container">
 			<div class="box">
 				<form action="/wall/make_post" method="POST">
 					{% csrf_token %}
