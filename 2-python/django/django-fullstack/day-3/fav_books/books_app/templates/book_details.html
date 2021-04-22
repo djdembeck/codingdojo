@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Favorite Books</title>
+	<title>{{ this_book.title }}</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
@@ -45,24 +45,33 @@
 			<div class="columns">
 				<div class="column">
 					<div class="box">
-						<h2>Add a Favorite Book</h2>
-						<form action="#">
-							<!-- title -->
-							<!-- description -->
-							<button class="button is-primary">Add</button>
-						</form>
+						<div class="content">
+							<h1>{{ this_book.title }}</h1>
+							<p>Added by: {{ user.first_name }} {{ user.last_name }}</p>
+							<p>Added on: {{ this_book.created_at }}</p>
+							<p>Last updated on:  {{ this_book.updated_at }}</p>
+							<span>Description: </span>
+							<!-- if owner -->
+							<!-- <textarea class="textarea" name="description"></textarea>
+							<div class="block"></div>
+							<button class="button">Update</button>
+							<button class="button is-danger">Delete</button> -->
+							<!-- if guest -->
+							<!-- <blockquote>{{ this_book.description }}</blockquote> -->
+						</div>
 					</div>
 				</div>
 				<div class="column">
 					<div class="box">
 						<div class="content">
-							<h2 class="title">All Books</h2>
-							{% for book in all_books %}
-							<a href="#"><span class="is-size-4 has-text-weight-medium">There and Back Again</span></a>
-							<p>(added by {{ user.first_name }} {{ user.last_name }}</p>
-							<!-- If this is in your favorite list, say so and no link -->
+							<h3 class="title">Users Who Like This Book</h3>
+							<ul>
+								{% for user in this_book.users_who_like.all %}
+								<!-- if you like this book, allow un-fav -->
+								<li>{{ user }}</li>
+								{% endfor %}
+							</ul>
 							<!-- if you didn't like this book, display link here -->
-							{% endfor %}
 						</div>
 					</div>
 				</div>
