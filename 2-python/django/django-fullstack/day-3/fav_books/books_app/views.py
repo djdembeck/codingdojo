@@ -10,5 +10,55 @@ def index(request):
 
 	context = {
 		"this_user": User.objects.get(id=request.session['userid']),
+		"all_books": Book.objects.all()
 	}
 	return render(request, "front_page.html", context)
+
+def new_book(request):
+	
+	Book.objects.create(
+		title=request.POST['book_title'],
+		description=request.POST['book_description'],
+		uploaded_by=User.objects.get(id=request.session['userid'])
+		)
+
+	user = User.objects.get(id=request.session['userid'])
+	new_fav = Book.objects.last()
+
+	new_fav.users_who_like.add(user)
+	return redirect("/books")
+
+def book_details(request, id):
+	context = {
+		"all_users": User.objects.all(),
+		"this_user": User.objects.get(id=request.session['userid']),
+		"this_book": Book.objects.get(id=id),
+		"liked_by": Book.objects.first().users_who_like.all()
+		}
+	return render(request, "book_details.html", context)
+
+def add_favorite(request, id):
+	user = User.objects.get(id=request.session['userid'])
+	new_fav = Book.objects.get(id=id)
+
+	new_fav.users_who_like.add(user)
+	return redirect(f'/books/{id}')
+
+def un_favorite(request, id):
+	user = User.objects.get(id=request.session['userid'])
+	new_fav = Book.objects.get(id=id)
+
+	new_fav.users_who_like.remove(user)
+	return redirect(f'/books/{id}')
+
+def delete_book(request, id):
+	book = Book.objects.get(id=id)
+	book.delete()
+	return redirect('/books')
+
+def update_book(request, id):
+	book = Book.objects.get(id=id)
+	book.title = request.POST['book_title']
+	book.description = request.POST['book_description']
+	book.save()
+	return redirect(f'/books/{id}')

@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="/wall">
+			<a class="navbar-item" href="/books">
 				<p class="has-text-weight-bold is-size-4">Favorite Books</p>
 			</a>
 		</div>
@@ -46,9 +46,20 @@
 				<div class="column">
 					<div class="box">
 						<h2>Add a Favorite Book</h2>
-						<form action="#">
-							<!-- title -->
-							<!-- description -->
+						<form action="/books/new_book" method="POST">
+							{% csrf_token %}
+							<div class="field">
+								<label class="label">Title</label>
+								<div class="control">
+									<input class="input" type="text" name="book_title" placeholder="e.g. Harry Potter">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<textarea class="textarea" name="book_description" placeholder="e.g. Harry lives in a depressing world"></textarea>
+								</div>
+							</div>
 							<button class="button is-primary">Add</button>
 						</form>
 					</div>
@@ -58,10 +69,14 @@
 						<div class="content">
 							<h2 class="title">All Books</h2>
 							{% for book in all_books %}
-							<a href="#"><span class="is-size-4 has-text-weight-medium">There and Back Again</span></a>
-							<p>(added by {{ user.first_name }} {{ user.last_name }}</p>
-							<!-- If this is in your favorite list, say so and no link -->
-							<!-- if you didn't like this book, display link here -->
+							<a href="/books/{{book.id}}"><span class="is-size-4 has-text-weight-medium">{{ book.title }}</span></a>
+							<p>(added by {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }})</p>
+							{% if this_user in book.users_who_like.all %}
+							<p class="is-italic">this is one of your favorites</p>
+							{% else %}
+							<a href="/books/{{book.id}}/add_favorite">Add to favorites</a>
+							<div class="block"></div>
+							{% endif %}
 							{% endfor %}
 						</div>
 					</div>

@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="/wall">
+			<a class="navbar-item" href="/books">
 				<p class="has-text-weight-bold is-size-4">Favorite Books</p>
 			</a>
 		</div>
@@ -46,18 +46,32 @@
 				<div class="column">
 					<div class="box">
 						<div class="content">
-							<h1>{{ this_book.title }}</h1>
-							<p>Added by: {{ user.first_name }} {{ user.last_name }}</p>
-							<p>Added on: {{ this_book.created_at }}</p>
-							<p>Last updated on:  {{ this_book.updated_at }}</p>
-							<span>Description: </span>
-							<!-- if owner -->
-							<!-- <textarea class="textarea" name="description"></textarea>
-							<div class="block"></div>
-							<button class="button">Update</button>
-							<button class="button is-danger">Delete</button> -->
+							{% if this_user.id == this_book.uploaded_by.id %}
+							<form action="/books/{{this_book.id}}/update_book" method="POST">
+								{% csrf_token %}
+								<div class="field">
+									<div class="control">
+										<input class="input" type="text" name="book_title" value="{{this_book.title}}">
+									</div>
+								</div>
+								{% else %}
+								<h1>{{ this_book.title }}</h1>
+								{% endif %}
+								<p>Added by: {{ this_book.uploaded_by.first_name }} {{ this_book.uploaded_by.last_name }}</p>
+								<p>Added on: {{ this_book.created_at }}</p>
+								<p>Last updated on:  {{ this_book.updated_at }}</p>
+								<span>Description: </span>
+								<!-- if owner -->
+								{% if this_user.id == this_book.uploaded_by.id %}
+								<textarea class="textarea" name="book_description">{{ this_book.description }}</textarea>
+								<div class="block"></div>
+								<button class="button">Update</button>
+								<button class="button is-danger"><a style="color: #fff;" href="/books/{{this_book.id}}/delete_book">Delete</a></button>
+							</form>
+							{% else %}
 							<!-- if guest -->
-							<!-- <blockquote>{{ this_book.description }}</blockquote> -->
+							<blockquote>{{ this_book.description }}</blockquote>
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -67,11 +81,12 @@
 							<h3 class="title">Users Who Like This Book</h3>
 							<ul>
 								{% for user in this_book.users_who_like.all %}
-								<!-- if you like this book, allow un-fav -->
-								<li>{{ user }}</li>
+								<li>{{ user.first_name }} {{ user.last_name }} {% if this_user.id == user.id %}<a href="/books/{{this_book.id}}/un_favorite">Un-favorite</a>{% endif %}</li>
 								{% endfor %}
 							</ul>
-							<!-- if you didn't like this book, display link here -->
+							{% if not this_user in this_book.users_who_like.all %}
+							<a href="/books/{{this_book.id}}/add_favorite">Add to favorites</a>
+							{% endif %}
 						</div>
 					</div>
 				</div>
