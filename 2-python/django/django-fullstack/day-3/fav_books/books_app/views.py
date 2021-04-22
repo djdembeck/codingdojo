@@ -15,17 +15,28 @@ def index(request):
 	return render(request, "front_page.html", context)
 
 def new_book(request):
-	
-	Book.objects.create(
-		title=request.POST['book_title'],
-		description=request.POST['book_description'],
-		uploaded_by=User.objects.get(id=request.session['userid'])
-		)
+	# Don't even process if user isn't signed in
+	if 'userid' not in request.session:
+		return redirect('/')
 
-	user = User.objects.get(id=request.session['userid'])
-	new_fav = Book.objects.last()
+	errors = Book.objects.book_validator(request.POST)
 
-	new_fav.users_who_like.add(user)
+	if len(errors) > 0:
+		for k, v in errors.items():
+			messages.error(request, v)
+		return redirect('/books')
+	else:
+		Book.objects.create(
+			title=request.POST['book_title'],
+			description=request.POST['book_description'],
+			uploaded_by=User.objects.get(id=request.session['userid'])
+			)
+
+		user = User.objects.get(id=request.session['userid'])
+		new_fav = Book.objects.last()
+
+		new_fav.users_who_like.add(user)
+
 	return redirect("/books")
 
 def book_details(request, id):
@@ -52,13 +63,32 @@ def un_favorite(request, id):
 	return redirect(f'/books/{id}')
 
 def delete_book(request, id):
-	book = Book.objects.get(id=id)
-	book.delete()
+	# Don't even process if user isn't signed in
+	if 'userid' not in request.session:
+		return redirect('/')
+
+	errors = Book.objects.deletion_validator(id, request.session['userid'])
+
+	if len(errors) > 0:
+		for k, v in errors.items():
+			messages.error(request, v)
+		return redirect('/books')
+	else:
+		Book.objects.get(id=id).delete()
+
 	return redirect('/books')
 
 def update_book(request, id):
-	book = Book.objects.get(id=id)
-	book.title = request.POST['book_title']
-	book.description = request.POST['book_description']
-	book.save()
+	errors = Book.objects.book_validator(request.POST)
+
+	if len(errors) > 0:
+		for k, v in errors.items():
+			messages.error(request, v)
+		return redirect(f'/books/{id}')
+	else:
+		book = Book.objects.get(id=id)
+		book.title = request.POST['book_title']
+		book.description = request.POST['book_description']
+		book.save()
+
 	return redirect(f'/books/{id}')
