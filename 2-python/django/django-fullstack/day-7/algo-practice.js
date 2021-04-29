@@ -37,8 +37,10 @@ function telephoneWords(input, partial = '', position = 0, output = []) {
 		output.push(partial);
 	}
 	else {
+		var input_char = [input[position]]
+		var keypad_chars = keypad[input_char]
 		for (let i = 0; i < keypad[input[position]].length; i++) {
-			telephoneWords(input, partial + keypad[input[position]][i], position + 1, output);
+			telephoneWords(input, partial + keypad_chars[i], position + 1, output);
 		}
 	}
 	return output;
