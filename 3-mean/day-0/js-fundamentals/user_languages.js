@@ -44,7 +44,7 @@ function userLanguages(input) {
 				lang_string += " and "
 			}
 		}
-		ret_string += input[i]['fname'] + " " + input[i]['lname'] + " knows " + lang_string + "\n";
+		ret_string += `${input[i]['fname']} ${input[i]['lname']} knows ${lang_string} \n`;
 	}
 	return ret_string
 }
