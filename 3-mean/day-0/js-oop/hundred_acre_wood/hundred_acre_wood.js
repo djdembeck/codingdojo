@@ -66,7 +66,8 @@ var tigger = {
 };
 
 var player = {
-	location: tigger
+	location: tigger,
+	honey: false,
 }
 
 // Tigger
@@ -115,6 +116,26 @@ eeyore.south = kanga;
 // heff
 heff.west = eeyore;
 
+function drop() {
+	if (player.location.character == mission_call && player.honey) {
+		console.log("You've won!")
+		player.honey = false;
+		player.location = tigger;
+	} else if (player.location.character != mission_call) {
+		console.log("You're not quite there yet...")
+	} else if (player.honey === false){
+		console.log("You don't have any honey :(")
+	}
+}
+
+function mission() {
+	char_arr = [robin, eeyore, gopher, heff, kanga, owl, piglet, pooh, rabbit, tigger]
+	rand = Math.floor(Math.random() * (char_arr.length - 1))
+	selected = char_arr[rand]
+	console.log(selected)
+	return selected.character;
+}
+
 function move(direction) {
 	if (player.location[direction]) {
 		player.location = player.location[direction]
@@ -124,3 +145,14 @@ function move(direction) {
 		console.log("Invalid direction")
 	}
 }
+
+function pickUp() {
+	if (player.location.character == "Bees") {
+		console.log("Picked up honey")
+		player.honey = true;
+	} else {
+		console.log("No honey here...")
+	}
+}
+mission_call = mission()
+console.log(`${mission_call} needs honey!`)
