@@ -12,14 +12,31 @@
 // showStats() - This should show the Ninja's name, strength, speed, and health.
 // drinkSake() - This should add +10 Health to the Ninja
 
+// Ninja Class II
+
+// Add a new method to Ninja called .punch(). This method will take another Ninja instance and subtract 5 Health from the Ninja we passed in. Your .punch() should display a console message like the below example.
+
+// Now add a method to your Ninja class called .kick(). Kick will subtract 15 Health for each point of Strength the calling Ninja has, and  .punch() will take another Ninja instance.
+
 function Ninja(name, health=100) {
 	this.name = name;
 	this.health = health;
 	var speed = 3;
 	var strength = 3;
+	self = this;
 
 	this.showStats = function() {
 		console.log(`Name: ${this.name}, health: ${this.health}, Speed: ${speed}, Strength: ${strength}`)
+	}
+
+	this.punch = function(id) {
+		id.health -= 5
+		console.log(`${id.name} was punched by ${this.name} and lost 5 health!`)
+	}
+	this.kick = function(id) {
+		damage = (15 * strength)
+		id.health -= damage
+		console.log(`${id.name} was kicked by ${this.name} and lost ${damage} health!`)
 	}
 }
 
@@ -32,6 +49,11 @@ Ninja.prototype.drinkSake = function() {
 }
 
 var marshall = new Ninja('Marshall Mathers', 69)
+var cent = new Ninja('50 Cent', 50)
 marshall.sayName()
 marshall.drinkSake()
 marshall.showStats()
+marshall.punch(cent)
+marshall.kick(cent)
+cent.showStats()
+cent.kick(marshall)
