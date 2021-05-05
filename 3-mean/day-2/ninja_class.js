@@ -30,13 +30,17 @@ function Ninja(name, health=100) {
 	}
 
 	this.punch = function(id) {
-		id.health -= 5
-		console.log(`${id.name} was punched by ${this.name} and lost 5 health!`)
+		if (id instanceof Ninja) {
+			id.health -= 5
+			console.log(`${id.name} was punched by ${this.name} and lost 5 health!`)
+		}
 	}
 	this.kick = function(id) {
-		damage = (15 * strength)
-		id.health -= damage
-		console.log(`${id.name} was kicked by ${this.name} and lost ${damage} health!`)
+		if (id instanceof Ninja) {
+			damage = (15 * strength)
+			id.health -= damage
+			console.log(`${id.name} was kicked by ${this.name} and lost ${damage} health!`)
+		}
 	}
 }
 
