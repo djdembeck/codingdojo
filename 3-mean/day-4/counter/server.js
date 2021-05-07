@@ -14,7 +14,6 @@ app.get("/", function (request, response){
 	} else {
 		request.session.visits = 1;
 	}
-	console.log(request.session.visits)
 	response.render('index', {visits: request.session.visits});
 })
 
