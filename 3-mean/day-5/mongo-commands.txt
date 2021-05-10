@@ -1,0 +1,53 @@
+> use my_first_db
+switched to db my_first_db
+> db.createCollection("students")
+{ "ok" : 1 }
+> db.students.insertOne({name: 'Tyriq', home_state: 'CA', lucky_number: 2652, birthday: {month: 01, day: 05, year: 1995}});
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("60989c7163a92353bce0ebb8")
+}
+> db.students.insertOne({name: 'Arnas', home_state: 'TN', lucky_number: 7654, birthday: {month: 04, day: 24, year: 1989}});
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("60989c8963a92353bce0ebb9")
+}
+> db.students.insertOne({name: 'Garry', home_state: 'NY', lucky_number: 4325, birthday: {month: 11, day: 31, year: 1992}});
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("60989c9863a92353bce0ebba")
+}
+> db.students.insertOne({name: 'Adelle', home_state: 'WA', lucky_number: 4756, birthday: {month: 08, day: 16, year: 1990}});
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("60989cad63a92353bce0ebbb")
+}
+> db.students.insertOne({name: 'Lynsey', home_state: 'FL', lucky_number: 3546, birthday: {month: 06, day: 26, year: 1980}});
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("60989cbd63a92353bce0ebbc")
+}
+> db.getCollection("students").find()
+{ "_id" : ObjectId("60989ce663a92353bce0ebbd"), "name" : "Tyriq", "home_state" : "CA", "lucky_number" : 2652, "birthday" : { "month" : 1, "day" : 5, "year" : 1995 } }
+{ "_id" : ObjectId("60989ce963a92353bce0ebbe"), "name" : "Arnas", "home_state" : "TN", "lucky_number" : 7654, "birthday" : { "month" : 4, "day" : 24, "year" : 1989 } }
+{ "_id" : ObjectId("60989cec63a92353bce0ebbf"), "name" : "Garry", "home_state" : "NY", "lucky_number" : 4325, "birthday" : { "month" : 11, "day" : 31, "year" : 1992 } }
+{ "_id" : ObjectId("60989cef63a92353bce0ebc0"), "name" : "Adelle", "home_state" : "WA", "lucky_number" : 4756, "birthday" : { "month" : 8, "day" : 16, "year" : 1990 } }
+{ "_id" : ObjectId("60989cf363a92353bce0ebc1"), "name" : "Lynsey", "home_state" : "FL", "lucky_number" : 3546, "birthday" : { "month" : 6, "day" : 26, "year" : 1980 } }
+> db.getCollection("students").find({home_state: 'WA'});
+{ "_id" : ObjectId("60989cef63a92353bce0ebc0"), "name" : "Adelle", "home_state" : "WA", "lucky_number" : 4756, "birthday" : { "month" : 8, "day" : 16, "year" : 1990 } }
+> db.getCollection("students").find({home_state: 'CA'});
+{ "_id" : ObjectId("60989ce663a92353bce0ebbd"), "name" : "Tyriq", "home_state" : "CA", "lucky_number" : 2652, "birthday" : { "month" : 1, "day" : 5, "year" : 1995 } }
+> db.getCollection("students").find({lucky_number: {$gt: 3}});
+{ "_id" : ObjectId("60989ce663a92353bce0ebbd"), "name" : "Tyriq", "home_state" : "CA", "lucky_number" : 2652, "birthday" : { "month" : 1, "day" : 5, "year" : 1995 } }
+{ "_id" : ObjectId("60989ce963a92353bce0ebbe"), "name" : "Arnas", "home_state" : "TN", "lucky_number" : 7654, "birthday" : { "month" : 4, "day" : 24, "year" : 1989 } }
+{ "_id" : ObjectId("60989cec63a92353bce0ebbf"), "name" : "Garry", "home_state" : "NY", "lucky_number" : 4325, "birthday" : { "month" : 11, "day" : 31, "year" : 1992 } }
+{ "_id" : ObjectId("60989cef63a92353bce0ebc0"), "name" : "Adelle", "home_state" : "WA", "lucky_number" : 4756, "birthday" : { "month" : 8, "day" : 16, "year" : 1990 } }
+{ "_id" : ObjectId("60989cf363a92353bce0ebc1"), "name" : "Lynsey", "home_state" : "FL", "lucky_number" : 3546, "birthday" : { "month" : 6, "day" : 26, "year" : 1980 } }
+> db.getCollection("students").find({lucky_number: {$lte: 10}});
+> 
+
+{ "_id" : ObjectId("60989ce663a92353bce0ebbd"), "name" : "Tyriq", "home_state" : "CA", "lucky_number" : 2652, "birthday" : { "month" : 1, "day" : 5, "year" : 1995 } }
+{ "_id" : ObjectId("60989ce963a92353bce0ebbe"), "name" : "Arnas", "home_state" : "TN", "lucky_number" : 7654, "birthday" : { "month" : 4, "day" : 24, "year" : 1989 } }
+{ "_id" : ObjectId("60989cec63a92353bce0ebbf"), "name" : "Garry", "home_state" : "NY", "lucky_number" : 4325, "birthday" : { "month" : 11, "day" : 31, "year" : 1992 } }
+{ "_id" : ObjectId("60989cef63a92353bce0ebc0"), "name" : "Adelle", "home_state" : "WA", "lucky_number" : 4756, "birthday" : { "month" : 8, "day" : 16, "year" : 1990 } }
+{ "_id" : ObjectId("60989cf363a92353bce0ebc1"), "name" : "Lynsey", "home_state" : "FL", "lucky_number" : 3546, "birthday" : { "month" : 6, "day" : 26, "year" : 1980 } }
