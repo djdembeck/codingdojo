@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add a quote</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-warning-dark">
+		<div class="container">
+			<% if (errors.length > 0) { %>
+			<div class="notification is-danger">
+				<ul>
+					<% for(var e of errors) { %>
+					<li><%= e %></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class="block"></div> 
+			<% } %>
+		</div>
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<div class="box">
+						<p class="title">Add a Quote!</p>
+						<form action="/add_quote" method="POST">
+							<div class="field">
+								<label class="label">Author</label>
+								<div class="control">
+									<input class="input" type="text" name="quote_author" placeholder="e.g. Winston Churchill">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Quote</label>
+								<div class="control">
+									<textarea class="textarea" name="quote_text" placeholder="e.g. Success is not final, failure is not fatal: it is the courage to continue that counts."></textarea>
+								</div>
+							</div>
+							<button class="button is-primary" name="submit">Submit</button>
+						</form>
+						<div class="block"></div>
+						<a href="/quotes"><button class="button is-link" name="skip">Show existing quotes</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
