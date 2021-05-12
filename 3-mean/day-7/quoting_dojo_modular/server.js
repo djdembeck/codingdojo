@@ -18,8 +18,9 @@ const QuoteSchema = new mongoose.Schema({
 	text: {type: String, required: true, minlength: 20},
 	created_at: Date
 	})
-   // create an object that contains methods for mongoose to interface with MongoDB
-	const Quote = mongoose.model('Quote', QuoteSchema);
+
+// create an object that contains methods for mongoose to interface with MongoDB
+const Quote = mongoose.model('Quote', QuoteSchema);
 
 require('./server/config/routes.js')(app)
 
