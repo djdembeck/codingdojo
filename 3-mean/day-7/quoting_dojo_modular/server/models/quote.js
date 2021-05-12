@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quoting_dojo', {useNewUrlParser: true});
+var mongoose = require('../config/mongoose.js')
 
 const QuoteSchema = new mongoose.Schema({
 	author: {type: String, required: true, minlength: 6},
