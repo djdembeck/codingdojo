@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= pandas[0].name %></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-info-dark">
+		<div class="container">
+			<div class="content">
+				<div class="columns">
+					<% for(var i = pandas.length - 1; i >= 0; i--) { %>
+					<div class="column">
+						<div class="card has-text-centered">
+							<div class="card-header">
+								<div class="card-header-title is-centered has-background-success-light">
+									<span class="title"><a href="/pandas/<%= pandas[0].id %>"><%= pandas[0].name %></a></span>
+								</div>
+							</div>
+							<div class="block"></div>
+							<div class="card-image">
+								<img src="<%= pandas[0].image_url %>" alt="panda pic">
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<p><%= pandas[0].description %></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% } %>
+				</div>
+				<a href="/"><button class="button is-primary">Home</button></a>
+				<a href="/pandas/new"><button class="button is-info">Add new panda</button></a>
+				<a href="/pandas/edit/<%= pandas[0]._id %>"><button class="button is-warning">Edit</button></a>
+				<form action="/pandas/destroy/<%= pandas[0]._id %>" method="POST" style="display: inline;">
+					<button class="button is-danger">Delete</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

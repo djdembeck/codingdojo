@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit <%= pandas[0].name %></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-info-dark">
+
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<div class="box has-background-link-light">
+						<p class="title">Editing <%= pandas[0].name %></p>
+						<form action="/pandas/<%= pandas[0]._id %>" method="POST">
+							<div class="field">
+								<label class="label">Name</label>
+								<div class="control">
+									<input class="input" type="text" name="panda_name" placeholder="e.g. Mr. McCuteface" value="<%= pandas[0].name %>">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<textarea class="textarea" name="panda_description" placeholder="e.g. Loves long walks on the grass, cuddles and hibernating. Answers to hand full of treats."><%= pandas[0].description %></textarea>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">IMG URL</label>
+								<div class="control">
+									<input class="input" type="url" name="panda_img" placeholder="e.g. https://example.com/image.jpg" value="<%= pandas[0].image_url %>">
+								</div>
+							</div>
+							<button class="button is-primary" name="submit">Submit</button>
+						</form>
+						<div class="block"></div>
+					</div>
+					<a href="/"><button class="button is-danger" name="skip">Show existing Pandas</button></a>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
