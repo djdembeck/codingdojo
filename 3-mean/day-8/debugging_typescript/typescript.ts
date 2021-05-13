@@ -2,14 +2,14 @@
 // Make comments in the code to explain what each error was and how you fixed it.
 
 // 1. Setting types
-var myString: string;
+var myString: string|number;
 // I can assign myString like this:
 myString = "Bee stinger";
 // Why is there a problem with this? What can I do to fix this?
 myString = 9;
 
 // 2. Setting the types for function parameters
-function sayHello(name: string){
+function sayHello(name: string|number){
 	return `Hello, ${name}!`;
 }
  // This is working great:
@@ -18,7 +18,7 @@ console.log(sayHello("Kermit"));
 console.log(sayHello(9));
 
 // 3. Optional parameters
-function fullName(firstName: string, lastName: string, middleName: string){
+function fullName(firstName: string, lastName: string, middleName: string = ""){
 	let fullName = `${firstName} ${middleName} ${lastName}`;
 	return fullName;
 }
@@ -44,7 +44,7 @@ const christine = {
 const jay = {
 	firstName: "Jay",
 	lastName: "Patel",
-	belt: 4
+	belts: 4
 }
  // This seems to work fine:
 console.log(graduate(christine));
@@ -60,17 +60,13 @@ class Ninja {
 			this.fullName = `${firstName} ${lastName}`;
 	}
 	debug(){
-	console.log("Console.log() is my friend.")
+		console.log("Console.log() is my friend.")
 	}
 }
  // This is not making an instance of Ninja, for some reason:
-const shane = Ninja();
+const shane = new Ninja("Shane", "Thompson");
  // Since I'm having trouble making an instance of Ninja, I decided to do this:
-const turing = {
-	fullName: "Alan Turing",
-	firstName: "Alan",
-	lastName: "Turing"
-}
+const turing = new Ninja("Alan", "Turing")
  // Now I'll make a study function, which is a lot like our graduate function from above:
 function study(programmer: Ninja){
 	return `Ready to whiteboard an algorithm, ${programmer.fullName}?`
@@ -79,24 +75,26 @@ function study(programmer: Ninja){
 console.log(study(turing));
 
 // 6. Arrow functions
-var increment = x => x + 1;
+var increment = (x:number) => x + 1;
 // This works great:
 console.log(increment(3));
-var square = x => {x * x};
+var square = (x:number) => x * x;
 // This is not showing me what I want:
 console.log(square(4));
 // This is not working:
-var multiply = x,y => x * y;
+var multiply = (x:number, y:number) => x * y;
 // Nor is this working:
-var math = (x, y) => let sum = x + y;
+var math = (x:number, y:number) => {  
+	let sum = x + y;
 	let product = x * y;
 	let difference = Math.abs(x-y);
 	return [sum, product, difference];
+}
 
 // 7. Arrow functions and 'this'
 class Elephant {
 	constructor(public age: number){}
-	birthday = function(){
+	birthday = () => {
 		this.age++;
 	}
 }
