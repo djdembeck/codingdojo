@@ -7,13 +7,12 @@ import { HttpService } from './http.service';
 	styleUrls: ['./app.component.styl']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 	title = 'public';
 	constructor(private _httpService: HttpService){}
-	ngOnInit(): void {
-		throw new Error('Method not implemented.');
-	}
-	tasks: any = [];
+	tasks: {title:string,description:string}[] = [];
+	// Alternate way of init:
+	// tasks: Array<{title:string,description:string}> = [];
 	getTasksFromService(){
 		const observable = this._httpService.getTasks();
 		observable.subscribe(data => {
