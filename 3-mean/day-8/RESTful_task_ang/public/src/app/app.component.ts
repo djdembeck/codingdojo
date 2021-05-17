@@ -10,8 +10,8 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 	title = 'public';
 	constructor(private _httpService: HttpService){}
-	ngOnInit(){
-		this.getTasksFromService();
+	ngOnInit(): void {
+		throw new Error('Method not implemented.');
 	}
 	tasks: any = [];
 	getTasksFromService(){
@@ -20,5 +20,12 @@ export class AppComponent implements OnInit {
 			console.log("Got our tasks!", data)
 			this.tasks = data;
 		});
+	}
+	onButtonClick(event) {
+		this.getTasksFromService();
+	}
+	num: Number;
+	onButtonClickParam(num: Number) {
+		this.num = num;
 	}
 }
