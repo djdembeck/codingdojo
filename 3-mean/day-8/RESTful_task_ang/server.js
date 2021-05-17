@@ -49,6 +49,8 @@ app.post("/tasks", function (request, response){
 // update one
 app.put("/tasks/:id", function (request, response){
 	Task.findOneAndUpdate({_id: request.params.id}, {
+		title: request.body.title,
+		description: request.body.description,
 		completed: request.body.completed
 	})
 		.then(editTaskData => {
@@ -64,6 +66,14 @@ app.put("/tasks/:id", function (request, response){
 // delete one
 app.delete("/tasks/:id", function (request, response){
 	Task.deleteOne({_id: request.params.id})
+		.then(data => {
+			console.log('Task deleted: ', data)
+			response.json(data)
+			})
+		.catch(err => {
+			console.log(err)
+			response.json(err)
+		});
 })
 
 app.listen(8000, function() {

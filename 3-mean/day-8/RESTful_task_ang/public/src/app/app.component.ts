@@ -11,10 +11,12 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 	title = 'public';
 	newTask: any;
+	editTask: { title: string; description: string; };
 	constructor(private _httpService: HttpService){}
 
 	ngOnInit() {
 		this.newTask = { title: "", description: "" }
+		this.editTask = {title: "", description: ""}
 	}
 	
 	tasks: {title:string,description:string}[] = [];
@@ -35,6 +37,19 @@ export class AppComponent implements OnInit {
 	num: Number;
 	onButtonClickParam(num: Number) {
 		this.num = num;
+	}
+
+	edit_task: String;
+	editButton(task) {
+		this.edit_task = task;
+	}
+
+	onEditSubmit() {
+		this._httpService.updateTask({'title':this.edit_task['title'], 'description':this.edit_task['description'], 'completed':this.edit_task['completed']}, this.edit_task['_id'])
+	}
+
+	delButton(task) {
+		this._httpService.delTask(task['_id'])
 	}
 
 	onSubmit() {

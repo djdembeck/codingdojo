@@ -16,4 +16,16 @@ export class HttpService {
 			console.log(data)
 		})
 	}
+
+	updateTask(updatetask, task_id) {
+		return this._http.put<any>(`/tasks/${task_id}`, updatetask).subscribe(data => {
+			console.log(data)
+		})
+	}
+
+	delTask(task_id) {
+		return this._http.delete("/tasks/" + `${task_id}`).subscribe(data => {
+			console.log(data)
+		})
+	}
 }

@@ -19,15 +19,42 @@
 							<div *ngIf="tasks">
 								<button class="button is-primary is-uppercase" (click)="onButtonClick($event)">Get all tasks</button>
 								<ul>
-									<li class="" *ngFor='let task of tasks; let i = index'>{{task.title}} <button class="button is-info is-uppercase" (click)="onButtonClickParam(i)">Details</button></li>
+									<li *ngFor='let task of tasks; let i = index'>{{task.title}}<button class="button is-info is-uppercase" (click)="onButtonClickParam(i)">Details</button><button class="button is-success is-uppercase" (click)="editButton(task)">Edit</button><button class="button is-danger is-uppercase" (click)="delButton(task)">Delete</button></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div *ngIf="edit_task" class="column">
+					<div class="box">
+						<form (submit)="onEditSubmit()">
+							<h1 class="title">Edit</h1>
+							<div class="field">
+								<label class="label">Title</label>
+								<div class="control">
+									<input class="input" type="text" name="title" [(ngModel)]="edit_task.title">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<input class="input" type="text" name="description" [(ngModel)]="edit_task.description">
+								</div>
+							</div>
+							<div class="field">
+								<label class="checkbox">Completed?</label>
+								<div class="control">
+									<input class="checkbox" type="checkbox" name="completed" [(ngModel)]="edit_task.completed">
+								</div>
+							</div>
+							<input type="submit" class="button is-warning" value="Update task">
+						</form>
+					</div>
+				</div>
 				<div class="column">
 					<div class="box">
 						<form (submit)="onSubmit()">
+							<h1 class="title">Add a task</h1>
 							<div class="field">
 								<label class="label">Title</label>
 								<div class="control">
