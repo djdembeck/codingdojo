@@ -1,5 +1,4 @@
-import { HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -34,9 +33,9 @@ export class AppComponent implements OnInit {
 		this.getTasksFromService();
 	}
 
-	num: Number;
-	onButtonClickParam(num: Number) {
-		this.num = num;
+	selectedTask: any;
+	taskToShow(task) {
+		this.selectedTask = task;
 	}
 
 	edit_task: String;

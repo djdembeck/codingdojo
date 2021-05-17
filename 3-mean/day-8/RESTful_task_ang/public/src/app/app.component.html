@@ -19,7 +19,7 @@
 							<div *ngIf="tasks">
 								<button class="button is-primary is-uppercase" (click)="onButtonClick($event)">Get all tasks</button>
 								<ul>
-									<li *ngFor='let task of tasks; let i = index'>{{task.title}}<button class="button is-info is-uppercase" (click)="onButtonClickParam(i)">Details</button><button class="button is-success is-uppercase" (click)="editButton(task)">Edit</button><button class="button is-danger is-uppercase" (click)="delButton(task)">Delete</button></li>
+									<li *ngFor='let task of tasks; let i = index'>{{task.title}}<button class="button is-info is-uppercase" (click)="taskToShow(task)">Details</button><button class="button is-success is-uppercase" (click)="editButton(task)">Edit</button><button class="button is-danger is-uppercase" (click)="delButton(task)">Delete</button></li>
 								</ul>
 							</div>
 						</div>
@@ -72,16 +72,7 @@
 					</div>
 				</div>
 			</div>
-			<div *ngIf="num >= 0" class="box">
-				<ul>
-					<ng-container *ngFor='let task of tasks; let i = index'>
-						<li *ngIf="i == num">
-							<p class="title">{{task.title}}</p>
-							<p class="subtitle">{{task.description}}</p>
-						</li>
-					</ng-container>
-				</ul>
-			</div>
+			<app-task-detail *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task-detail>
 		</div>
 	</section>
 </body>
