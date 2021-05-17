@@ -9,4 +9,11 @@ export class HttpService {
 	getTasks(){
 		return this._http.get<{title:string,description:string}[]>('/tasks');
 	}
+
+	addTask(newtask) {
+		console.log(newtask)
+		return this._http.post<any>('/tasks', newtask).subscribe(data => {
+			console.log(data)
+		})
+	}
 }
