@@ -1,0 +1,38 @@
+<div class="box">
+	<div class="columns">
+		<div class="column is-full">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-header-title has-background-link-light">
+						<span class="title">Baked by: {{cakeToShow.baker}}</span>
+					</div>
+				</div>
+				<div class="columns">
+					<div class="column is-two-thirds">
+						<div class="card-image">
+							<img src="{{cakeToShow.img}}" alt="Cake pic">
+						</div>
+						<div class="card-content">
+							<div class="content">
+								<p class="subtitle">{{cakeToShow.desc}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="column is-one-third">
+						<div class="box">
+							<div class="content">
+								<p class="title has-text-centered">Average rating: {{ avgRating(cakeToShow) }}</p>
+								<ul>
+									<li *ngFor='let rating of cakeToShow.ratings.reverse()'>
+										<span class="has-text-weight-bold is-size-5">Rating: {{rating.stars}}</span>
+										<p class="is-italic">{{rating.content}}</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,8 +1,8 @@
 <div class="columns is-multiline">
-	<div class="column" *ngFor='let cake of cakeToShow; let i = index'>
+	<div class="column" *ngFor='let cake of cakesToShow; let i = index'>
 		<div class="card">
 			<div class="card-image">
-				<img src="{{cake.img}}" alt="Cake pic">
+				<a (click)="emitCake(cake)"><img src="{{cake.img}}" alt="Cake pic"></a>
 			</div>
 			<div class="card-content">
 				<div class="content">

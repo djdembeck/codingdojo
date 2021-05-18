@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpService } from '../http.service';
 
 
@@ -8,7 +8,12 @@ import { HttpService } from '../http.service';
   styleUrls: ['./details.component.styl']
 })
 export class DetailsComponent implements OnInit {
-	@Input() cakeToShow: any;
+	@Input() cakesToShow: any;
+	@Output() cakeEvent: EventEmitter<number> = new EventEmitter();
+	emitCake(cake){
+		this.cakeEvent.emit(cake);
+	}
+	
 	newRating: { stars: number; content: string; };
 	constructor(private _httpService: HttpService){}
 
@@ -19,5 +24,5 @@ export class DetailsComponent implements OnInit {
   submitRating(id) {
 	this._httpService.addRating(id, {'stars':this.newRating['stars'], 'content':this.newRating['content']})
 	this.newRating = {stars: 0, content: ""}
-}
+	}
 }

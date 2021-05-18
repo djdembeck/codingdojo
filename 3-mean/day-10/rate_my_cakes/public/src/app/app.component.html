@@ -43,9 +43,10 @@
 							</div>
 						</div>
 						<div class="column is-4 has-background-success-light" style="height:800px; overflow:auto">
-							<app-details [cakeToShow]="cakes.reverse()"></app-details>
+							<app-details (cakeEvent)="cakeEventHandler($event)" [cakesToShow]="cakes.reverse()"></app-details>
 						</div>
 					</div>
+					<app-single-details *ngIf="selectedCake" [cakeToShow]="selectedCake"></app-single-details>
 				</div>
 			</div>
 		</div>

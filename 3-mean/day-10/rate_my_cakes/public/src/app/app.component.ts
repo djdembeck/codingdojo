@@ -28,9 +28,10 @@ export class AppComponent implements OnInit {
 		});
 	}
 
-	selectedTask: any;
-	taskToShow(task) {
-		this.selectedTask = task;
+	selectedCake: any;
+	cakeEventHandler(cake: any) {
+		this.selectedCake = cake;
+		console.log(cake);
 	}
 
 	onSubmit() {

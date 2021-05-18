@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
+import { SingleDetailsComponent } from './single-details/single-details.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		DetailsComponent
+		DetailsComponent,
+		SingleDetailsComponent
 	],
 	imports: [
 		BrowserModule,
