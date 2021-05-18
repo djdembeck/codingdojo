@@ -1,0 +1,17 @@
+<div class="container">
+	<p class="title has-text-centered">San Jose, CA <img src="{{weather.weather[0].icon}}" alt="weather icon"></p>
+	<div class="columns">
+		<div class="column is-half">
+			<ul>
+				<li><span class="has-text-weight-bold">Humidity:</span> {{weather.main.humidity}}</li>
+				<li><span class="has-text-weight-bold">Temperature (Average):</span> {{weather.main.temp}}</li>
+				<li><span class="has-text-weight-bold">Temperature (High):</span> {{weather.main.temp_max}}</li>
+				<li><span class="has-text-weight-bold">Temperature (Low):</span> {{weather.main.temp_min}}</li>
+				<li><span class="has-text-weight-bold">Status:</span> {{weather.weather[0].main}} - {{weather.weather[0].description}}</li>
+			</ul>
+		</div>
+		<div class="column is-half">
+			<img class="image" src="https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg" alt="city">
+		</div>
+	</div>
+</div>
