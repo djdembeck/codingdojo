@@ -1,1 +1,35 @@
-<p>details works!</p>
+<div class="columns is-multiline">
+	<div class="column" *ngFor='let cake of cakeToShow; let i = index'>
+		<div class="card">
+			<div class="card-image">
+				<img src="{{cake.img}}" alt="Cake pic">
+			</div>
+			<div class="card-content">
+				<div class="content">
+					<p class="subtitle">{{cake.desc}}</p>
+					<p>- Baked by <span class="is-italic">{{cake.baker}}</span></p>
+				</div>
+				<div class="box has-background-white-bis">
+					<form (submit)="submitRating(cake._id)">
+						<p class="title is-size-5">Leave a review</p>
+						<div class="field">
+							<label class="label">Rating</label>
+							<div class="control">
+								<div class="select">
+									<select name="stars" [(ngModel)]="newRating.stars">
+										<option *ngFor='let i of [5,4,3,2,1]' [value]="i">{{i}} Stars</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Comment</label>
+							<textarea class="textarea" placeholder="e.g. Hello world" name="content" [(ngModel)]="newRating.content"></textarea>
+						</div>
+						<button class="button is-success">Rate</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
