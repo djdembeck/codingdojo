@@ -13,4 +13,7 @@ module.exports = function(app){
 	app.put("/authors/:id", function (request, response){
 		authors.edit(request, response);
 	})
+	app.delete("/authors/:id", function (request, response){
+		authors.delete(request, response);
+	})
 }

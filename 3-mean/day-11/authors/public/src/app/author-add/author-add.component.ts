@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
 	selector: "app-author-add",
 	templateUrl: "./author-add.component.html",
@@ -25,6 +23,6 @@ export class AuthorAddComponent implements OnInit {
 			console.log(data)
 			this._router.navigate(['/'])
 		})
-		this.newAuthor = { name: ""}
+		this.newAuthor = {name: ""}
 	}
 }

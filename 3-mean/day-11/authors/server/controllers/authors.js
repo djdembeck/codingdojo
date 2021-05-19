@@ -23,4 +23,9 @@ module.exports = {
 			.then(data => response.json(data))
 			.catch(err => response.json(err));
 	},
+	delete: function (request, response) {
+		Author.deleteOne({_id: request.params.id})
+			.then(data => response.json(data))
+			.catch(err => response.json(err));
+	},
 }

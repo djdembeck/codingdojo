@@ -22,4 +22,8 @@ export class HttpService {
 	showAuthor(author_id) {
 		return this._http.get<any>(`/authors/${author_id}`);
 	}
+
+	deleteAuthor(author_id) {
+		return this._http.delete<any>(`/authors/${author_id}`);
+	}
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: "app-author-table",
@@ -7,7 +8,10 @@ import { HttpService } from '../http.service';
 	styleUrls: ["./author-table.component.styl"],
 })
 export class AuthorTableComponent implements OnInit {
-	constructor(private _httpService: HttpService){}
+	constructor(
+		private _router: Router,
+		private _httpService: HttpService
+		){}
 
 	ngOnInit() {
 		this.getAuthorsFromService();
@@ -20,5 +24,12 @@ export class AuthorTableComponent implements OnInit {
 			console.log("Got our authors!", data)
 			this.authors = data;
 		});
+	}
+
+	onDeleteClick(author) {
+		this._httpService.deleteAuthor(author._id).subscribe(data => {
+			console.log(data)
+			this._router.navigate(['/'])
+		})
 	}
 }
