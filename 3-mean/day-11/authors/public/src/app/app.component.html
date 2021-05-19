@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Authors</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-</head>
-<body>
-	<section class="section has-background-link-dark">
-		<p class="title has-text-white has-text-centered">Favourite Authors</p>
-		<div class="container">
-			<div class="box has-background-danger-light">
-				<a href="#" class="is-size-5">Add an author</a>
-				<p class="title">We have quotes by:</p>
-				<table class="table is-bordered is-hoverable is-fullwidth" style="text-align: center;;">
-					<thead>
-						<tr>
-							<th>Author</th>
-							<th>Actions available</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="is-vcentered">John Smith</td>
-							<td><button class="button">Edit</button><button class="button">Delete</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-				<div class="box">
-					<div class="content">
-						<router-outlet></router-outlet> 
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Authors</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+		/>
+	</head>
+	<body>
+		<section class="section has-background-link-dark">
+			<p class="title has-text-white has-text-centered">Favourite Authors</p>
+			<div class="container">
+				<div class="box has-background-danger-light">
+					<div class="box">
+						<div class="content">
+							<router-outlet></router-outlet>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-</body>
+		</section>
+	</body>
 </html>

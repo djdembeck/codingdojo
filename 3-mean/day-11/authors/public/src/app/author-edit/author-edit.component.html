@@ -1,0 +1,15 @@
+<a [routerLink]="['/']" class="is-size-5">Home</a>
+<p class="title">Edit author:</p>
+<div class="container">
+	<div class="box">
+		<form (submit)="onEditSubmit()">
+			<div class="field">
+				<label class="label">Name</label>
+				<div class="control">
+					<input class="input" type="text" name="name" *ngIf="editAuthor" [(ngModel)]="editAuthor.name">
+				</div>
+			</div>
+			<input class="button is-success" type="submit" value="Submit">
+		</form>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<a [routerLink]="['/']" class="is-size-5">Home</a>
+<p class="title">Add a new author:</p>
+<div class="container">
+	<div class="box">
+		<form (submit)="onSubmit()">
+			<div class="field">
+				<label class="label">Name</label>
+				<div class="control">
+					<input class="input" type="text" name="author_name" [(ngModel)]="newAuthor.name" placeholder="e.g. Winston Churchill">
+				</div>
+			</div>
+			<input class="button is-success" type="submit" value="Submit">
+		</form>
+	</div>
+</div>
