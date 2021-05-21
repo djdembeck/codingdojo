@@ -11,10 +11,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor='let author of authors'>
-			<td class="is-vcentered">{{author.name}}</td>
+		<tr *ngFor="let author of authors">
+			<td class="is-vcentered">{{ author.name }}</td>
 			<td>
-				<button [routerLink]="'/edit/'+author._id" class="button">Edit</button><button (click)='onDeleteClick(author)' class="button">Delete</button>
+				<button [routerLink]="'/quotes/' + author._id" class="button">View Quotes</button><button [routerLink]="'/edit/' + author._id" class="button">Edit</button
+				><button (click)="onDeleteClick(author)" class="button">Delete</button>
 			</td>
 		</tr>
 	</tbody>

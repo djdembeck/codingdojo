@@ -7,9 +7,11 @@ import { AuthorTableComponent } from "./author-table/author-table.component";
 import { AuthorAddComponent } from "./author-add/author-add.component";
 import { AuthorEditComponent } from "./author-edit/author-edit.component";
 
-import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './http.service';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+import { HttpService } from "./http.service";
+import { FormsModule } from "@angular/forms";
+import { QuoteAddComponent } from "./quote-add/quote-add.component";
+import { QuoteTableComponent } from "./quote-table/quote-table.component";
 
 @NgModule({
 	declarations: [
@@ -17,13 +19,10 @@ import { FormsModule } from '@angular/forms';
 		AuthorTableComponent,
 		AuthorAddComponent,
 		AuthorEditComponent,
+		QuoteAddComponent,
+		QuoteTableComponent,
 	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule,
-		FormsModule,
-	],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 	providers: [HttpService],
 	bootstrap: [AppComponent],
 })

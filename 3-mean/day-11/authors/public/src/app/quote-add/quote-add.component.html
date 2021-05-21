@@ -1,17 +1,18 @@
 <a [routerLink]="['/']" class="is-size-5">Home</a>
-<p class="title">Edit author:</p>
+<p class="title" *ngIf="editAuthor">Provide a quote by {{editAuthor.name}}</p>
 <div class="container">
 	<div class="box">
-		<form (submit)="onEditSubmit()">
+		<form (submit)="onSubmit()">
 			<div class="field">
 				<label class="label">Name</label>
 				<div class="control">
 					<input
 						class="input"
 						type="text"
-						name="name"
+						name="quote_content"
 						*ngIf="editAuthor"
-						[(ngModel)]="editAuthor.name"
+						[(ngModel)]="newQuote.content"
+						placeholder="e.g. It is a good thing for an uneducated man to read books of quotations."
 					/>
 				</div>
 			</div>

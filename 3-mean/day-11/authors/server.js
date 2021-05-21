@@ -7,6 +7,10 @@ app.use(express.urlencoded({extended: true}));
 
 require('./server/config/routes.js')(app)
 
+app.all("*", (request, response, next) => {
+	response.sendFile(__dirname + "/public/dist/public/index.html")
+});
+
 app.listen(8000, function() {
 	console.log("listening on port 8000");
 })

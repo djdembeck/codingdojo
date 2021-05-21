@@ -1,0 +1,25 @@
+<a *ngIf="editAuthor" [routerLink]="'/new_quote/' + editAuthor._id" class="is-size-5">Add a quote</a>
+<p class="title" *ngIf="editAuthor">We have quotes by: {{editAuthor.name}}</p>
+<table
+	class="table is-bordered is-hoverable is-fullwidth"
+	style="text-align: center"
+	*ngIf="editAuthor"
+>
+	<thead>
+		<tr>
+			<th>Quote</th>
+			<th>Votes</th>
+			<th>Actions available</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let quote of editAuthor.quotes">
+			<td class="is-vcentered">{{ quote.content }}</td>
+			<td class="is-vcentered">{{ quote.votes }}</td>
+			<td>
+				<button (click)="onVoteClick(quote, 1)" class="button is-primary">Vote up</button><button (click)="onVoteClick(quote, -1)" class="button is-warning">Vote Down</button
+				><button (click)="onDeleteClick(quote)" class="button is-danger">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

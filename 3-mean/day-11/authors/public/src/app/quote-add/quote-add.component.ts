@@ -3,12 +3,13 @@ import { HttpService } from "../http.service";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-	selector: "app-author-edit",
-	templateUrl: "./author-edit.component.html",
-	styleUrls: ["./author-edit.component.styl"],
+	selector: "app-quote-add",
+	templateUrl: "./quote-add.component.html",
+	styleUrls: ["./quote-add.component.styl"],
 })
-export class AuthorEditComponent implements OnInit {
+export class QuoteAddComponent implements OnInit {
 	editAuthor: any;
+	newQuote: any;
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
@@ -21,6 +22,7 @@ export class AuthorEditComponent implements OnInit {
 			this.author_context = params["id"];
 			this.getThisAuthor(this.author_context);
 		});
+		this.newQuote = {content: "", votes: 0};
 	}
 
 	getThisAuthor(id) {
@@ -31,11 +33,13 @@ export class AuthorEditComponent implements OnInit {
 		});
 	}
 
-	onEditSubmit() {
-		this._httpService.editAuthor(this.editAuthor).subscribe((data) => {
-			console.log(data);
-			this._router.navigate(["/"]);
-		});
-		this.editAuthor = { name: "" };
+	onSubmit() {
+		this._httpService
+			.newQuote({ content: this.newQuote["content"], votes: this.newQuote["votes"] }, this.editAuthor._id)
+			.subscribe((data) => {
+				console.log(data);
+				this._router.navigate([`/quotes/${this.editAuthor._id}`]);
+			});
+			this.newQuote = {content: "", votes: 0};
 	}
 }
