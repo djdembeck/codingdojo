@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class QuoteAddComponent implements OnInit {
 	editAuthor: any;
+	error_set: any;
 	newQuote: any;
 	constructor(
 		private _route: ActivatedRoute,
@@ -38,7 +39,11 @@ export class QuoteAddComponent implements OnInit {
 			.newQuote({ content: this.newQuote["content"], votes: this.newQuote["votes"] }, this.editAuthor._id)
 			.subscribe((data) => {
 				console.log(data);
-				this._router.navigate([`/quotes/${this.editAuthor._id}`]);
+				if (data.errors) {
+					this.error_set = data.errors
+				} else {
+					this._router.navigate([`/quotes/${this.editAuthor._id}`]);
+				}				
 			});
 			this.newQuote = {content: "", votes: 0};
 	}

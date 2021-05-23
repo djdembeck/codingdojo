@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 	styleUrls: ["./author-add.component.styl"],
 })
 export class AuthorAddComponent implements OnInit {
+	error_set: any;
 	newAuthor: { name: string };
 	constructor(private _router: Router, private _httpService: HttpService) {}
 
@@ -20,7 +21,11 @@ export class AuthorAddComponent implements OnInit {
 			.newAuthor({ name: this.newAuthor["name"] })
 			.subscribe((data) => {
 				console.log(data);
-				this._router.navigate(["/"]);
+				if (data.errors) {
+					this.error_set = data.errors
+				} else {
+					this._router.navigate(["/"]);
+				}
 			});
 		this.newAuthor = { name: "" };
 	}

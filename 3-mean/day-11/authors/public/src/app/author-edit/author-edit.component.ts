@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class AuthorEditComponent implements OnInit {
 	editAuthor: any;
+	error_set: any;
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
@@ -34,7 +35,11 @@ export class AuthorEditComponent implements OnInit {
 	onEditSubmit() {
 		this._httpService.editAuthor(this.editAuthor).subscribe((data) => {
 			console.log(data);
-			this._router.navigate(["/"]);
+			if (data.errors) {
+				this.error_set = data.errors
+			} else {
+				this._router.navigate(["/"]);
+			}
 		});
 		this.editAuthor = { name: "" };
 	}
