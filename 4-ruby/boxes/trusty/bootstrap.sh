@@ -15,11 +15,13 @@ source /home/vagrant/.rvm/scripts/rvm
 rvm requirements
 # install Ruby and make 2.3.1 the default
 echo installing ruby
-rvm install 2.3.8
-rvm use 2.3.8 --default
+rvm install 2.3.1
+rvm use 2.3.1 --default
 # install Bundler and Rails
 echo installing bundler and rails
 gem install bundler -N
+gem install sprockets -v 3.7.2
+gem install nokogiri -v 1.10.10
 gem install rails -v 4.2.7 -N
 # install postgres and its dependencies
 echo installing psql and its dependencies
