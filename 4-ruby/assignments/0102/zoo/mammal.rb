@@ -1,7 +1,7 @@
 class Mammal
 	attr_accessor :name, :health
-	def initialize (name)
-		@health = 150
+	def initialize (name, health=150)
+		@health = health
 		@name = name
 	end
 

@@ -1,7 +1,6 @@
 require_relative 'mammal'
 
 class Dog < Mammal
-
 	def initialize (name)
 		super(name)
 	end
