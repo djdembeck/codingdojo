@@ -1,11 +1,11 @@
 class Human
 	attr_accessor :strength, :intelligence, :stealth, :health
 
-	def initialize
-		@strength = 3
-		@intelligence = 3
-		@stealth = 3
-		@health = 100
+	def initialize (strength: 3, intelligence: 3, stealth: 3, health: 100)
+		@strength = strength
+		@intelligence = intelligence
+		@stealth = stealth
+		@health = health
 	end
 
 	def attack (target)
@@ -18,7 +18,3 @@ class Human
 		end
 	end
 end
-
-hooman1 = Human.new
-hooman2 = Human.new
-hooman2.attack(hooman1)
