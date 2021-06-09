@@ -1,0 +1,23 @@
+// DB stuff
+gem install bundler -v 2.0.0.pre.3
+rails g model User first_name:string last_name:string email_address:string age:integer
+rake db:migrate
+
+// User creation
+	// Method 1
+	User.create(first_name:"Charles", last_name:"Boyle")
+
+	// Method 2
+	user.first_name = "Jake"
+	user.last_name = "Peralta"
+	user.valid?
+	user.errors.full_messages
+	user.save
+
+// User listing/finding
+User.all
+User.find_by(last_name: "Boyle")
+User.order(first_name: :desc)
+
+// User delete by id
+User.find(2).destroy
