@@ -7,6 +7,9 @@ rake db:migrate
 	// Method 1
 	User.create(first_name:"Charles", last_name:"Boyle")
 
+	// Create with has_many (one to many)
+	Ninja.create(first_name:"Raph", last_name:"Turtle", dojo:Dojo.find(3))
+
 	// Method 2
 	user.first_name = "Jake"
 	user.last_name = "Peralta"
@@ -18,6 +21,10 @@ rake db:migrate
 User.all
 User.find_by(last_name: "Boyle")
 User.order(first_name: :desc)
+
+	// Find all with relationships (one to many)
+	Dojo.find(1).ninjas
+	Dojo.find(1).ninjas.select(:first_name).order(first_name: :desc)
 
 // User delete by id
 User.find(2).destroy
