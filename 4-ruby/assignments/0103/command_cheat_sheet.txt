@@ -22,9 +22,15 @@ User.all
 User.find_by(last_name: "Boyle")
 User.order(first_name: :desc)
 
+// find where id is less than 5
+Blog.where("id < ?", 5)
+
 	// Find all with relationships (one to many)
 	Dojo.find(1).ninjas
 	Dojo.find(1).ninjas.select(:first_name).order(first_name: :desc)
+
+	// One to many children sorted
+	Blog.last.posts.order(title: :desc)
 
 // User delete by id
 User.find(2).destroy
