@@ -22,6 +22,13 @@ User.all
 User.find_by(last_name: "Boyle")
 User.order(first_name: :desc)
 
+// Many to many stuffs
+	// Connect tables
+	Owner.create(user: User.last, blog: Blog.find(5))
+
+	// Find connections
+	User.find(1).own_blogs
+
 // find where id is less than 5
 Blog.where("id < ?", 5)
 
@@ -29,8 +36,24 @@ Blog.where("id < ?", 5)
 	Dojo.find(1).ninjas
 	Dojo.find(1).ninjas.select(:first_name).order(first_name: :desc)
 
+	// select stuffs
+	Blog.select("*").joins(posts: :user).where(id:5)
+	Blog.select("posts.blog_id, posts.user_id, blogs.name, posts.title, posts.content, users.first_name, users.last_name").joins(posts: :user).where(id:5)
+
 	// One to many children sorted
 	Blog.last.posts.order(title: :desc)
+
+	// add reference to existing table
+	rails g migration add_user_to_post user:references
+
+// Update in bulk
+
+Blog.find_each do |blogs|
+	owner = Owner.find_by(blog: blogs)
+	owner.user = User.find(3)
+	owner.save
+end
+
 
 // User delete by id
 User.find(2).destroy
