@@ -1,0 +1,15 @@
+Comment.create(comentable_id: 1, comentable_type: "User", text:"We're no strangers to love")
+
+Comment.create(comentable_id: 1, comentable_type: "Post", text:"You know the rules, and so do I")
+
+Comment.create(comentable_id: 1, comentable_type: "Blog", text:"A full commitment's what I'm thinking of")
+
+Comment.create(comentable_id: 1, comentable_type: "Message", text:"You wouldn't get this from any other guy")
+
+comment = Comment.find(5)
+comment.text = "I just wanna tell you how I'm feeling"
+comment.save
+
+comment.delete
+
+Comment.find(6).destroy

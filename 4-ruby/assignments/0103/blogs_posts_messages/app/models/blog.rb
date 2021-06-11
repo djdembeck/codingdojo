@@ -4,7 +4,9 @@ class Blog < ActiveRecord::Base
 	has_many :users, through: :owners, dependent: :destroy
 	# Post relations
 	has_many :posts, dependent: :destroy
-	# Validations
 	has_many :messages, through: :posts
+	# Comments
+	has_many :comments, as: :comentable
+	# Validations
 	validates :name, :description, presence: true
 end

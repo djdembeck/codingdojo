@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 	has_many :messages, through: :posts
 	# Post relationships
 	has_many :posts
+	# Comments
+	has_many :comments, as: :comentable
 end
