@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210610221418) do
+ActiveRecord::Schema.define(version: 20210611165022) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20210610221418) do
   end
 
   add_index "comments", ["comentable_type", "comentable_id"], name: "index_comments_on_comentable_type_and_comentable_id"
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.integer  "post_id"
