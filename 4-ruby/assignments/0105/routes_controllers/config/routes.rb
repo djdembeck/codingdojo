@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 	get "say/hello/michael" => "hello#Say3"
 	get "times" => "hello#Times"
 	get "times/restart" => "hello#restart"
+	get "users/total" => "users#total"
+
+	resources :users
 end
