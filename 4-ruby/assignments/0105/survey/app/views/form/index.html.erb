@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Optional Survey</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<div class="modal is-active">
+		<div class="modal-background has-background-dark"></div>
+		<div class="modal-content">
+			<form action='/create' method='post' class="box">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<div class="content">
+					<h2>Optional Survey</h2>
+				</div>
+					<div class="field">
+						<label class="label">Your Name:</label>
+						<div class="control">
+							<input class="input" type="text" name="form[name]" placeholder="eg John Smith">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Dojo Location:</label>
+						<div class="select">
+							<select name="form[location]" id="dojo_location">
+								<option value="Dallas">Dallas</option>
+								<option value="Nowhere Important">No where else matters</option>
+							</select>
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Favourite Language:</label>
+						<div class="select">
+							<select name="form[favlang]" id="fav_lang">
+								<option value="Python">Python</option>
+								<option value="MERN">MERN</option>
+								<option value="Java">Java</option>
+								<option value="C#">C#</option>
+							</select>
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Comment (optional):</label>
+						<textarea class="textarea" placeholder="e.g. Hello world" name="form[comment]"></textarea>
+					</div>
+				<button class="button is-primary" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
