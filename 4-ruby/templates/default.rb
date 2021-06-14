@@ -1,3 +1,13 @@
+#### Description
+# - This runs all the modifications to Gemfile we make (hirb, versions for rails and sqlite, and rails_footnotes)
+# - Runs `bundle install` for you
+# - Sets up first model if you want
+# - Sets up controller (either using model name or asks for a name if no-model mode)
+# - Installs rails_footnotes
+# - Runs `rake db:migrate` after making a model
+# - Sets up RESTful routes
+####
+
 ### User interaction
 model_name = ask("What should the model name be called? (eg, User)") if yes?("Make a model?")
 
