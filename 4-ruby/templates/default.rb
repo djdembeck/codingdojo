@@ -87,7 +87,7 @@ puts "Migrating database..." if model_name
 puts "**********************" if model_name
 run "rake db:migrate", abort_on_failure: true if model_name
 
-run "sed -i '2iresources :#{controller_name.downcase.pluralize}' config/routes.rb"
+run "sed -i '2i  resources :#{controller_name.downcase.pluralize}' config/routes.rb"
 ###
 
 puts "*****"
