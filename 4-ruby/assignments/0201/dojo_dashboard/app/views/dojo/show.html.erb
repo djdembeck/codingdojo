@@ -1,2 +1,40 @@
-<h1>Dojo#show</h1>
-<p>Find me in app/views/dojo/show.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>All the Dojos</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+		/>
+	</head>
+	<body>
+		<section class="section has-background-link-dark">
+			<p class="title has-text-white has-text-centered">Dojos</p>
+			<div class="container">
+			<% if flash[:success] %>
+				<div class="notification is-success">
+					<p>
+						<%= flash[:success] %>
+					</p>
+				</div>
+			<% end %>
+				<div class="box">
+				<div class="content">
+					<a class="is-size=5" href="/dojo">Home</a>
+					<p class="title">Dojo <%= @dojo.branch %></p>
+				</div>
+					<div class="content">
+						<blockquote>
+							<p>Address: <%= @dojo.street %></p>
+							<p>City: <%= @dojo.city %>; State: <%= @dojo.state %></p>
+						</blockquote>
+						<a href="/dojo/<%= @dojo.id %>/edit" class="button is-warning">Edit</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

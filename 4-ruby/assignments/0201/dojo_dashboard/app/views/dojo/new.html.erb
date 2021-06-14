@@ -24,43 +24,41 @@
 				</ul>
 			</div>
 		<% end %>
-			<div class="box has-background-danger-light">
-				<form action='/dojo' method='post' class="box">
-					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-					<div class="content">
-						<a class="is-size=5" href="/dojo">Home</a>
-						<p class="title">New User</p>
-					</div>
-						<div class="field">
-							<label class="label">Branch:</label>
-							<div class="control">
-								<input class="input" type="text" name="dojo[branch]" placeholder="eg CD Seattle">
-							</div>
-						</div>
-
-						<div class="field">
-							<label class="label">Street:</label>
-							<div class="control">
-								<input class="input" type="text" name="dojo[street]" placeholder="eg 1111 Main St">
-							</div>
-						</div>
-
-						<div class="field">
-							<label class="label">City:</label>
-							<div class="control">
-								<input class="input" type="text" name="dojo[city]" placeholder="eg Seattle">
-							</div>
-						</div>
-
-						<div class="field">
-							<label class="label">State:</label>
-							<div class="control">
-								<input class="input" type="text" name="dojo[state]" placeholder="eg WA">
-							</div>
-						</div>
-						<button class="button is-primary" type="submit">Submit</button>
-					</form>
+			<form action='/dojo' method='post' class="box">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<div class="content">
+					<a class="is-size=5" href="/dojo">Home</a>
+					<p class="title">New User</p>
 				</div>
+					<div class="field">
+						<label class="label">Branch:</label>
+						<div class="control">
+							<input class="input" type="text" name="dojo[branch]" placeholder="eg CD Seattle">
+						</div>
+					</div>
+
+					<div class="field">
+						<label class="label">Street:</label>
+						<div class="control">
+							<input class="input" type="text" name="dojo[street]" placeholder="eg 1111 Main St">
+						</div>
+					</div>
+
+					<div class="field">
+						<label class="label">City:</label>
+						<div class="control">
+							<input class="input" type="text" name="dojo[city]" placeholder="eg Seattle">
+						</div>
+					</div>
+
+					<div class="field">
+						<label class="label">State:</label>
+						<div class="control">
+							<input class="input" type="text" name="dojo[state]" placeholder="eg WA">
+						</div>
+					</div>
+					<button class="button is-primary" type="submit">Submit</button>
+				</form>
 			</div>
 		</div>
 	</section>

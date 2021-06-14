@@ -19,15 +19,22 @@ class DojoController < ApplicationController
   end
 
   def show
+	@dojo = Dojo.find(params[:id])
   end
 
   def edit
+	@dojo = Dojo.find(params[:id])
   end
 
   def update
+	@dojo = Dojo.find_by(id: params[:id])
+	@dojo.update(dojo_params)
+	redirect_to '/dojo'
   end
 
   def destroy
+	Dojo.find(params[:id]).destroy
+	redirect_to '/dojo'
   end
 end
 
