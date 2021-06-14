@@ -1,5 +1,3 @@
-require 'open-uri'
-
 ### User interaction
 model_name = ask("What should the model name be called? (eg, User)") if yes?("Make a model?")
 
