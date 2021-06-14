@@ -11,50 +11,51 @@
 	<section class="section has-background-link-dark">
 		<p class="title has-text-white has-text-centered">Dojos</p>
 		<div class="container">
-		<% if @dojo.errors.any? %>
+		<% if @student.errors.any? %>
 			<div class="notification is-danger">
 				<h2>
-					<%= pluralize(@dojo.errors.count, "error")%> prohibited this dojo from being saved:
+					<%= pluralize(@student.errors.count, "error")%> prohibited this student from being saved:
 				</h2>
 
 				<ul>
-				<% @dojo.errors.full_messages.each do |msg| %>
+				<% @student.errors.full_messages.each do |msg| %>
 					<li><%= msg %></li>
 				<% end %>
 				</ul>
 			</div>
 		<% end %>
-			<form action='/dojos' method='post' class="box">
+			<form action='/dojos/<%= @student.dojo_id %>/students/<%= @student.id %>' method='post' class="box">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="patch">
 				<div class="content">
 					<a class="is-size=5" href="/dojos">Home</a>
-					<p class="title">New Dojo</p>
+					<p class="title">New Student</p>
 				</div>
 					<div class="field">
-						<label class="label">Branch:</label>
+						<label class="label">First Name:</label>
 						<div class="control">
-							<input class="input" type="text" name="dojo[branch]" placeholder="eg CD Seattle">
+							<input class="input" type="text" name="student[first_name]" placeholder="eg John" value="<%= @student.first_name %>">
 						</div>
 					</div>
 
 					<div class="field">
-						<label class="label">Street:</label>
+						<label class="label">Last Name:</label>
 						<div class="control">
-							<input class="input" type="text" name="dojo[street]" placeholder="eg 1111 Main St">
+							<input class="input" type="text" name="student[last_name]" placeholder="eg Smith" value="<%= @student.last_name %>">
 						</div>
 					</div>
 
 					<div class="field">
-						<label class="label">City:</label>
+						<label class="label">Email Address:</label>
 						<div class="control">
-							<input class="input" type="text" name="dojo[city]" placeholder="eg Seattle">
+							<input class="input" type="email" name="student[email]" placeholder="eg jsmith@example.com" value="<%= @student.email %>">
 						</div>
 					</div>
 
 					<div class="field">
-						<label class="label">State:</label>
-						<div class="control">
-							<input class="input" type="text" name="dojo[state]" placeholder="eg WA">
+						<label class="label">Dojo:</label>
+						<div class="select">
+							<%= select_tag "student[dojo_id]", options_from_collection_for_select(Dojo.all, "id", "branch", @student.dojo_id) %>
 						</div>
 					</div>
 					<button class="button is-primary" type="submit">Submit</button>

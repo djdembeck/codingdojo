@@ -24,15 +24,11 @@
 				<div class="box">
 				<div class="content">
 					<a class="is-size=5" href="/dojos">Home</a>
-					<p class="title"><%= @dojo.city %> Dojo <a href="/dojos/<%= @dojo.id %>/edit" class="button is-warning">Edit</a></p>
+					<p class="title"><%= @dojo.city %>'s <%= @student.first_name %> <%= @student.last_name %></p>
 				</div>
 					<div class="content">
-						<blockquote>
-							<p>Address: <%= @dojo.street %></p>
-							<p>City: <%= @dojo.city %>; State: <%= @dojo.state %></p>
-						</blockquote>
-						<div class="block"></div>
-						<p class="title">Student Roster</p>
+						<p>Email: <%= @student.email %></p>
+												<p class="title">Student Roster</p>
 						<table
 							class="table is-bordered is-hoverable is-fullwidth"
 							style="text-align: center"
@@ -47,16 +43,18 @@
 							</thead>
 							<tbody>
 								<% @students.each do |student| %>
-								<tr>
-									<td class="is-vcentered"><%= student.first_name %></td>
-									<td class="is-vcentered"><%= student.last_name %></td>
-									<td class="is-vcentered"><%= student.email %></td>
-									<td class="is-vcentered"><a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>">Show</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>/edit">Edit</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>" data-method="delete">Destroy</a></td>
-								</tr>
+									<% unless student.id == @student.id %>
+									<tr>
+										<td class="is-vcentered"><%= student.first_name %></td>
+										<td class="is-vcentered"><%= student.last_name %></td>
+										<td class="is-vcentered"><%= student.email %></td>
+										<td class="is-vcentered"><a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>">Show</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>/edit">Edit</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>" data-method="delete">Destroy</a></td>
+									</tr>
+									<% end %>
 								<% end %>
 							</tbody>
 						</table>
-						<a class="button is-primary" href="/dojos/<%= @dojo.id %>/students/new">Add a Student</a>
+						<a href="/dojos/<%= @student.id %>/edit" class="button is-warning">Edit</a>
 					</div>
 				</div>
 			</div>
