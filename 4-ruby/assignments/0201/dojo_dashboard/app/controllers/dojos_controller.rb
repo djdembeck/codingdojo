@@ -1,4 +1,4 @@
-class DojoController < ApplicationController
+class DojosController < ApplicationController
   def index
 	@dojos = Dojo.all
 	@dojo_count = Dojo.all.count
@@ -12,7 +12,7 @@ class DojoController < ApplicationController
 	@dojo = Dojo.new(dojo_params)
 	if @dojo.save
 		flash[:success] = "Dojo submitted successfully"
-		redirect_to '/dojo'
+		redirect_to '/dojos'
 	else
 		render :new
 	end
@@ -29,12 +29,12 @@ class DojoController < ApplicationController
   def update
 	@dojo = Dojo.find_by(id: params[:id])
 	@dojo.update(dojo_params)
-	redirect_to '/dojo'
+	redirect_to '/dojos'
   end
 
   def destroy
 	Dojo.find(params[:id]).destroy
-	redirect_to '/dojo'
+	redirect_to '/dojos'
   end
 end
 

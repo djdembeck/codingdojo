@@ -23,7 +23,7 @@
 			<% end %>
 				<div class="box">
 					<div class="content">
-						<a class="is-size=5" href="/dojo/new">Add a Dojo</a>
+						<a class="is-size=5" href="/dojos/new">Add a Dojo</a>
 						<p class="title">Listing <%= @dojo_count %> Dojos</p>
 						<table
 							class="table is-bordered is-hoverable is-fullwidth"
@@ -45,7 +45,7 @@
 									<td class="is-vcentered"><%= dojo.street %></td>
 									<td class="is-vcentered"><%= dojo.city %></td>
 									<td class="is-vcentered"><%= dojo.state %></td>
-									<td class="is-vcentered"><a href="/dojo/<%= dojo.id %>">Show</a> | <a href="/dojo/<%= dojo.id %>/edit">Edit</a> | <a href="/dojo/<%= dojo.id %>" data-method="delete">Destroy</a></td>
+									<td class="is-vcentered"><a href="/dojos/<%= dojo.id %>">Show</a> | <a href="/dojos/<%= dojo.id %>/edit">Edit</a> | <a href="/dojos/<%= dojo.id %>" data-method="delete">Destroy</a></td>
 								</tr>
 								<% end %>
 							</tbody>
