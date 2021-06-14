@@ -1,2 +1,68 @@
-<h1>Dojo#new</h1>
-<p>Find me in app/views/dojo/new.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<section class="section has-background-link-dark">
+		<p class="title has-text-white has-text-centered">Dojos</p>
+		<div class="container">
+		<% if @dojo.errors.any? %>
+			<div class="notification is-danger">
+				<h2>
+					<%= pluralize(@dojo.errors.count, "error")%> prohibited this post from being saved:
+				</h2>
+
+				<ul>
+				<% @dojo.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+			<div class="box has-background-danger-light">
+				<form action='/dojo' method='post' class="box">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<div class="content">
+						<a class="is-size=5" href="/dojo">Home</a>
+						<p class="title">New User</p>
+					</div>
+						<div class="field">
+							<label class="label">Branch:</label>
+							<div class="control">
+								<input class="input" type="text" name="dojo[branch]" placeholder="eg CD Seattle">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Street:</label>
+							<div class="control">
+								<input class="input" type="text" name="dojo[street]" placeholder="eg 1111 Main St">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">City:</label>
+							<div class="control">
+								<input class="input" type="text" name="dojo[city]" placeholder="eg Seattle">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">State:</label>
+							<div class="control">
+								<input class="input" type="text" name="dojo[state]" placeholder="eg WA">
+							</div>
+						</div>
+						<button class="button is-primary" type="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

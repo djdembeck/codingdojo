@@ -14,10 +14,18 @@
 		<section class="section has-background-link-dark">
 			<p class="title has-text-white has-text-centered">Dojos</p>
 			<div class="container">
+			<% if flash[:success] %>
+				<div class="notification is-success">
+					<p>
+						<%= flash[:success] %>
+					</p>
+				</div>
+			<% end %>
 				<div class="box has-background-danger-light">
 					<div class="box">
 						<div class="content">
-							<p class="title">Listing x Dojos</p>
+							<a class="is-size=5" href="/dojo/new">Add a Dojo</a>
+							<p class="title">Listing <%= @dojo_count %> Dojos</p>
 							<table
 								class="table is-bordered is-hoverable is-fullwidth"
 								style="text-align: center"
