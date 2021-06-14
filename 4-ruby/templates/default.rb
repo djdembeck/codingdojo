@@ -75,7 +75,7 @@ if !controller_name
 	controller_name = model_name
 end
 
-generate("controller", controller_name, "index", "new", "create", "show", "edit", "update", "destroy", "--skip-routes")
+generate("controller", controller_name.pluralize, "index", "new", "create", "show", "edit", "update", "destroy", "--skip-routes")
 
 puts "******************************"
 puts "Installing rails_footnotes..."
