@@ -1,0 +1,58 @@
+<% content_for :title, "Posts" %>
+<% content_for :left_column do %>
+	<p class="title">All Posts</p>
+	<table
+		class="table is-bordered is-hoverable is-fullwidth"
+		style="text-align: center"
+	>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @posts.each do |post| %>
+			<tr>
+				<td class="is-vcentered"><%= post.title %></td>
+				<td class="is-vcentered"><%= post.content %></td>
+				<td class="is-vcentered"><%= post.user.first_name %> <%= post.user.last_name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<% content_for :middle_column do %>
+	<p class="title">New Post</p>
+	<form action='/posts' method='post'>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="field">
+			<label class="label">Title:</label>
+			<div class="control">
+				<input class="input" type="text" name="post[title]">
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label">Content:</label>
+			<div class="control">
+				<textarea class="textarea" name="post[content]"></textarea>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label">Author:</label>
+			<div class="select">
+				<%= select_tag "post[user_id]", options_from_collection_for_select(User.all, "id", "first_name" "") %>
+			</div>
+		</div>
+		<button class="button is-primary" type="submit">Submit</button>
+	</form>
+<% end %>
+
+<% content_for :right_column do %>
+	<p class="title">Go to Users Page</p>
+	<a class="button is-link" href="/users">All Users</a>
+<% end %>

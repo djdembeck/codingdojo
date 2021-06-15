@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= yield :title %></title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<section class="section has-background-link-dark">
+			<p class="title has-text-white has-text-centered">Dojos</p>
+			<div class="container">
+			<% if flash[:success] %>
+				<div class="notification is-success">
+					<p>
+						<%= flash[:success] %>
+					</p>
+				</div>
+			<% end %>
+			<div class="box has-background-dark">
+				<div class="content">
+					<div class="columns">
+						<div class="column">
+							<div class="box">
+								<%= yield :left_column %>
+							</div>
+						</div>
+						<div class="column">
+							<div class="box">
+								<%= yield :right_column %>
+							</div>
+						</div>
+					<%= yield %>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

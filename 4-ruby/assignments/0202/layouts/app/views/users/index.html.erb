@@ -1,0 +1,70 @@
+<% content_for :title, "Users" %>
+<% content_for :left_column do %>
+	<p class="title">All Users</p>
+	<table
+		class="table is-bordered is-hoverable is-fullwidth"
+		style="text-align: center"
+	>
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Favorite Language</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td class="is-vcentered"><%= user.first_name %></td>
+				<td class="is-vcentered"><%= user.last_name %></td>
+				<td class="is-vcentered"><%= user.fav_lang %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<% content_for :right_column do %>
+	<% if @user.errors.any? %>
+		<div class="notification is-danger">
+			<h2>
+				<%= pluralize(@user.errors.count, "error")%> prohibited this user from being saved:
+			</h2>
+
+			<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<form action='/users' method='post'>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="content">
+			<p class="title">New User</p>
+		</div>
+			<div class="field">
+				<label class="label">First Name:</label>
+				<div class="control">
+					<input class="input" type="text" name="user[first_name]" placeholder="eg John">
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Last Name:</label>
+				<div class="control">
+					<input class="input" type="text" name="user[last_name]" placeholder="eg Smith">
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Favorite Language:</label>
+				<div class="control">
+					<input class="input" type="text" name="user[fav_lang]" placeholder="eg Python">
+				</div>
+			</div>
+			<button class="button is-primary" type="submit">Submit</button>
+		</form>
+		<div class="block"></div>
+		<a class="button is-link" href="/posts">All Posts</a>
+<% end %>
