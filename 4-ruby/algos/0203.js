@@ -26,6 +26,22 @@ class SinglyLinkedList {
 		return this;
 	}
 
+	addBack(val) {
+		const newTail = new Node(val);
+		let runner = this.head;
+
+		if (runner === null) {
+			this.head = newTail;
+		} else {
+			while (runner.next) {
+				runner = runner.next;
+			}
+			runner.next = newTail;
+		}
+
+		return this;
+	}
+
 	isEmpty() {
 		return this.head === null;
 	}
@@ -79,6 +95,30 @@ class SinglyLinkedList {
 		}
 		return this;
 	}
+
+	unFlatten() {
+		let runner = this.head;
+		let count = 0;
+		let mySLL = new SinglyLinkedList();
+		let yourSLL = new SinglyLinkedList();
+		let herSLL = new SinglyLinkedList();
+		let hisSLL = new SinglyLinkedList();
+		let sllArr = [mySLL, yourSLL, herSLL, hisSLL];
+		let index = 0;
+		while (runner) {
+			if (count % 5 == 0) {
+				console.log("Creating new SLL");
+				var thisJuan = sllArr[index];
+				index++;
+			}
+			console.log(count, runner.val);
+			thisJuan.addBack(runner.val);
+			count++;
+			runner = runner.next;
+		}
+		console.log(sllArr);
+		return sllArr;
+	}
 }
 
 mySLL = new SinglyLinkedList();
@@ -101,4 +141,4 @@ mySLL
 	.makeChild(hisSLL.head, 3);
 mySLL.flatten2();
 console.log("mySLL after flatten:");
-mySLL.printVals();
+mySLL.unFlatten();
