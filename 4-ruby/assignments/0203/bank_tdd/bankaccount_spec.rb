@@ -4,9 +4,6 @@ RSpec.describe BankAccount do
 	before(:each) do 
 		@charles = BankAccount.new
 		@charles.deposit("checking", 100).deposit("saving", 100).withdraw("checking", 1)
-
-		@jake = BankAccount.new
-		@jake.deposit("checking", 100).deposit("saving", 10).withdraw("checking", 90)
 	end
 
 	it 'has a getter for checking account balance' do
