@@ -11,7 +11,7 @@
 ### User interaction
 model_name = ask("What should the model name be called? (eg, User)") if yes?("Make a model?")
 
-model_fields = ask("What should the model fields be? (eg, \"first_name:string\" \"last_name:string\" \"address:text\")") if model_name
+model_fields = ask("What should the model fields be? (eg, \"first_name:string\" \"last_name:string\" \"email:string\")") if model_name
 
 # If no model mode
 controller_name = ask("What should the controller name be? (eg, User)") if !model_name
@@ -29,8 +29,10 @@ run "touch Gemfile"
 
 add_source "https://rubygems.org" do
 	gem_group :development, :test do
-		gem "rspec-rails"
-		gem "listen"
+		gem 'rspec-rails'
+		gem 'factory_bot_rails'
+		gem 'capybara'
+		gem 'listen'
 	end
 end
 
