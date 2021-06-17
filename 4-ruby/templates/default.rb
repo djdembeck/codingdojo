@@ -27,6 +27,13 @@ puts "Making Gemfile and adding to it..."
 puts "***********************************"
 run "touch Gemfile"
 
+add_source "https://rubygems.org" do
+	gem_group :development, :test do
+		gem "rspec-rails"
+		gem "listen"
+	end
+end
+
 # Run 'rails generate rails_footnotes:install' after bundle install
 gem 'rails-footnotes', '~> 4.0'
 # run 'Hirb.enable' in 'rails console'
@@ -81,6 +88,11 @@ puts "******************************"
 puts "Installing rails_footnotes..."
 puts "******************************"
 generate("rails_footnotes:install")
+
+puts "******************************"
+puts "Installing rspec..."
+puts "******************************"
+generate("rspec:install")
 
 puts "**********************" if model_name
 puts "Migrating database..." if model_name
