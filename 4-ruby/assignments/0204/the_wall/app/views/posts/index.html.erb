@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dojo Wall</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+	<nav class="navbar" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="/posts">
+				<p class="has-text-weight-bold is-size-4">Dojo Wall</p>
+			</a>
+		</div>
+		
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<p>Welcome, <%= @user['username'] %></p>
+			</div>
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button is-warning" href="/users/destroy" data-method="delete">
+						Log out
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<section class="section has-background-link-dark">
+		<div class="container">
+			<% if flash[:success] %>
+				<div class="notification is-success">
+					<p>
+						<%= flash[:success] %>
+					</p>
+				</div>
+			<% end %>
+			<% if flash[:errors] %>
+				<div class="notification is-danger">
+					<ul>
+						<% flash[:errors].each do |error| %>
+							<li><%= error %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<div class="block"></div>
+		</div>
+		<div class="container">
+			<div class="box">
+				<form action='/posts' method='post'>
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<div class="field">
+						<label class="label is-size-5">Post a message</label>
+						<div class="control">
+							<textarea class="textarea" name="post[content]" placeholder="e.g. Hello world"></textarea>
+						</div>
+					</div>
+					<div class="field">
+						<div class="control">
+							<button class="button is-link">Post a message</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="block"></div>
+			<% @posts.each do |post| %>
+			<div class="card">
+				<div class="card-content">
+					<div class="label is-size-6">
+						<%= post.user.username %> - <%= post.created_at %>
+					</div>
+					<div class="content">
+						<p><%= post.content %></p>
+						<ul style="list-style-type: none">
+							<% post.comments.each do |comment| %>
+							<li>
+								<div class="label is-size-6">
+									<%= comment.user.username %> - <%= comment.created_at %>
+								</div>
+									<div class="content">
+										<p><%= comment.content %></p>
+									</div>
+									<div class="block"></div>
+								<% end %>
+							</li>
+							<li>
+								<form action="/comments" method="post">
+									<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+									<div class="field">
+										<label class="label is-size-5">Comment</label>
+										<div class="control">
+											<textarea class="textarea" name="comment[content]" placeholder="e.g. Hello world"></textarea>
+											<input type="hidden" name="comment[post_id]" value=<%= post.id%>>
+										</div>
+									</div>
+									<div class="field">
+										<div class="control">
+											<button class="button is-link">Comment</button>
+										</div>
+									</div>
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="block"></div>
+			<% end %>
+		</div>
+	</section>
+</body>
+</html>

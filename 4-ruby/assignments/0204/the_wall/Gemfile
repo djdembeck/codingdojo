@@ -1,0 +1,22 @@
+
+source 'https://rubygems.org' do
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'listen'
+end
+
+end
+
+gem 'rails-footnotes', '~> 4.0'
+gem 'hirb'
+gem 'sqlite3', '~> 1.3.13'
+gem 'rails'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
