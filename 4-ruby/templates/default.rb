@@ -27,21 +27,12 @@ puts "Making Gemfile and adding to it..."
 puts "***********************************"
 run "touch Gemfile"
 
-add_source "https://rubygems.org" do
-	gem_group :development, :test do
-		gem 'rspec-rails'
-		gem 'factory_bot_rails'
-		gem 'capybara'
-		gem 'listen'
-	end
-end
-
 # Run 'rails generate rails_footnotes:install' after bundle install
 gem 'rails-footnotes', '~> 4.0'
 # run 'Hirb.enable' in 'rails console'
 gem 'hirb'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.13'
+# gem 'sqlite3', '~> 1.3.13'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use SCSS for stylesheets
@@ -61,13 +52,28 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.16'
+
+gem 'pg', '~> 0.20'
 
 puts "****************************"
 puts "Running bundle installer..."
 puts "****************************"
 run "bundle install"
 ###
+
+# add_source "https://rubygems.org"
+
+gem_group :development, :test do
+	gem 'rspec'
+	gem 'rspec-rails'
+	gem 'factory_bot_rails'
+	gem 'capybara'
+end
+
+run "bundle install"
+
+run "rake db:create"
 
 ### Generations
 puts "********************" if model_name
