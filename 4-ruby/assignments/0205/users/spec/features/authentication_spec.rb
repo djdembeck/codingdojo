@@ -5,7 +5,7 @@ feature 'authentication' do
   end
   feature "user sign-in" do
     scenario 'visits sign-in page' do
-      visit '/users/new'
+      visit '/sessions/new'
       expect(page).to have_field('Email')
       expect(page).to have_field('Password')
     end
@@ -16,12 +16,12 @@ feature 'authentication' do
     end
     scenario 'does not sign in user if email is not found' do
       log_in email: 'wrong email'
-      expect(current_path).to eq("/users/new")
+      expect(current_path).to eq("/sessions/new")
       expect(page).to have_text('Invalid Combination')
     end    
     scenario 'does not sign in user if email/password combination is invalid' do
       log_in password: 'wrong password'
-      expect(current_path).to eq("/users/new")      
+      expect(current_path).to eq("/sessions/new")      
       expect(page).to have_text('Invalid Combination')
     end
   end
@@ -34,7 +34,7 @@ feature 'authentication' do
     end
     scenario 'logs out user and redirects to login page' do
       click_button 'Log Out'
-      expect(current_path).to eq('/users/new')
+      expect(current_path).to eq('/sessions/new')
     end
   end
 end

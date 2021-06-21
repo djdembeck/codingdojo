@@ -15,7 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 def log_in email: "oscar@gmail.com", password: "password"
-	visit '/users/new' unless current_path == "/users/new"
+	visit '/sessions/new' unless current_path == "/sessions/new"
 	fill_in 'Email', with: email
 	fill_in 'Password', with: password
 	click_button 'Log In'

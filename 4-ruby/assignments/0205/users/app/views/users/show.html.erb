@@ -8,55 +8,8 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
-	<nav class="navbar" aria-label="main navigation">
-		<div class="navbar-brand">
-			<a class="navbar-item" href="/posts">
-				<p class="has-text-weight-bold is-size-4">User</p>
-			</a>
-		</div>
-		
-		<div class="navbar-end">
-			<div class="navbar-item">
-			<% if current_user %>
-				<p>Welcome, <%= current_user.name %></p>
-			<% end %>
-			</div>
-			<div class="navbar-item">
-				<div class="buttons">
-					<form action="/users/destroy" method="post">
-						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-						<input name="_method" type="hidden" value="delete" />
-						<button class="button is-warning" name="Log Out">
-							Log Out
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</nav>
-	<section class="section has-background-link-dark">
-		<div class="container">
-			<% if flash[:success] %>
-				<div class="notification is-success">
-					<p>
-						<%= flash[:success] %>
-					</p>
-				</div>
-			<% end %>
-			<% if flash[:errors] %>
-				<div class="notification is-danger">
-					<ul>
-						<% flash[:errors].each do |error| %>
-							<li><%= error %></li>
-						<% end %>
-					</ul>
-				</div>
-			<% end %>
-			<div class="block"></div>
-		</div>
-		<div class="container">
-		<%# Put somethings here %>
-		</div>
-	</section>
+	<div class="container">
+	<%# Put somethings here %>
+	</div>
 </body>
 </html>
