@@ -22,7 +22,7 @@
 		</div>
 		<div class="navbar-item">
 			<div class="buttons">
-				<form action="/users/destroy" method="post">
+				<form action="/sessions/<%= current_user.id %>" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input name="_method" type="hidden" value="delete" />
 					<button class="button is-warning" name="Log Out">

@@ -19,17 +19,30 @@ class UsersController < ApplicationController
   end
 
   def show
-	@user = session[:user]
+	@user = User.find(params[:id])
   end
 
   def edit
+	@user = User.find(params[:id])
   end
 
   def update
+	@user = User.find(params[:id])
+	@user.email = params[:email]
+	@user.name = params[:name]
+	if @user.valid?
+		@user.save
+		redirect_to controller: 'users', action: 'show', id: @user.id
+	else
+		flash[:errors] = @user.errors.full_messages
+		redirect_to :back
+	end
   end
 
   def destroy
-	session[:user] = nil
+	user = User.find(params[:id])
+	user.destroy
+	reset_session
 	redirect_to new_user_path
 	end
 end
