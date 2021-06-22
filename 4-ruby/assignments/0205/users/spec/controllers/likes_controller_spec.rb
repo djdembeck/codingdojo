@@ -10,7 +10,6 @@ RSpec.describe LikesController, type: :controller do
       session[:user_id] = nil
     end
     it "cannot create a like"  do
-		# post :create, like: {like: @like}, user: {user: @user}
 		post :create, secret_id: @secret.id
 		expect(response).to redirect_to("/sessions/new")
 	end
