@@ -70,7 +70,15 @@
 						<p class="card-header-title is-centered is-size-3">Secrets Liked</p>
 					</header>
 					<div class="card-content">
-
+						<ul>
+							<% @liked_secrets.each do |secret| %>
+								<li>
+									<p><%= secret.content %></p>
+									<p><%= secret.likes.count %> likes</p>
+								</li>
+								<div class="block"></div>
+							<% end %>
+						</ul>
 					</div>
 				</div>
 			</div>

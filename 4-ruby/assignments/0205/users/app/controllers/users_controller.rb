@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
 	@secrets = Secret.where(user: @user)
+	@liked_secrets = @user.secrets_liked
   end
 
   def edit
