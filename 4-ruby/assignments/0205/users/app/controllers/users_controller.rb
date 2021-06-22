@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :user_auth, except: [:new, :create]
 	layout "application"
   def index
   end
@@ -51,4 +52,7 @@ end
 private
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+	end
+	def user_auth
+		redirect_to controller: 'users', action: 'show', id: current_user.id unless current_user.id == params[:id].to_i
 	end

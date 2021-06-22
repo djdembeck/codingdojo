@@ -17,9 +17,14 @@ class SecretsController < ApplicationController
 
 def destroy
 	secret = Secret.find(params[:id])
-	secret.destroy
-	redirect_to controller: 'users', action: 'show', id: secret.user.id
+	unless current_user.id == secret.user.id
+		flash[:errors] = ["Cannot delete a secret you don't own"]
+		redirect_to :back
+	else
+		secret.destroy
+		redirect_to controller: 'users', action: 'show', id: secret.user.id
 	end
+  end
 end
 private
 	def secret_params
