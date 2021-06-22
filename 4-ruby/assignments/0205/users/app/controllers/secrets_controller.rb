@@ -19,7 +19,7 @@ def destroy
 	secret = Secret.find(params[:id])
 	unless current_user.id == secret.user.id
 		flash[:errors] = ["Cannot delete a secret you don't own"]
-		redirect_to :back
+		redirect_to secrets_path
 	else
 		secret.destroy
 		redirect_to controller: 'users', action: 'show', id: secret.user.id
