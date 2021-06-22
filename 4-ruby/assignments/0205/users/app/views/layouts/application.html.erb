@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Users</title>
+  <title>Dojo Secrets</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
@@ -11,7 +11,7 @@
 
 <nav class="navbar" aria-label="main navigation">
 	<div class="navbar-brand">
-		<a class="navbar-item" href="/posts">
+		<a class="navbar-item" href="/secrets">
 			<p class="has-text-weight-bold is-size-4">User</p>
 		</a>
 	</div>
@@ -22,10 +22,11 @@
 		</div>
 		<div class="navbar-item">
 			<div class="buttons">
+				<a class="button is-warning" href="/users/<%= current_user.id %>">Edit Profile</a>
 				<form action="/sessions/<%= current_user.id %>" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input name="_method" type="hidden" value="delete" />
-					<button class="button is-warning" name="Log Out">
+					<button class="button is-danger" name="Log Out">
 						Log Out
 					</button>
 				</form>

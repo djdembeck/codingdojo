@@ -9,8 +9,72 @@
 </head>
 <body>
 	<div class="container">
-		<%= @user.name %>
-		<a class="button" href="/users/<%= current_user.id %>">Edit Profile</a>
+		<div class="columns">
+			<div class="column">
+				<div class="card has-background-info-light">
+					<form action='/secrets' method='post'>
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<header class="card-header has-background-white">
+							<p class="card-header-title is-centered is-size-3">New secret</p>
+						</header>
+						<div class="card-content">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" id="content" name="secret[content]"></textarea>
+								</div>
+							</div>
+							<div class="field has-text-centered">
+								<div class="control">
+									<button class="button is-primary">Create Secret</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column">
+				<div class="card has-background-info-light">
+					<header class="card-header has-background-white">
+						<p class="card-header-title is-centered is-size-3">Secrets</p>
+					</header>
+					<div class="card-content">
+						<ul>
+							<% @secrets.each do |secret| %>
+								<div class="level-left">
+									<div class="level-item">
+										<li><%= secret.content %></li>
+									</div>
+									<div class="level-item">
+										<% if current_user == secret.user %>
+											<form action="/secrets/<%= secret.id %>" method="post">
+												<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+												<input name="_method" type="hidden" value="delete" />
+												<div class="control">
+													<button class="button is-danger" id="Delete Secret">Delete Secret</button>
+												</div>
+											</form>
+										<% end %>
+									</div>
+								</div>
+								<div class="block"></div>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="card has-background-info-light">
+					<header class="card-header has-background-white">
+						<p class="card-header-title is-centered is-size-3">Secrets Liked</p>
+					</header>
+					<div class="card-content">
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
