@@ -45,47 +45,33 @@ class BSTree {
 		//return if target val exists in tree
 	}
 
-	// I assume we can find levels by just going right every time?
-	height() {
-		let runner = this.root;
-		let count = 0;
-		while (true) {
-			if (runner == this.root) {
-				count ++
-			}
-			if (runner.right) {
-				count++
-				runner = runner.right
-			} else {
-				break;
-			}
-		}
-		return count;
-	}
-
-	size() {
-		if (!this.root) {
+	size(node = this.root) {
+		//escape
+		if (!node) {
 			return 0;
 		}
-
-		let runner1 = this.root;
-		let count = 0;
-		while (true) {
-			if (runner1 == this.root) {
-				count ++
-			}
-			if (runner1.right) {
-				count++
-				runner1 = runner1.right
-			}
-			if (runner1.left) {
-				count++
-			}
-			if (!runner1.right) {
-				break
-			}
+		if (!node.left && !node.right) {
+			return 1;
 		}
-		return count;
+		//iterate //recursive
+		return this.size(node.right) + this.size(node.left) + 1;
+	}
+
+	height(node = this.root) {
+		if (!node) {
+			return 0;
+		}
+		if (!node.left && !node.right) {
+			return 1;
+		}
+		//iterate //recursive
+		let sr = this.size(node.right);
+		let sl = this.size(node.left);
+
+		if (sr > sl) {
+			return sr + 1;
+		}
+		return sl + 1;
 	}
 }
 
@@ -97,13 +83,13 @@ class BSNode {
 	}
 }
 
-tree = new BSTree()
-tree.add(1)
-tree.add(2)
-tree.add(3)
-tree.add(2)
-tree.add(1)
-tree.add(4)
-console.log(tree)
-console.log(tree.size())
-console.log(tree.height())
+tree = new BSTree();
+tree.add(1);
+tree.add(2);
+tree.add(3);
+tree.add(2);
+tree.add(1);
+tree.add(4);
+console.log(tree);
+console.log(tree.size());
+console.log(tree.height());
