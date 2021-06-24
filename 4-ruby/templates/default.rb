@@ -9,12 +9,7 @@
 ####
 
 ### User interaction
-model_name = ask("What should the model name be called? (eg, User)") if yes?("Make a model?")
-
-model_fields = ask("What should the model fields be? (eg, \"first_name:string\" \"last_name:string\" \"email:string\")") if model_name
-
-# If no model mode
-controller_name = ask("What should the controller name be? (eg, User)") if !model_name
+model_iterations = ask("How many models do you need?") if yes?("Make a model?")
 ###
 
 puts "*********************************************************"
@@ -75,22 +70,47 @@ run "bundle install"
 
 run "rake db:create"
 
-### Generations
-puts "********************" if model_name
-puts "Generating model..." if model_name
-puts "********************" if model_name
-generate("model", model_name, model_fields) if model_name
+## run through model iterations
+def ordinal(number)
+abs_number = number.to_i.abs
 
-puts "*************************"
-puts "Generating controller..."
-puts "*************************"
-
-# Use model name if available
-if !controller_name
-	controller_name = model_name
+	if (11..13).include?(abs_number % 100)
+		"th"
+	else
+		case abs_number % 10
+		when 1; "st"
+		when 2; "nd"
+		when 3; "rd"
+		else    "th"
+		end
+	end
+end
+def ordinalize(number)
+	number += 1
+	"#{number}#{ordinal(number)}"
 end
 
-generate("controller", controller_name.pluralize, "index", "new", "create", "show", "edit", "update", "destroy", "--skip-routes")
+model_iterations.to_i.times do |num|
+	model_name = ask("What should the #{ordinalize(num)} model name be called? (eg, User)") 
+
+	model_fields = ask("What should the #{ordinalize(num)} model fields be? (eg, \"first_name:string\" \"last_name:string\" \"email:string\")") if model_name
+
+	### Generations
+	puts "********************" if model_name
+	puts "Generating #{ordinalize(num)} model..." if model_name
+	puts "********************" if model_name
+	generate("model", model_name, model_fields) if model_name
+
+	puts "*************************"
+	puts "Generating #{ordinalize(num)} controller..."
+	puts "*************************"
+
+	controller_name = model_name if yes?("Create controller for #{model_name}?")
+
+	generate("controller", controller_name.pluralize, "index", "new", "create", "show", "edit", "update", "destroy", "--skip-routes") if controller_name
+
+	run "sed -i '2i  resources :#{controller_name.downcase.pluralize}' config/routes.rb" if controller_name
+end
 
 puts "******************************"
 puts "Installing rails_footnotes..."
@@ -102,12 +122,11 @@ puts "Installing rspec..."
 puts "******************************"
 generate("rspec:install")
 
-puts "**********************" if model_name
-puts "Migrating database..." if model_name
-puts "**********************" if model_name
-run "rake db:migrate", abort_on_failure: true if model_name
+puts "**********************" if model_iterations
+puts "Migrating database..." if model_iterations
+puts "**********************" if model_iterations
+run "rake db:migrate", abort_on_failure: true if model_iterations
 
-run "sed -i '2i  resources :#{controller_name.downcase.pluralize}' config/routes.rb"
 ###
 
 puts "*****"
