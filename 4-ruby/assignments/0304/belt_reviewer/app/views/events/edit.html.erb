@@ -1,0 +1,55 @@
+<div class="container">
+	<div class="columns">
+		<div class="column">
+			<div class="card has-background-info-light">
+				<form action='/events/<%= @event.id %>' method='post'>
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input name="_method" type="hidden" value="patch" />
+					<header class="card-header has-background-white">
+						<p class="card-header-title is-centered is-size-3">Edit Event</p>
+					</header>
+					<div class="card-content">
+						<div class="field">
+							<label class="label">Name:</label>
+							<div class="control">
+								<input class="input" type="text" id="Name" name="name" value="<%= @event.name %>">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Date:</label>
+							<div class="control">
+								<input class="input" type="date" id="Date" name="date" value="<%= @event.date %>">
+							</div>
+						</div>
+						<div class="field">
+							<div class="label is-normal">
+								<label class="label">Location</label>
+							</div>
+							<div class="field-body">
+								<div class="field">
+									<div class="control is-expanded">
+									<input class="input" type="text" name="city" value="<%= @event.city %>">
+									</div>
+								</div>
+								<div class="field is-narrow">
+									<div class="control is-expanded">
+										<div class="select is-fullwidth">
+											<select name="state">
+												<%= options_for_select([ "AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY" ], @event.state) %>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field has-text-centered">
+							<div class="control">
+								<button class="button is-link">Update Event</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

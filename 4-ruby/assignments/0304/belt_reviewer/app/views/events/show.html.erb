@@ -1,0 +1,78 @@
+<p class="title has-text-white has-text-centered"><%= @event.name %></p>
+<div class="container">
+	<div class="box">
+		<div class="content">
+				<p class="is-size-5"><span class="has-text-weight-semibold">Host:</span> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+				<p class="is-size-5"><span class="has-text-weight-semibold">Date:</span> <%= @event.date %></p>
+				<p class="is-size-5"><span class="has-text-weight-semibold">Location:</span> <%= @event.city %>, <%= @event.state %></p>
+				<p class="is-size-5"><span class="has-text-weight-semibold">People who are joining the event:</span> <%= @event.attendees.count %></p>
+			<div class="columns">
+				<div class="column">
+					<div class="block"></div>
+					<table
+						class="table is-bordered is-hoverable is-fullwidth"
+						style="text-align: center"
+					>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Location</th>
+								<th>State</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @attendees.each do |attendee| %>
+							<tr>
+								<td class="is-vcentered"><%= attendee.user.first_name %> <%= attendee.user.last_name %></td>
+								<td class="is-vcentered"><%= attendee.user.city %></td>
+								<td class="is-vcentered"><%= attendee.user.state %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<div class="column">
+					<div class="card" style="height:500px; overflow:auto">
+						<header class="card-header">
+							<p class="card-header-title is-size-5">Discussion about this event:</p>
+						</header>
+						<div class="card-content" >
+							<% @comments.each do |comment| %>
+								<article class="message is-dark">
+									<div class="message-header">
+										<%= comment.user.first_name %> says:
+									</div>
+									<div class="message-body">
+										<%= comment.content %>
+									</div>
+								</article>
+							<% end %>
+						</div>
+					</div>
+					<div class="block"></div>
+					<div class="card">
+						<form action='/comments' method='post'>
+							<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+							<input type="hidden" name="event_id" value="<%= @event.id %>">
+							<header class="card-header">
+								<p class="card-header-title is-size-5">Add Comment: </p>
+							</header>
+							<div class="card-content">
+								<div class="field">
+									<div class="control">
+										<textarea class="textarea" name="content"></textarea>
+									</div>
+								</div>
+								<div class="field has-text-centered">
+									<div class="control">
+										<button class="button is-link">Submit Comment</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

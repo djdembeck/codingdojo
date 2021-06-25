@@ -1,0 +1,160 @@
+<div class="box">
+	<div class="content">
+		<p class="title">Here are some of the events in your state:</p>
+		<table
+			class="table is-bordered is-hoverable is-fullwidth"
+			style="text-align: center"
+		>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date</th>
+					<th>Location</th>
+					<th>Host</th>
+					<th>Action/Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @events.each do |event| %>
+				<tr>
+					<td class="is-vcentered"><%= link_to event.name, event %></td>
+					<td class="is-vcentered"><%= event.date %></td>
+					<td class="is-vcentered"><%= event.city %></td>
+					<td class="is-vcentered"><%= event.user.first_name %></td>
+					<td class="is-vcentered">
+						<% if event.user == current_user %>
+							<a href="/events/<%= event.id %>/edit">Edit</a> | <a href="/events/<%= event.id %>" data-method="delete">Destroy</a>
+						<% else %>
+							<% if Attendee.where(event_id: event.id, user_id: current_user.id).count == 0 %>
+								<div class="buttons is-centered">
+									<form action="/attendees" method="post">
+										<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+										<input type="hidden" name="event_id" value="<%= event.id %>">
+										<div class="control">
+											<button class="button is-primary" id="Join">Join</button>
+										</div>
+									</form>
+								</div>
+							<% else %>
+								<div class="buttons is-centered">
+								<button class="button is-primary" disabled>Joining </button>
+								<form action="/attendees/<%= event.id %>" method="post">
+									<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+									<input name="_method" type="hidden" value="delete" />
+									<button class="button is-danger">Cancel</button>
+								</form>
+								</div>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="box">
+	<div class="content">
+		<p class="title">Here are some of the events in other states:</p>
+		<table
+			class="table is-bordered is-hoverable is-fullwidth"
+			style="text-align: center"
+		>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date</th>
+					<th>Location</th>
+					<th>State</th>
+					<th>Host</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @events_other.each do |event| %>
+				<tr>
+					<td class="is-vcentered"><%= link_to event.name, event %></td>
+					<td class="is-vcentered"><%= event.date %></td>
+					<td class="is-vcentered"><%= event.city %></td>
+					<td class="is-vcentered"><%= event.state %></td>
+					<td class="is-vcentered"><%= event.user.first_name %></td>
+					<td class="is-vcentered">
+						<% if Attendee.where(event_id: event.id, user_id: current_user.id).count == 0 %>
+							<div class="buttons is-centered">
+								<form action="/attendees" method="post">
+									<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+									<input type="hidden" name="event_id" value="<%= event.id %>">
+									<div class="control">
+										<button class="button is-primary" id="Join">Join</button>
+									</div>
+								</form>
+							</div>
+						<% else %>
+							<div class="buttons is-centered">
+							<button class="button is-primary" disabled>Joining </button>
+							<form action="/attendees/<%= event.id %>" method="post">
+								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+								<input name="_method" type="hidden" value="delete" />
+								<button class="button is-danger">Cancel</button>
+							</form>
+							</div>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="columns">
+	<div class="column">
+		<div class="card has-background-info-light">
+			<form action='/events' method='post'>
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<header class="card-header has-background-white">
+					<p class="card-header-title is-centered is-size-3">Add Event</p>
+				</header>
+				<div class="card-content">
+					<div class="field">
+						<label class="label">Name:</label>
+						<div class="control">
+							<input class="input" type="text" id="Name" name="event[name]" placeholder="eg My Awesome Event">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Date:</label>
+						<div class="control">
+							<input class="input" type="date" id="Date" name="event[date]">
+						</div>
+					</div>
+					<div class="field">
+						<div class="label is-normal">
+							<label class="label">Location</label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control is-expanded">
+								<input class="input" type="text" name="event[city]" placeholder="City">
+								</div>
+							</div>
+							<div class="field is-narrow">
+								<div class="control is-expanded">
+									<div class="select is-fullwidth">
+										<select name="event[state]">
+											<%= options_for_select([ "AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY" ]) %>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="field has-text-centered">
+						<div class="control">
+							<button class="button is-link">Add Event</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

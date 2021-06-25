@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BeltReviewer</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar" aria-label="main navigation">
+	<div class="navbar-brand">
+		<a class="navbar-item" href="/events">
+			<p class="has-text-weight-bold is-size-4">User</p>
+		</a>
+	</div>
+	<% if current_user %>
+	<div class="navbar-end">
+		<div class="navbar-item">
+			<p>Welcome, <%= current_user.first_name %></p>
+		</div>
+		<div class="navbar-item">
+			<div class="buttons">
+				<a class="button is-warning" href="/users/<%= current_user.id %>/edit">Edit My Profile</a>
+				<form action="/users/<%= current_user.id %>" method="post">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input name="_method" type="hidden" value="delete" />
+					<button class="button is-danger" name="Log Out">
+						Log Out
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</nav>
+<section class="section has-background-link-dark">
+	<div class="container">
+		<% if flash[:success] %>
+			<div class="notification is-success">
+				<p>
+					<%= flash[:success] %>
+				</p>
+			</div>
+		<% end %>
+		<% if flash[:errors] %>
+			<div class="notification is-danger">
+				<ul>
+					<% flash[:errors].each do |error| %>
+						<li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="block"></div>
+	</div>
+
+<%= yield %>
+
+</section>
+
+</body>
+</html>
