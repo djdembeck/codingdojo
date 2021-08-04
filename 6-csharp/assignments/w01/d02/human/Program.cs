@@ -13,7 +13,6 @@ namespace human
         public int Health
         {
             get { return health; }
-            set { health = value; }
         }
 
         public Human(string name)
@@ -37,7 +36,7 @@ namespace human
         public int Attack(Human target)
         {
             Console.WriteLine("Attack");
-            target.Health -= 5 * this.Strength;
+            target.health -= 5 * this.Strength;
             Console.WriteLine($"Health of target is now {target.health}");
             return target.Health;
         }
