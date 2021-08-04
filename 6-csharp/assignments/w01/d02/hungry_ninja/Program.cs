@@ -51,12 +51,12 @@ namespace hungry_ninja
 class Ninja
     {
         private int calorieIntake;
-        // public List<Food> FoodHistory;
+        public List<Food> FoodHistory;
 
         public Ninja()
         {
-            int calorieIntake = 0;
-            List<Food> FoodHistory = new List<Food>();
+            calorieIntake = 0;
+            FoodHistory = new List<Food>();
         }
 
         public bool IsFull
@@ -68,8 +68,8 @@ class Ninja
         {
             if (!IsFull)
             {
-                this.calorieIntake += item.Calories;
-                this.FoodHistory.Add(item);
+                calorieIntake += item.Calories;
+                FoodHistory.Add(item);
                 Console.WriteLine($"Ninja ate {item.Name}");
                 if (item.IsSweet && !item.IsSpicy)
                 {
