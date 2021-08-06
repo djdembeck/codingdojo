@@ -1,0 +1,38 @@
+<div class="modal-content">
+    <form action='/show' method='post' class="box">
+        <div class="content">
+            <h2>Optional Survey</h2>
+        </div>
+            <div class="field">
+                <label class="label">Your Name:</label>
+                <div class="control">
+                    <input class="input" type="text" name="Name" placeholder="eg John Smith">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Dojo Location:</label>
+                <div class="select">
+                    <select name="Location" id="dojo_location">
+                        <option value="Dallas">Dallas</option>
+                        <option value="Nowhere Important">No where else matters</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Favourite Language:</label>
+                <div class="select">
+                    <select name="FavLang" id="fav_lang">
+                        <option value="Python">Python</option>
+                        <option value="MERN">MERN</option>
+                        <option value="Java">Java</option>
+                        <option value="C#">C#</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Comment (optional):</label>
+                <textarea class="textarea" placeholder="e.g. Hello world" name="Comment"></textarea>
+            </div>
+        <button class="button is-primary" type="submit">Submit</button>
+    </form>
+</div>

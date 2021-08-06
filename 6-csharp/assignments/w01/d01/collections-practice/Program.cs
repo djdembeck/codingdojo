@@ -55,3 +55,6 @@ namespace collections_practice
         }
     }
 }
+@using DojoSurvey
+@using DojoSurvey.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
