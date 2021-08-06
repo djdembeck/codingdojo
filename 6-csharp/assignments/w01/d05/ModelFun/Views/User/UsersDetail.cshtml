@@ -1,0 +1,13 @@
+@model List<ModelFun.Models.User>
+
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title title is-centered">Here is a user!</p>
+    </header>
+    <div class="card-content has-text-centered">
+        @foreach (var item in Model)
+        {
+            <p>@item.FirstName @item.LastName</p>
+        }
+    </div>
+</div>

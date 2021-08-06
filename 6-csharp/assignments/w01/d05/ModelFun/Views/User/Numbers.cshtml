@@ -1,0 +1,13 @@
+@model int[]
+
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title title is-centered">Here are some numbers!</p>
+    </header>
+    <div class="card-content has-text-centered">
+        @foreach (var num in Model)
+        {
+            <p>@num</p>
+        }
+    </div>
+</div>
