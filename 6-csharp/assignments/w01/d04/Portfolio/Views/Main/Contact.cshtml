@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div class="block"></div>
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="projects">Projects</a></li>
+            <li><a href="contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="section has-background-link-dark">
+        <div class="columns">
+            <div class="column">
+                <div class="card has-background-info-light">
+                    <form action='/' method='post'>
+                        <header class="card-header has-background-white">
+                            <p class="card-header-title is-centered is-size-3">Contact Me!</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="field">
+                                <label class="label">Name:</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="Name" name="name" placeholder="eg Samuel Jackson">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Email:</label>
+                                <div class="control">
+                                    <input class="input" type="email" id="Email" name="email" placeholder="eg sam@jackson.com">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Message:</label>
+                                <div class="control">
+                                    <textarea class="textarea" name="message"></textarea>
+                                </div>
+                            </div>
+                            <div class="field has-text-centered">
+                                <div class="control">
+                                    <button class="button is-link">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
