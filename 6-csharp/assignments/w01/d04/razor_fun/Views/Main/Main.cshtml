@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Web Page</title>
+</head>
+<body>
+    @{
+        var StringList = new List<string>
+            {
+                "Apple Pie",
+                "Burritos",
+                "Clams Casino",
+                "Donuts",
+            };
+        foreach(var word in StringList)
+        {
+            <div>
+                @if(word[0].ToString().ToLower() == "c")
+                    {
+                        <p style="color: red;">@word</p>
+                    }
+                else
+                    {
+                        <p>@word</p>
+                    }
+            </div>
+        }
+    }
+</body>
+</html>
