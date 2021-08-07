@@ -6,12 +6,16 @@ namespace FormSubmission.Models
     {
 
         [Required]
+        [Display(Name = "First Name:")]
         public string FirstName {get;set;}
         [Required]
+        [Display(Name = "Last Name:")]
+
         public string LastName {get;set;}
         [Required]
         public int Age {get;set;}
         [Required]
+        [Display(Name = "Email Address:")]
         [EmailAddress]
         public string Email {get;set;}
         [Required]

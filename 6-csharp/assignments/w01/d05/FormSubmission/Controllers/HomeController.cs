@@ -18,14 +18,37 @@ namespace FormSubmission.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [HttpGet("")]
+        public RedirectToActionResult Index()
+        {
+            return RedirectToAction("New");
+        }
+
+        [HttpGet("new")]
+        public IActionResult New()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost("user/create")]
+        public IActionResult Create(User user)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                // do somethng!  maybe insert into db?  then we will redirect
+                return RedirectToAction("Show", user);
+            }
+            else
+            {
+                // Oh no!  We need to return a ViewResponse to preserve the ModelState, and the errors it now contains!
+                return View("New");
+            }
+        }
+
+        [HttpGet("show")]
+        public IActionResult Show(User user)
+        {
+            return View(user);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

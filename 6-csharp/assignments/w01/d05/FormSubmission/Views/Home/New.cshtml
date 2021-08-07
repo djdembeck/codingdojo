@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model User
+
+<div class="modal-content">
+    <form asp-action="Create" asp-controller="Home" method='post' class="box">
+        <div class="content">
+            <h2>Optional Survey</h2>
+        </div>
+            <div class="field">
+                <label asp-for="FirstName"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="FirstName"></span>
+                    <input class="input" type="text" asp-for="FirstName" placeholder="eg John">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="LastName"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="LastName"></span>
+                    <input class="input" type="text" asp-for="LastName" placeholder="eg Smith">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Age"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Age"></span>
+                    <input class="input" type="number" asp-for="Age">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Email"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Email"></span>
+                    <input class="input" type="email" asp-for="Email" placeholder="eg jsmith@example.com">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Password"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Password"></span>
+                    <input class="input" type="password" asp-for="Password">
+                </div>
+            </div>
+        <button class="button is-primary" type="submit">Submit</button>
+    </form>
+</div>
