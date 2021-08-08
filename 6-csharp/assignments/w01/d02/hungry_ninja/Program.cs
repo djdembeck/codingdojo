@@ -3,30 +3,13 @@ using System.Collections.Generic;
 
 namespace hungry_ninja
 {
-    class Food
-    {
-        public string Name;
-        public int Calories;
-        // Foods can be Spicy and/or Sweet
-        public bool IsSpicy; 
-        public bool IsSweet; 
-        public Food(string name, int calories, bool isspicy, bool issweet)
-        {
-            Name = name;
-            Calories = calories;
-            IsSpicy = isspicy;
-            IsSweet = issweet;
-        }
-    }
-
     class Buffet
     {
-        public List<Food> Menu;
+        public List<IConsumable> Menu;
 
-        //constructor
         public Buffet()
         {
-            Menu = new List<Food>()
+            Menu = new List<IConsumable>()
             {
                 new Food("Chicken fingers", 1000, false, false),
                 new Food("Salad", 400, false, false),
@@ -35,59 +18,18 @@ namespace hungry_ninja
                 new Food("Cereal", 300, false, true),
                 new Food("French fries", 500, false, false),
                 new Food("Steak", 250, false, false),
-                new Food("Water", 0, false, false),
-                new Food("Sweet tea", 120, false, true),
                 new Food("Rice", 300, false, false),
+                new Drink("Water", 0, false, false),
+                new Drink("Sweet tea", 120, false, true),
+                new Drink("Lemonade", 100, false, true),
+                new Drink("Soda", 200, false, true),
             };
         }
 
-        public Food Serve()
+        public IConsumable Serve()
         {
             Random randidx = new Random();
             return Menu[randidx.Next(0,Menu.Count)];
-        }
-    }
-
-class Ninja
-    {
-        private int calorieIntake;
-        public List<Food> FoodHistory;
-
-        public Ninja()
-        {
-            calorieIntake = 0;
-            FoodHistory = new List<Food>();
-        }
-
-        public bool IsFull
-        {
-            get { return this.calorieIntake > 1200 ? true : false;}
-        }
-
-        public void Eat(Food item)
-        {
-            if (!IsFull)
-            {
-                calorieIntake += item.Calories;
-                FoodHistory.Add(item);
-                Console.WriteLine($"Ninja ate {item.Name}");
-                if (item.IsSweet && !item.IsSpicy)
-                {
-                    Console.WriteLine("It was sweet!");
-                }
-                else if (item.IsSpicy && !item.IsSweet)
-                {
-                    Console.WriteLine("It was spicy!");
-                }
-                else if (item.IsSweet && item.IsSpicy)
-                {
-                    Console.WriteLine("It was sweet AND spicy");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Ninja is too full!");
-            }
         }
     }
 
@@ -96,11 +38,27 @@ class Ninja
         static void Main(string[] args)
         {
             Buffet Chicago = new Buffet();
-            Ninja Turtle = new Ninja();
-            while (!Turtle.IsFull)
+            SweetTooth ST = new SweetTooth();
+            SpiceHound SH = new SpiceHound();
+            while (!ST.IsFull)
             {
-                // Console.WriteLine(Chicago.Serve().Name);
-                Turtle.Eat(Chicago.Serve());
+                ST.Consume(Chicago.Serve());
+            }
+            while (!SH.IsFull)
+            {
+                SH.Consume(Chicago.Serve());
+            }
+            
+            int STCount = ST.ConsumptionHistory.Count;
+            int SHCount = SH.ConsumptionHistory.Count;
+
+            if (STCount > SHCount)
+            {
+                Console.WriteLine($"Sweet tooth ate the most items ({STCount})");
+            }
+            else
+            {
+                Console.WriteLine($"Spice Hound ate the most items ({SHCount})");
             }
         }
     }
