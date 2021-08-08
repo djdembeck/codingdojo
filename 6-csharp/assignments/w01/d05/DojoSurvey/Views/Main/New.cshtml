@@ -1,27 +1,35 @@
+@{
+    ViewData["Title"] = "New";
+}
+@model Survey
+
 <div class="modal-content">
-    <form action='/show' method='post' class="box">
+    <form asp-action="Create" asp-controller="Main" method='post' class="box">
         <div class="content">
             <h2>Optional Survey</h2>
         </div>
             <div class="field">
-                <label class="label">Your Name:</label>
+                <label asp-for="Name" class="label"></label>
                 <div class="control">
-                    <input class="input" type="text" name="Name" placeholder="eg John Smith">
+                    <span class="has-text-danger" asp-validation-for="Name"></span>
+                    <input class="input" type="text" asp-for="Name" placeholder="eg John Smith">
                 </div>
             </div>
             <div class="field">
-                <label class="label">Dojo Location:</label>
+                <label asp-for="Location" class="label"></label>
                 <div class="select">
-                    <select name="Location" id="dojo_location">
+                    <span class="has-text-danger" asp-validation-for="Location"></span>
+                    <select asp-for="Location" id="dojo_location">
                         <option value="Dallas">Dallas</option>
                         <option value="Nowhere Important">No where else matters</option>
                     </select>
                 </div>
             </div>
             <div class="field">
-                <label class="label">Favourite Language:</label>
+                <label asp-for="FavLang" class="label"></label>
                 <div class="select">
-                    <select name="FavLang" id="fav_lang">
+                    <span class="has-text-danger" asp-validation-for="FavLang"></span>
+                    <select asp-for="FavLang" id="fav_lang">
                         <option value="Python">Python</option>
                         <option value="MERN">MERN</option>
                         <option value="Java">Java</option>
@@ -30,8 +38,9 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">Comment (optional):</label>
-                <textarea class="textarea" placeholder="e.g. Hello world" name="Comment"></textarea>
+                <label asp-for="Comment" class="label"></label>
+                <span class="has-text-danger" asp-validation-for="Comment"></span>
+                <textarea class="textarea" placeholder="e.g. Hello world" asp-for="Comment"></textarea>
             </div>
         <button class="button is-primary" type="submit">Submit</button>
     </form>
