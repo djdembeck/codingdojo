@@ -1,0 +1,48 @@
+
+
+@{
+    switch(ViewBag.Status)
+    {
+        case "lose":
+        case "win":
+            <div class="card-footer-item">
+                <div class="control">
+                    <form asp-action="Restart" asp-controller="Home" method='post'>
+                        <button class="button is-success" type="submit">Restart?</button>
+                    </form>
+                </div>
+            </div>
+            break;
+
+        default:
+            <div class="card-footer-item">
+                <div class="control">
+                    <form asp-action="Feed" asp-controller="Home" method='post'>
+                        <button class="button is-warning" type="submit">Feed</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer-item">
+                <div class="control">
+                    <form asp-action="Play" asp-controller="Home" method='post'>
+                        <button class="button is-success" type="submit">Play</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer-item">
+                <div class="control">
+                    <form asp-action="Work" asp-controller="Home" method='post'>
+                        <button class="button is-info" type="submit">Work</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer-item">
+                <div class="control">
+                    <form asp-action="Sleep" asp-controller="Home" method='post'>
+                        <button class="button is-link" type="submit">Sleep</button>
+                    </form>
+                </div>
+            </div>
+            break;
+    }
+}
