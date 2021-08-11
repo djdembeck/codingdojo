@@ -1,8 +1,21 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            Random passcode (passcode #@ViewBag.ViewCount)
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <input class="input has-text-centered" type="text" value="@ViewBag.Passcode" placeholder="Press generate to get started" readonly>
+        </div>
+    </div>
+    <footer class="card-footer">
+        <div class="card-footer-item">
+            <div class="control">
+                <form asp-action="Create" asp-controller="Home" method='post'>
+                    <button class="button is-success" type="submit">Generate</button>
+                </form>
+            </div>
+        </div>
+    </footer>
 </div>
