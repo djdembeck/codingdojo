@@ -31,6 +31,52 @@ namespace SportsORM.Controllers
         [HttpGet("level_1")]
         public IActionResult Level1()
         {
+            ViewBag.WomenLeague = _context.Leagues
+                .Where(l => l.Name.Contains("Womens"))
+                .ToList();
+            ViewBag.HockeySport = _context.Leagues
+                .Where(l => l.Sport.Contains("Hockey"))
+                .ToList();
+            ViewBag.NotFootball = _context.Leagues
+                .Where(l => ! l.Sport.Contains("Football"))
+                .ToList();
+            ViewBag.ConferenceLeagues = _context.Leagues
+                .Where(l => l.Name.Contains("Conference"))
+                .ToList();
+            ViewBag.AtlanticLeague = _context.Leagues
+                .Where(l => l.Name.Contains("Atlantic"))
+                .ToList();
+            ViewBag.DallasTeams = _context.Teams
+                .Where(t => t.Location.Contains("Dallas"))
+                .ToList();
+            ViewBag.RaptorTeams = _context.Teams
+                .Where(t => t.TeamName.Contains("Raptors"))
+                .ToList();
+            ViewBag.CityTeams = _context.Teams
+                .Where(t => t.Location.Contains("City"))
+                .ToList();
+            ViewBag.StartsTTeams = _context.Teams
+                .Where(t => t.TeamName.StartsWith("T"))
+                .ToList();
+            ViewBag.TeamsOrderLocation = _context.Teams
+                .OrderBy(t => t.Location)
+                .ToList();
+            ViewBag.TeamsOrderNameReverse = _context.Teams
+                .OrderByDescending(t => t.TeamName)
+                .ToList();
+            ViewBag.PlayerLastNameCooper = _context.Players
+                .Where(p => p.LastName.Equals("Cooper"))
+                .ToList();
+            ViewBag.PlayerFirstNameJoshua = _context.Players
+                .Where(p => p.FirstName.Equals("Joshua"))
+                .ToList();
+            ViewBag.PlayerLastNameCooperNotJoshua = _context.Players
+                .Where(p => p.LastName.Equals("Cooper"))
+                .Where(p => ! p.FirstName.Equals("Joshua"))
+                .ToList();
+            ViewBag.PlayerWyattAlexander = _context.Players
+                .Where(p => p.FirstName.Equals("Alexander") || p.FirstName.Equals("Wyatt"))
+                .ToList();
             return View();
         }
 
