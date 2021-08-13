@@ -1,0 +1,28 @@
+<a href="/">Home</a>
+<div class="card">
+    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
+        <p>@ViewBag.ThisDish.Name</p>
+        <p>@ViewBag.ThisDish.Chef</p>
+    </div>
+    <div class="card-content has-text-centere">
+        <p>@ViewBag.ThisDish.Description</p>
+        <p><span class="has-text-weight-bold">Calories</span>: @ViewBag.ThisDish.Calories</p>
+        <p><span class="has-text-weight-bold">Tastiness</span>: @ViewBag.ThisDish.Tastiness</p>
+    </div>
+    <footer class="card-footer">
+        <div class="card-footer-item">
+            <div class="control">
+                <form asp-action="Delete" asp-controller="Home" asp-route-id="@ViewBag.ThisDish.DishId" method='get'>
+                    <button class="button is-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer-item">
+            <div class="control">
+                <form asp-action="Edit" asp-controller="Home" asp-route-id="@ViewBag.ThisDish.DishId" method='get'>
+                    <button class="button" type="submit">Edit</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+</div>
