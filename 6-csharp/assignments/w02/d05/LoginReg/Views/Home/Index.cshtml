@@ -2,7 +2,14 @@
 
 <div class="card">
     <div class="card-content has-text-centered has-text-weight-bold is-size-1">
-        <p class="subtitle">Register an account</p>
+        <div class="level">
+            <div class="level-item">
+                <p class="subtitle">Register an account</p>
+            </div>
+            <div class="level-item">
+                <a href="login" class="is-size-5">Login</a>
+            </div>
+        </div>
         <form asp-action="Register" asp-controller="Home" method='post' class="box">
             <div class="field">
                 <label asp-for="FirstName" class="label"></label>
@@ -39,9 +46,13 @@
                     <input class="input" type="password" asp-for="ConfirmPassword">
                 </div>
             </div>
-        <button class="button is-primary" type="submit">Register</button>
-    </form>
+        <footer class="card-footer">
+            <div class="card-footer-item">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Register</button>
+                </div>
+            </div>
+        </footer>
+        </form>
     </div>
-    <footer class="card-footer">
-    </footer>
 </div>
