@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-content has-text-centered is-size-4">
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Chef</th>
+                    <th>Tastiness</th>
+                    <th>Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.RecentDishes)
+                {
+                    <tr>    
+                        <td>@item.Name</td>
+                        <td>@item.OrigChef.FirstName @item.OrigChef.LastName</td>
+                        <td>@item.Tastiness</td>
+                        <td>@item.Calories</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

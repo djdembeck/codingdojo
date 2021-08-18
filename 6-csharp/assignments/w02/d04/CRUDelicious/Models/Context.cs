@@ -8,5 +8,6 @@ namespace CRUDelicious.Models
         public Context(DbContextOptions options) : base(options) { }
         // the "CRUDelicious" table name will come from the DbSet variable name
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Chef> Chefs { get; set; }
     }
 }

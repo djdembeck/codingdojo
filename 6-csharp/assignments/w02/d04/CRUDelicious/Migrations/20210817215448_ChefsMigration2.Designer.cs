@@ -3,14 +3,16 @@ using System;
 using CRUDelicious.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CRUDelicious.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210817215448_ChefsMigration2")]
+    partial class ChefsMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace CRUDelicious.Migrations
 
                     b.HasKey("ChefId");
 
-                    b.ToTable("Chefs");
+                    b.ToTable("Chef");
                 });
 
             modelBuilder.Entity("CRUDelicious.Models.Dish", b =>
@@ -78,7 +80,7 @@ namespace CRUDelicious.Migrations
 
                     b.HasIndex("OrigChefChefId");
 
-                    b.ToTable("Dishes");
+                    b.ToTable("Dish");
                 });
 
             modelBuilder.Entity("CRUDelicious.Models.Dish", b =>

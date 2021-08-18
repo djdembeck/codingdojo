@@ -1,52 +1,35 @@
-@model Dish
+@model Chef
 
-<a href="/">Home</a>
 <div class="card">
-    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
-        <p class="subtitle">Add a new Dish!</p>
+    <div class="card-content has-text-centered">
+        <p class="title">Add a Chef!</p>
         <form asp-action="Create" asp-controller="Home" method='post' class="box">
             <div class="field">
-                <label asp-for="Chef" class="label"></label>
+                <label asp-for="FirstName" class="label"></label>
                 <div class="control">
-                    <span class="has-text-danger" asp-validation-for="Chef"></span>
-                    <input class="input" type="text" asp-for="Chef" placeholder="eg John Smith">
+                    <span class="has-text-danger" asp-validation-for="FirstName"></span>
+                    <input class="input" type="text" asp-for="FirstName" placeholder="John">
                 </div>
             </div>
             <div class="field">
-                <label asp-for="Name" class="label"></label>
+                <label asp-for="LastName" class="label"></label>
                 <div class="control">
-                    <span class="has-text-danger" asp-validation-for="Name"></span>
-                    <input class="input" type="text" asp-for="Name" placeholder="Mac n cheese">
+                    <span class="has-text-danger" asp-validation-for="LastName"></span>
+                    <input class="input" type="text" asp-for="LastName" placeholder="Smith">
                 </div>
             </div>
             <div class="field">
-                <label asp-for="Calories" class="label"></label>
+                <label asp-for="BirthDate" class="label"></label>
                 <div class="control">
-                    <span class="has-text-danger" asp-validation-for="Calories"></span>
-                    <input class="input" type="number" asp-for="Calories">
+                    <span class="has-text-danger" asp-validation-for="BirthDate"></span>
+                    <input class="input" type="date" asp-for="BirthDate">
                 </div>
             </div>
-            <div class="field">
-                <label asp-for="Tastiness" class="label"></label>
-                <div class="select">
-                    <span class="has-text-danger" asp-validation-for="Tastiness"></span>
-                    <select asp-for="Tastiness" id="tastiness">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+            <footer class="card-footer">
+                <div class="card-footer-item">
+                    <button class="button is-primary" type="submit">Add Chef</button>
                 </div>
-            </div>
-            <div class="field">
-                <label asp-for="Description" class="label"></label>
-                <span class="has-text-danger" asp-validation-for="Description"></span>
-                <textarea class="textarea" placeholder="e.g. Hello world" asp-for="Description"></textarea>
-            </div>
-        <button class="button is-primary" type="submit">Add Dish</button>
-    </form>
+            </footer>
+        </form>
     </div>
-    <footer class="card-footer">
-    </footer>
 </div>

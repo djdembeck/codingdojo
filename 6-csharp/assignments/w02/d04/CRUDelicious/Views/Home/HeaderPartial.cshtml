@@ -1,0 +1,51 @@
+@{
+    switch(ViewBag.Status)
+    {
+        case "newdish":
+        case "newchef":
+            <div  class="navbar is-dark is-size-4">
+                <div class="navbar-menu">
+                    <div class="navbar-item has-text-light">
+                        <a href="/">Home</a>
+                    </div>
+                </div>
+            </div>
+            break;
+
+        case "chefs":
+            <div  class="navbar is-dark is-size-4">
+                <div class="navbar-menu">
+                    <div class="navbar-item has-text-light">
+                        Chefs
+                    </div>
+                    <div class="navbar-item">
+                        <a href="/dishes">Dishes</a>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <a href="/new">Add a Chef!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            break;
+
+        case "dishes":
+            <div  class="navbar is-dark is-size-4">
+                <div class="navbar-menu">
+                    <div class="navbar-item has-text-light">
+                        <a href="/">Chefs</a>
+                    </div>
+                    <div class="navbar-item">
+                        Dishes
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <a href="/dishes/new">Add a Dish!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            break;
+    }
+}

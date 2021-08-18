@@ -23,23 +23,67 @@ namespace CRUDelicious.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
+            List<Chef> AllChefs = _context.Chefs.ToList();
+
+            ViewBag.RecentChefs = _context.Chefs
+            .OrderByDescending(d => d.CreatedAt)
+            .Take(5)
+            .ToList();
+
+            Console.WriteLine(ViewBag.RecentChefs);
+
+            @ViewBag.Status = "chefs";
+            return View();
+        }
+
+        [HttpGet("dishes")]
+        public IActionResult Dishes()
+        {
             List<Dish> AllDishes = _context.Dishes.ToList();
 
             ViewBag.RecentDishes = _context.Dishes
             .OrderByDescending(d => d.CreatedAt)
             .Take(5)
             .ToList();
+
+            @ViewBag.Status = "dishes";
             return View();
         }
 
         [HttpGet("new")]
         public IActionResult New()
         {
+            @ViewBag.Status = "newchef";
             return View();
         }
 
         [HttpPost("create")]
-        public IActionResult Create(Dish dish)
+        public IActionResult Create(Chef chef)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Add(chef);
+                _context.SaveChanges();
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View("New");
+            }
+        }
+
+        [HttpGet("dishes/new")]
+        public IActionResult NewDish()
+        {
+            List<Chef> AllChefs = _context.Chefs.ToList();
+
+            @ViewBag.AllChefs = AllChefs;
+            @ViewBag.Status = "newdish";
+            return View();
+        }
+
+        [HttpPost("dishes/create")]
+        public IActionResult CreateDish(Dish dish)
         {
             if(ModelState.IsValid)
             {
@@ -49,7 +93,7 @@ namespace CRUDelicious.Controllers
             }
             else
             {
-                return View("New");
+                return View("NewDish");
             }
         }
 
@@ -89,7 +133,7 @@ namespace CRUDelicious.Controllers
 
             if(ModelState.IsValid)
             {
-                ThisDish.Chef = dish.Chef;
+                ThisDish.OrigChef = dish.OrigChef;
                 ThisDish.Name = dish.Name;
                 ThisDish.Tastiness = dish.Tastiness;
                 ThisDish.Calories = dish.Calories;

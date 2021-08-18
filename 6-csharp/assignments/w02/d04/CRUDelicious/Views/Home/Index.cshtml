@@ -1,14 +1,27 @@
-﻿<a href="/new">Add a Dish</a>
-<div class="card">
-    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
-        <ul>
-            @foreach (var item in @ViewBag.RecentDishes)
-            {
-                <li><a href="/@item.DishId">@item.Name</a> by @item.Chef</li>
-            }
-        </ul>
-        <p class="subtitle">@ViewBag.Message</p>
+﻿<div class="card">
+    <div class="card-content has-text-centered is-size-4">
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th># of dishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.RecentChefs)
+                {
+                    <tr>    
+                        <td>@item.FirstName @item.LastName</td>
+                        <td>@{
+                                var age = DateTime.Today.Year - @item.BirthDate.Year;
+                            }
+                            @age
+                            </td>
+                        <td>@item.Dishes?.Count</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    <footer class="card-footer">
-    </footer>
 </div>

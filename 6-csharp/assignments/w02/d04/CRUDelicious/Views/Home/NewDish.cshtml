@@ -1,15 +1,18 @@
 @model Dish
 
-<a href="/">Home</a>
 <div class="card">
-    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
-        <p class="subtitle">Add a new Dish!</p>
-        <form asp-action="Update" asp-controller="Home" asp-route-id="@Model.DishId" method='post' class="box">
+    <div class="card-content has-text-centered">
+        <p class="title">Add a new Dish!</p>
+        <form asp-action="CreateDish" asp-controller="Home" method='post' class="box">
             <div class="field">
                 <label asp-for="OrigChef" class="label"></label>
-                <div class="control">
-                    <span class="has-text-danger" asp-validation-for="OrigChef"></span>
-                    <input class="input" type="text" asp-for="OrigChef" placeholder="eg John Smith">
+                <div class="select">
+                    <select asp-for="OrigChef" id="origchef">
+                        @foreach (var item in ViewBag.AllChefs)
+                        {
+                            <option value="@item">@item.FirstName @item.LastName</option>
+                        }
+                    </select>
                 </div>
             </div>
             <div class="field">
@@ -44,7 +47,7 @@
                 <span class="has-text-danger" asp-validation-for="Description"></span>
                 <textarea class="textarea" placeholder="e.g. Hello world" asp-for="Description"></textarea>
             </div>
-        <button class="button is-primary" type="submit">Edit Dish</button>
+        <button class="button is-primary" type="submit">Add Dish</button>
     </form>
     </div>
     <footer class="card-footer">
