@@ -1,0 +1,30 @@
+@model LoginUser
+
+<div class="card">
+    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
+        <p class="title">Login to your account</p>
+        <form asp-action="PostLogin" asp-controller="Home" method='post' class="box">
+            <div class="field">
+                <label asp-for="Email" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Email"></span>
+                    <input class="input" type="email" asp-for="Email" placeholder="jsmith@example.com">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Password" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Password"></span>
+                    <input class="input" type="password" asp-for="Password">
+                </div>
+            </div>
+        <footer class="card-footer">
+            <div class="card-footer-item">
+                <div class="control">
+                    <button class="button is-success" type="submit">Login</button>
+                </div>
+            </div>
+        </footer>
+        </form>
+    </div>
+</div>

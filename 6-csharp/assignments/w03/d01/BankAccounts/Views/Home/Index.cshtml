@@ -1,0 +1,51 @@
+﻿@model User
+
+<div class="card">
+    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
+        <p class="title">Register an account</p>
+        <form asp-action="Register" asp-controller="Home" method='post' class="box">
+            <div class="field">
+                <label asp-for="FirstName" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="FirstName"></span>
+                    <input class="input" type="text" asp-for="FirstName" placeholder="eg John">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="LastName" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="LastName"></span>
+                    <input class="input" type="text" asp-for="LastName" placeholder="eg Smith">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Email" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Email"></span>
+                    <input class="input" type="email" asp-for="Email" placeholder="jsmith@example.com">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Password" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Password"></span>
+                    <input class="input" type="password" asp-for="Password">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="ConfirmPassword" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="ConfirmPassword"></span>
+                    <input class="input" type="password" asp-for="ConfirmPassword">
+                </div>
+            </div>
+        <footer class="card-footer">
+            <div class="card-footer-item">
+                <div class="control">
+                    <button class="button is-success" type="submit">Register</button>
+                </div>
+            </div>
+        </footer>
+        </form>
+    </div>
+</div>

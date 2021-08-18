@@ -1,0 +1,35 @@
+@model Transaction
+
+<div class="card">
+    <div class="card-content has-text-centered is-size-4">
+        <p class="title">Current balance: @ViewBag.UserBalance</p>
+        <form asp-action="Transact" asp-controller="Home" method='post' class="box">
+            <div class="field">
+                <label asp-for="Amount" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Amount"></span>
+                    <input class="input" type="number" asp-for="Amount">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.CurrentUser.UserId">
+                </div>
+            </div>
+            <button class="button is-warning" type="submit">Submit</button>
+        </form>
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.UserTransactions)
+                {
+                    <tr>    
+                        <td>@item.Amount</td>
+                        <td>@item.CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

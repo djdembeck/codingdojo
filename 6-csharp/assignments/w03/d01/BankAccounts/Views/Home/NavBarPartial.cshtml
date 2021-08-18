@@ -1,0 +1,39 @@
+@using Microsoft.AspNetCore.Http
+<nav class="navbar" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <p class="has-text-weight-bold is-size-4">Bank Accounts</p>
+        </a>
+    </div>
+    <div class="navbar-end">
+        @if (Context.Session.GetString("UserName") != null)
+        {
+            <div class="navbar-item">
+                <p>Welcome, @Context.Session.GetString("UserName")</p>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-info" href="account">
+                        Account
+                    </a>
+                    <a class="button is-danger" href="logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href="login">
+                        Log In
+                    </a>
+                    <a class="button is-link" href="/">
+                        Register
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</nav>
