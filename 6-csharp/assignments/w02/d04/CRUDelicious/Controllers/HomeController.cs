@@ -44,6 +44,7 @@ namespace CRUDelicious.Controllers
             ViewBag.RecentDishes = _context.Dishes
             .OrderByDescending(d => d.CreatedAt)
             .Take(5)
+            .Include(dish => dish.OrigChef)
             .ToList();
 
             @ViewBag.Status = "dishes";

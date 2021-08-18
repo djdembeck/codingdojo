@@ -5,12 +5,12 @@
         <p class="title">Add a new Dish!</p>
         <form asp-action="CreateDish" asp-controller="Home" method='post' class="box">
             <div class="field">
-                <label asp-for="OrigChef" class="label"></label>
+                <label asp-for="ChefId" class="label"></label>
                 <div class="select">
-                    <select asp-for="OrigChef" id="origchef">
-                        @foreach (var item in ViewBag.AllChefs)
+                    <select asp-for="ChefId" id="ChefId">
+                        @foreach (Chef item in ViewBag.AllChefs)
                         {
-                            <option value="@item">@item.FirstName @item.LastName</option>
+                            <option value="@item.ChefId">@item.FirstName @item.LastName</option>
                         }
                     </select>
                 </div>

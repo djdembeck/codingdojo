@@ -17,6 +17,7 @@ namespace CRUDelicious.Models
         [Required]
         public string Description { get; set; }
         [Required]
+        public int ChefId { get; set; }
         public Chef OrigChef { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
