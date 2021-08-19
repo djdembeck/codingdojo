@@ -1,0 +1,40 @@
+@model Category
+
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content has-text-centered has-text-weight-bold is-size-1">
+                <p class="title">New Category</p>
+                <form asp-action="CreateCategory" asp-controller="Home" method='post' class="box">
+                    <div class="field">
+                        <label asp-for="Name" class="label"></label>
+                        <div class="control">
+                            <span class="has-text-danger" asp-validation-for="Name"></span>
+                            <input class="input" type="text" asp-for="Name" placeholder="eg Electronics">
+                        </div>
+                    </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item">
+                        <div class="control">
+                            <button class="button is-success" type="submit">Create</button>
+                        </div>
+                    </div>
+                </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="box">
+            <p class="title">Existing Categories</p>
+            <ul>
+                @foreach (var item in @ViewBag.RecentCategories)
+                {
+                    <li>    
+                        <a href="categories/@item.CategoryId">@item.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
