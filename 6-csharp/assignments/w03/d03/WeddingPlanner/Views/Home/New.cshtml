@@ -1,0 +1,45 @@
+@model Wedding
+
+<div class="card">
+    <div class="card-content has-text-centered has-text-weight-bold is-size-1">
+        <p class="title">Plan Your Wedding</p>
+        <form asp-action="Create" asp-controller="Home" method='post' class="box">
+            <div class="field">
+                <label asp-for="WedderOne" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="WedderOne"></span>
+                    <input class="input" type="text" asp-for="WedderOne" placeholder="Jim">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="WedderTwo" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="WedderTwo"></span>
+                    <input class="input" type="text" asp-for="WedderTwo" placeholder="Pam">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Date" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Date"></span>
+                    <input class="input" type="date" asp-for="Date">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Address" class="label"></label>
+                <div class="control">
+                    <span class="has-text-danger" asp-validation-for="Address"></span>
+                    <input class="input" type="text" asp-for="Address" placeholder="Dunder Mifflin">
+                </div>
+            </div>
+            <input type="hidden" asp-for="UserId" value="@ViewBag.CurrentUser.UserId">
+        <footer class="card-footer">
+            <div class="card-footer-item">
+                <div class="control">
+                    <button class="button is-success" type="submit">Create</button>
+                </div>
+            </div>
+        </footer>
+        </form>
+    </div>
+</div>

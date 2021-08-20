@@ -1,0 +1,19 @@
+@model RSVP
+
+<div class="columns">
+    <div class="column">
+        <div class="box content">
+            <p class="title">@ViewBag.Wedding.WedderOne and @ViewBag.Wedding.WedderTwo's Wedding</p>
+            <p><span class="has-text-weight-bold">Date:</span> @ViewBag.Wedding.Date.ToString("MMMM dd, yyyy")</p>
+            <p><span class="has-text-weight-bold">Guests:</span></p>
+            <ul>
+                @foreach (var item in @ViewBag.Guests)
+                {
+                    <li>    
+                        <p>@item.FirstName @item.LastName</p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

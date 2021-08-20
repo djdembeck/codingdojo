@@ -1,0 +1,59 @@
+@model RSVP
+
+<div class="card">
+    <div class="card-content has-text-centered is-size-4">
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Wedding</th>
+                    <th>Date</th>
+                    <th>Guest(s)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.UpcomingWeddings)
+                {
+                    <tr>
+                        <td><a href="/weddings/@item.WeddingId">@item.WedderOne &amp; @item.WedderTwo</a></td>
+                        <td>@item.Date.ToString("MMMM dd, yyyy")</td>
+                        <td>@item.AllUsers.Count</td>
+                        @if (item.UserId == ViewBag.CurrentUser.UserId)
+                        {
+                            <td><a href="/weddings/@item.WeddingId/delete">Delete</a></td>
+                        }
+                        else
+                        {
+                            bool founduser = false;
+                            @foreach (var subitem in item.AllUsers)
+                            {
+                                if (subitem.UserRSVPing == ViewBag.CurrentUser)
+                                {
+                                    founduser = true;
+                                    <td><a class="button is-danger" href="/weddings/@item.WeddingId/unattend">Un-RSVP</a></td>
+                                }
+                            }
+                            if (!founduser)
+                            {
+                                <td>
+                                    <form asp-action="Attend" asp-controller="Home" asp-route-id="@item.WeddingId" method='post'>
+                                        <input type="hidden" asp-for="WeddingId" value="@item.WeddingId">
+                                        <input type="hidden" asp-for="UserId" value="@ViewBag.CurrentUser.UserId">
+                                        <button class="button is-primary" type="submit">RSVP</button>
+                                    </form>
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <footer class="card-footer">
+        <div class="card-footer-item">
+            <div class="control">
+                <a class="button is-link" href="/wedding/new" type="submit">New Wedding</a>
+            </div>
+        </div>
+    </footer>
+</div>
