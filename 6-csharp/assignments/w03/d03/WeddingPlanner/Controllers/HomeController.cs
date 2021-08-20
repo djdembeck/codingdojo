@@ -116,13 +116,6 @@ namespace WeddingPlanner.Controllers
                 .ThenInclude(y => y.UserRSVPing)
             .ToList();
 
-            
-            // ViewBag.NotProductsCategories = _context.Categories
-            // .Include(category => category.AllProducts)
-            //     .ThenInclude(category => category.ProductInCateogry)
-            // .Where(x => ! x.AllProducts.Any(y => y.ProductInCateogry.ProductId.Equals(id)))
-            // .ToList();
-
             return View();
         }
 
