@@ -175,6 +175,18 @@ namespace WeddingPlanner.Controllers
             return RedirectToAction("Dashboard");
         }
 
+        [HttpGet("weddings/{id}/delete")]
+        public IActionResult Delete(int id)
+        {
+            Wedding wedding = _context.Weddings
+                .Where(x => x.WeddingId.Equals(id))
+                .FirstOrDefault(u => u.UserId.Equals((int)HttpContext.Session.GetInt32("UserId")));
+            _context.Remove(wedding);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+
         [HttpGet("weddings/{id}")]
         public IActionResult Show(int id)
         {
